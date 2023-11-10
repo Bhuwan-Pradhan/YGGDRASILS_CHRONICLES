@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import SignupForm from "./components/core/Auth/SignupForm";
-import HomePage from "./components/HomePage";
+import HomePage from "./pages/HomePage";
 
 function App() {
 

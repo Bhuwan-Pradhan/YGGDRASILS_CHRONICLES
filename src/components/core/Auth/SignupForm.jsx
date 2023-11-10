@@ -45,10 +45,6 @@ const SignupForm = () => {
     navigate("/");
   };
 
-
-
-
-  
     return (
       <div>
         <form onSubmit={handleSubmit} >
