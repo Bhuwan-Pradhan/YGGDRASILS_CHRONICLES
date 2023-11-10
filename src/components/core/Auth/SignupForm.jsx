@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+
 
 const SignupForm = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -38,6 +41,8 @@ const SignupForm = () => {
     } catch (error) {
       console.error('Error during registration:', error);
     }
+
+    navigate("/");
   };
 
 
