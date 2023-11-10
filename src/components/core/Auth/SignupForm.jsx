@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
+import { toast } from "react-hot-toast";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setSignupData } from "../../../slices/authSlice";
+import { signUp } from "../../../services/authApi";
 
 
 const SignupForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -12,46 +19,61 @@ const SignupForm = () => {
     confirmPassword: '',
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // Send a POST request to your API to create a new user
-    try {
-      const response = await fetch('http://localhost:4000/api/auth/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+  const { firstName, lastName, email, password, confirmPassword } = formData;
 
-      if (response.ok) {
-        // User was successfully created
-        // You can redirect to a login page or display a success message
-        console.log('User registered successfully');
-      } else {
-        // Handle registration error
-        const data = await response.json();
-        console.error('Registration failed:', data.error);
-      }
-    } catch (error) {
-      console.error('Error during registration:', error);
+  // Handle input fields, when some value changes
+  const handleOnChange = (e) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.value,
+    }))
+  }
+
+  // Handle Form Submission
+  const handleOnSubmit = (e) => {
+    e.preventDefault()
+
+    if (password !== confirmPassword) {
+      toast.error("Passwords Do Not Match")
+      return
+    }
+    const signupData = {
+      ...formData,
+  
     }
 
-    navigate("/");
-  };
+    // Setting signup data to state
+    // To be used after otp verification
+    dispatch(setSignupData(signupData));
+    dispatch(
+      signUp(
+        firstName,
+        lastName,
+        email,
+        password,
+        confirmPassword,
+        navigate
+      )
+    );
 
 
+    // Reset
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    })
+    
+  }
 
-
-  
     return (
       <div>
-        <form onSubmit={handleSubmit} >
+        <form onSubmit={handleOnSubmit} >
           <div >
             <label>
               <p>
@@ -61,9 +83,9 @@ const SignupForm = () => {
                 required
                 type="text"
                 name="firstName"
-              
+                value={firstName}
                 placeholder="Enter first name"
-                onChange={handleChange}
+                onChange={handleOnChange}
               />
             </label>
             <label>
@@ -76,7 +98,8 @@ const SignupForm = () => {
                 name="lastName"
                 
                 placeholder="Enter last name"
-                onChange={handleChange}
+                value={lastName}
+                onChange={handleOnChange}
        
               />
             </label>
@@ -91,7 +114,8 @@ const SignupForm = () => {
               name="email"
              
               placeholder="Enter email address"
-              onChange={handleChange}
+              value={email}
+              onChange={handleOnChange}
             
             />
           </label>
@@ -102,12 +126,23 @@ const SignupForm = () => {
               </p>
               <input
                 required
-                type="text"
+                type={showPassword ? "text" : "password"}
                 name="password"
           
                 placeholder="Enter Password"
-                onChange={handleChange}
+                value={password}
+              onChange={handleOnChange}
               />
+                          <span
+              onClick={() => setShowPassword((prev) => !prev)}
+              className="absolute right-3 top-[38px] z-[10] cursor-pointer"
+            >
+              {showPassword ? (
+                <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
+              ) : (
+                <AiOutlineEye fontSize={24} fill="#AFB2BF" />
+              )}
+            </span>
          
             </label>
             <label >
@@ -116,13 +151,23 @@ const SignupForm = () => {
               </p>
               <input
                 required
-                type="text"
+                type={showConfirmPassword ? "text" : "password"}
                 name="confirmPassword"
              
                 placeholder="Confirm Password"
-                onChange={handleChange}
+                value={confirmPassword}
+                onChange={handleOnChange}
               />
-       
+                  <span
+              onClick={() => setShowConfirmPassword((prev) => !prev)}
+              className="absolute right-3 top-[38px] z-[10] cursor-pointer"
+            >
+              {showConfirmPassword ? (
+                <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
+              ) : (
+                <AiOutlineEye fontSize={24} fill="#AFB2BF" />
+              )}
+            </span>
             </label>
           </div>
           <button
