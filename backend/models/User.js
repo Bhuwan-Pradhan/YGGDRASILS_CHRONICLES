@@ -67,6 +67,9 @@ const userSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
+		token: {
+			type: String,
+		},
 		
 
 		// Add timestamps for when the document is created and last modified

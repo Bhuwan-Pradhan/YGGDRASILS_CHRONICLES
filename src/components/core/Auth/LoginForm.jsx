@@ -1,91 +1,90 @@
-import React, { useState } from 'react';
+import { useState } from "react"
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
+import { useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom"
+
+import { login } from "../../../services/authApi";
 
 const LoginForm = () => {
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const [formData, setFormData] = useState({
-   
-    email: '',
-    password: '',
-    
-  });
+    email: "",
+    password: "",
+  })
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  const [showPassword, setShowPassword] = useState(false)
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // Send a POST request to your API to create a new user
-    try {
-      const response = await fetch('http://localhost:4000/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+  const { email, password } = formData
 
-      if (response.ok) {
-        // User was successfully created
-        // You can redirect to a login page or display a success message
-        console.log('User logged in successfully');
-      } else {
-        // Handle registration error
-        const data = await response.json();
-        console.error('Login failed:', data.error);
-      }
-    } catch (error) {
-      console.error('Error during login:', error);
-    }
-  };
+  const handleOnChange = (e) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.value,
+    }))
+  }
 
 
+  const handleOnSubmit = (e) => {
+    e.preventDefault()
+    dispatch(login(email, password, navigate))
+  }
 
+  return (
+    <div>
+      <form onSubmit={handleOnSubmit} >
 
-  
-    return (
-      <div>
-        <form onSubmit={handleSubmit} >
+        <label >
+          <p >
+            Email Address <sup >*</sup>
+          </p>
+          <input
+            required
+            type="text"
+            name="email"
 
+            placeholder="Enter email address"
+            value={email}
+            onChange={handleOnChange}
+
+          />
+        </label>
+        <div >
           <label >
             <p >
-              Email Address <sup >*</sup>
+              Create Password <sup >*</sup>
             </p>
             <input
               required
               type="text"
-              name="email"
-             
-              placeholder="Enter email address"
-              onChange={handleChange}
-            
+              name="password"
+
+              placeholder="Enter Password"
+              value={password}
+              onChange={handleOnChange}
             />
+            <span
+              onClick={() => setShowPassword((prev) => !prev)}
+              className="absolute right-3 top-[38px] z-[10] cursor-pointer"
+            >
+              {showPassword ? (
+                <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
+              ) : (
+                <AiOutlineEye fontSize={24} fill="#AFB2BF" />
+              )}
+            </span>
           </label>
-          <div >
-            <label >
-              <p >
-                Create Password <sup >*</sup>
-              </p>
-              <input
-                required
-                type="text"
-                name="password"
-          
-                placeholder="Enter Password"
-                onChange={handleChange}
-              />
-         
-            </label>
-   
-          </div>
-          <button
-            type="submit"
-          >
-            Login
-          </button>
-        </form>
-      </div>
-    )
-  }
-  
-  export default LoginForm;
+
+        </div>
+        <button
+          type="submit"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  )
+}
+
+export default LoginForm;
