@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 
-const SignupForm = () => {
+const LoginForm = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+   
     email: '',
     password: '',
-    confirmPassword: '',
+    
   });
 
   const handleChange = (e) => {
@@ -18,7 +17,7 @@ const SignupForm = () => {
     e.preventDefault();
     // Send a POST request to your API to create a new user
     try {
-      const response = await fetch('http://localhost:4000/api/auth/signup', {
+      const response = await fetch('http://localhost:4000/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -29,14 +28,14 @@ const SignupForm = () => {
       if (response.ok) {
         // User was successfully created
         // You can redirect to a login page or display a success message
-        console.log('User registered successfully');
+        console.log('User logged in successfully');
       } else {
         // Handle registration error
         const data = await response.json();
-        console.error('Registration failed:', data.error);
+        console.error('Login failed:', data.error);
       }
     } catch (error) {
-      console.error('Error during registration:', error);
+      console.error('Error during login:', error);
     }
   };
 
@@ -47,35 +46,7 @@ const SignupForm = () => {
     return (
       <div>
         <form onSubmit={handleSubmit} >
-          <div >
-            <label>
-              <p>
-                First Name <sup >*</sup>
-              </p>
-              <input
-                required
-                type="text"
-                name="firstName"
-              
-                placeholder="Enter first name"
-                onChange={handleChange}
-              />
-            </label>
-            <label>
-              <p >
-                Last Name <sup >*</sup>
-              </p>
-              <input
-                required
-                type="text"
-                name="lastName"
-                
-                placeholder="Enter last name"
-                onChange={handleChange}
-       
-              />
-            </label>
-          </div>
+
           <label >
             <p >
               Email Address <sup >*</sup>
@@ -105,29 +76,16 @@ const SignupForm = () => {
               />
          
             </label>
-            <label >
-              <p >
-                Confirm Password <sup >*</sup>
-              </p>
-              <input
-                required
-                type="text"
-                name="confirmPassword"
-             
-                placeholder="Confirm Password"
-                onChange={handleChange}
-              />
-       
-            </label>
+   
           </div>
           <button
             type="submit"
           >
-            Create Account
+            Login
           </button>
         </form>
       </div>
     )
   }
   
-  export default SignupForm;
+  export default LoginForm;
