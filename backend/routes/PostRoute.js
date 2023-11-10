@@ -2,20 +2,15 @@ const express = require("express");
 const router = express.Router();
 
 // Import the required controllers and middleware functions
-const {
-    signup,
-    login
-} = require("../controllers/Auth");
 
 
-
+const {createPost} = require("../controllers/Post");
+const { auth } = require("../middlewares/auth")
 
 //Route for user signup
-router.post("/signup", signup)
-
-router.post("/login", login)
 
 
+router.post("/newPost", auth, createPost)
 
 
 

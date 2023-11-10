@@ -57,7 +57,7 @@ const LoginForm = () => {
             </p>
             <input
               required
-              type="text"
+              type={showPassword ? "text" : "password"}
               name="password"
 
               placeholder="Enter Password"
