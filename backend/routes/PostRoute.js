@@ -12,7 +12,7 @@ const { auth } = require("../middlewares/auth")
 
 router.post("/newPost", auth, createPost)
 router.get("/getAllPost", getAllPost)
-router.get("/like", likePost)
+router.post("/like", auth, likePost)
 
 
 
