@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
 import { login } from "../../../services/authApi";
+import '../../../css/pages/SignupLoginPage.css'
 
 const LoginForm = () => {
 
@@ -32,14 +33,15 @@ const LoginForm = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleOnSubmit} >
-
-        <label >
+    <div className="LoginContainer">
+      <form className="Form" onSubmit={handleOnSubmit} >
+        <p className="Title">Login</p>
+        <label>
           <p >
             Email Address <sup >*</sup>
           </p>
           <input
+            className='Input'
             required
             type="text"
             name="email"
@@ -53,9 +55,10 @@ const LoginForm = () => {
         <div >
           <label >
             <p >
-              Create Password <sup >*</sup>
+              Enter Password <sup >*</sup>
             </p>
             <input
+              className='Input'
               required
               type="text"
               name="password"
@@ -78,6 +81,7 @@ const LoginForm = () => {
 
         </div>
         <button
+          className="Button"
           type="submit"
         >
           Login
