@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setSignupData } from "../../../slices/authSlice";
 import { signUp } from "../../../services/authApi";
+import '../../../css/pages/SignupLoginPage.css'
 
 
 const SignupForm = () => {
@@ -72,14 +73,16 @@ const SignupForm = () => {
   }
 
     return (
-      <div>
-        <form onSubmit={handleOnSubmit} >
-          <div >
+      <div className='SignupContainer'>
+        <form className='Form' onSubmit={handleOnSubmit} >
+          <p className='Title'>Signup</p>
+          <div>
             <label>
               <p>
                 First Name <sup >*</sup>
               </p>
               <input
+                className='Input'
                 required
                 type="text"
                 name="firstName"
@@ -93,6 +96,7 @@ const SignupForm = () => {
                 Last Name <sup >*</sup>
               </p>
               <input
+                className='Input'
                 required
                 type="text"
                 name="lastName"
@@ -109,6 +113,7 @@ const SignupForm = () => {
               Email Address <sup >*</sup>
             </p>
             <input
+              className='Input'
               required
               type="text"
               name="email"
@@ -125,6 +130,7 @@ const SignupForm = () => {
                 Create Password <sup >*</sup>
               </p>
               <input
+                className='Input'
                 required
                 type={showPassword ? "text" : "password"}
                 name="password"
@@ -150,6 +156,7 @@ const SignupForm = () => {
                 Confirm Password <sup >*</sup>
               </p>
               <input
+                className='Input'
                 required
                 type={showConfirmPassword ? "text" : "password"}
                 name="confirmPassword"
@@ -171,6 +178,7 @@ const SignupForm = () => {
             </label>
           </div>
           <button
+            className="Button"
             type="submit"
           >
             Create Account
