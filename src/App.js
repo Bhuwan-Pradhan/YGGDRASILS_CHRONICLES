@@ -3,6 +3,7 @@ import SignupForm from "./components/core/Auth/SignupForm";
 import HomePage from "./pages/HomePage";
 import LoginForm from "./components/core/Auth/LoginForm";
 import SignupLoginPage from "./pages/SignupLoginPage";
+import NewPost from "./components/core/Post/NewPost";
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
         <Route path="/slPage" element={<SignupLoginPage />} />
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/login" element={<LoginForm />} />
+        <Route path="/newPost" element={<NewPost />} />
       </Routes>
     </div>
   );

@@ -6,6 +6,18 @@ const postSchema = new mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
         ref: "user"
 	},
+    auther:{
+        type: String,
+        required: true,
+    },
+    userImage:{
+        type: String,
+        required: true,
+    },
+    title: {
+        type: String,
+        required: true,
+    },
     body : {
         type : String,
         required : true

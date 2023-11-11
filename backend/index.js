@@ -1,8 +1,10 @@
 const express = require("express");
 const app = express();
-const bodyParser = require('body-parser');
+
 const userRoutes = require("./routes/UserRoutes");
+const postRoutes = require("./routes/PostRoute");
 const database = require("./config/database");
+const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 var cors = require("cors");
 
@@ -20,9 +22,11 @@ database.connect();
 
 //middlewares
 app.use(express.json());
+app.use(cookieParser());
 
 
 app.use("/api/auth", userRoutes);
+app.use("/api/post", postRoutes);
 
 //default route
 

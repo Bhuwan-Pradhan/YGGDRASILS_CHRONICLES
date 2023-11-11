@@ -103,7 +103,7 @@ exports.login = async (req, res) => {
 		// Generate JWT token and Compare Password
 		if (await bcrypt.compare(password, user.password)) {
 			const token = jwt.sign(
-				{ email: user.email, id: user._id, accountType: user.accountType },
+				{ email: user.email, id: user._id},
 				process.env.JWT_SECRET,
 				{
 					expiresIn: "24h",
@@ -111,6 +111,7 @@ exports.login = async (req, res) => {
 			);
 
 			// Save token to user document in database
+			
 			user.token = token;
 			user.password = undefined;
 			// Set cookie for token and return success response

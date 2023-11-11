@@ -33,31 +33,31 @@ const userSchema = new mongoose.Schema(
 				ref: "group",
 			},
 		],
-        followers: [
+		followers: [
 			{
 				type: mongoose.Schema.Types.ObjectId,
 				ref: "user",
 			},
 		],
-        following: [
+		following: [
 			{
 				type: mongoose.Schema.Types.ObjectId,
 				ref: "user",
 			},
 		],
-        post: [
+		post: [
 			{
 				type: mongoose.Schema.Types.ObjectId,
 				ref: "post",
 			},
 		],
-        repost: [
+		repost: [
 			{
 				type: mongoose.Schema.Types.ObjectId,
 				ref: "post",
 			},
 		],
-        followingGroup: [
+		followingGroup: [
 			{
 				type: mongoose.Schema.Types.ObjectId,
 				ref: "group",
@@ -67,10 +67,8 @@ const userSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
-		token: {
-			type: String,
-		},
-		
+
+
 
 		// Add timestamps for when the document is created and last modified
 	},

@@ -5,13 +5,17 @@ const router = express.Router();
 const {
     signup,
     login
-} = require("../controllers/Auth")
+} = require("../controllers/Auth");
+
+
 
 
 //Route for user signup
 router.post("/signup", signup)
 
 router.post("/login", login)
+
+
 
 
 
