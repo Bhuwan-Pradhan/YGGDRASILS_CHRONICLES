@@ -129,6 +129,7 @@ const SignupForm = () => {
               <p >
                 Create Password <sup >*</sup>
               </p>
+              <div className='PasswordDiv'>
               <input
                 className='Input'
                 required
@@ -139,9 +140,9 @@ const SignupForm = () => {
                 value={password}
               onChange={handleOnChange}
               />
-                          <span
+
+              <span className='PasswordEye'
               onClick={() => setShowPassword((prev) => !prev)}
-              className="absolute right-3 top-[38px] z-[10] cursor-pointer"
             >
               {showPassword ? (
                 <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
@@ -149,12 +150,14 @@ const SignupForm = () => {
                 <AiOutlineEye fontSize={24} fill="#AFB2BF" />
               )}
             </span>
+              </div>
          
             </label>
             <label >
               <p >
                 Confirm Password <sup >*</sup>
               </p>
+              <div className='PasswordDiv'>
               <input
                 className='Input'
                 required
@@ -165,9 +168,8 @@ const SignupForm = () => {
                 value={confirmPassword}
                 onChange={handleOnChange}
               />
-                  <span
+              <span className='PasswordEye'
               onClick={() => setShowConfirmPassword((prev) => !prev)}
-              className="absolute right-3 top-[38px] z-[10] cursor-pointer"
             >
               {showConfirmPassword ? (
                 <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
@@ -175,6 +177,9 @@ const SignupForm = () => {
                 <AiOutlineEye fontSize={24} fill="#AFB2BF" />
               )}
             </span>
+              </div>
+           
+                  
             </label>
           </div>
           <button

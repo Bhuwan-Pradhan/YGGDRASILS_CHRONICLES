@@ -3,9 +3,9 @@ import SignupForm from "../components/core/Auth/SignupForm";
 import '../css/pages/SignupLoginPage.css'
 
 const SignupLoginPage = () =>{
-    let logged = true;
+    let logged = false;
     return(
-       <div className="Container">
+       <div className="Container-SL">
        {logged?<LoginForm />:<SignupForm />}
            
            

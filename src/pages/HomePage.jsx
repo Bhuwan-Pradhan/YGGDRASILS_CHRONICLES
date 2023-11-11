@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import PostContainer from '../components/common/PostContainer';
 
 import { getAllPost } from "../services/post"
+import '../css/pages/HomePage.css'
 
 const HomePage = () => {
   const [postData, setPostData] = useState();
@@ -24,12 +25,11 @@ const HomePage = () => {
 
  
   return (
-    <div>
-      <h1>welcome to homepage</h1>
-
-      <h2>All Post</h2>
-
-   
+    <div className="HomePageDiv">
+      <div className="NavBar">
+      Yggdrasil's Chronicles
+      </div>
+      
         {postData?.data.map((post) => (
           <PostContainer image={post.user.image} name={post.author} title={post.title} body={post.body}/>
  
