@@ -22,40 +22,16 @@ const HomePage = () => {
   }, []);
   console.log(postData);
 
-  const inlineStyle = {
-    width: '100px',
-    height: '100px',
-    borderRadius: '50%',
-    objectFit: 'cover'
-
-  }
-  const inlineContainerStyle = {
-    backgroundColor: '#9999ff',
-    borderWidth: '2px',
-    borderStyle: 'dotted',
-    borderColor: '#000',
-    borderRadius: '20px',
-    margin: '20px',
-    padding: '20px'
-  }
+ 
   return (
     <div>
       <h1>welcome to homepage</h1>
 
       <h2>All Post</h2>
-      {postData?.data.map((post) => (
-        <div className="Container" style={inlineContainerStyle}>
-          <img style={inlineStyle} src={post.user.image} alt="userImage" />
-          <h2>{post.author}</h2>
-          <h3>title: {post.title}</h3>
-          <h4>body: {post.body}</h4>
 
-        </div>
-      ))}
-
-        <h2>All Post</h2>
+   
         {postData?.data.map((post) => (
-          <PostContainer image={post.user.image} name={post.auther} title={post.title} body={post.body}/>
+          <PostContainer image={post.user.image} name={post.author} title={post.title} body={post.body}/>
  
         ))}
    
