@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import PostContainer from '../components/common/PostContainer';
 
 import { getAllPost } from "../services/post"
 
@@ -44,13 +44,8 @@ const HomePage = () => {
 
         <h2>All Post</h2>
         {postData?.data.map((post) => (
-             <div className="Container" style={inlineContainerStyle}>
-                <img style={inlineStyle} src={post.user.image} alt="userImage"/>
-             <h2>{post.auther}</h2>
-             <h3>title: {post.title}</h3>
-             <h4>body: {post.body}</h4>
-             
-         </div>
+          <PostContainer image={post.user.image} name={post.auther} title={post.title} body={post.body}/>
+ 
         ))}
    
     </div>
