@@ -6,6 +6,7 @@ import { postEndpoints } from "../utils/api";
 const {
   NEWPOST_API,
   GET_ALL_POST_API,
+  LIKE_POST_API,
 } = postEndpoints
 
 
@@ -56,3 +57,37 @@ export const getAllPost = async () => {
   toast.dismiss(toastId)
   return result
 }
+
+
+export function likePost(token, post, navigate) {
+  return async (dispatch) => {
+    const toastId = toast.loading("Loading...")
+    
+
+    try {
+      const response = await apiConnector("POST", LIKE_POST_API, {
+        post,
+      }, {
+        Authorization: `Bearer ${token}`,
+      })
+
+      console.log("LIKE POST API RESPONSE............", response)
+
+
+
+      toast.success("Liked Successful")
+      //dispatch(setToken(response.data.token))
+
+
+      
+      navigate("/")
+    } catch (error) {
+      console.log("LIKE Post API ERROR............", error)
+      toast.error("liked Failed")
+    }
+
+
+    toast.dismiss(toastId)
+    
+  }
+} 

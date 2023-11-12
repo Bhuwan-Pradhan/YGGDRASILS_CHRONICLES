@@ -9,10 +9,10 @@ const { auth } = require("../middlewares/auth")
 
 //Route for user signup
 
-
+router.post("/like", auth, likePost);
 router.post("/newPost", auth, createPost)
 router.get("/getAllPost", getAllPost)
-router.post("/like", auth, likePost)
+
 
 
 

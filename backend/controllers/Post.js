@@ -43,6 +43,10 @@ exports.likePost = async (req, res) => {
     try {
         const { post} = req.body;
        const user = req.user.id;
+    
+
+
+       
         const like = new Like({
             post ,
             user
@@ -51,6 +55,7 @@ exports.likePost = async (req, res) => {
         console.log(savedLike);
 
         // Update Post Collection basis on this
+      
         const updatedPost = await Post.findByIdAndUpdate(
             post,
             { $push: { likes: savedLike._id } },
