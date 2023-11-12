@@ -1,0 +1,23 @@
+.HomePageDiv {
+    margin-top: 50px;
+    background: #000020;
+    text-align: center;
+    color: aqua;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-family: "Montserrat", sans-serif;
+}
+
+.NavBar {
+    top: 0;
+    font-size: x-large;
+    height: 50px;
+    width: 100%;
+    z-index: 1;
+    background-color: white;
+    opacity: 0.70;
+    /* display: flex; */
+    /* justify-content: center; */
+    position: fixed;
+}

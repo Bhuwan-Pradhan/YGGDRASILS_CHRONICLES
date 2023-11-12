@@ -57,6 +57,7 @@ const LoginForm = () => {
             <p >
               Enter Password <sup >*</sup>
             </p>
+            <div className='PasswordDiv'>
             <input
               className='Input'
               required
@@ -67,9 +68,9 @@ const LoginForm = () => {
               value={password}
               onChange={handleOnChange}
             />
-            <span
+
+            <span className='PasswordEye'
               onClick={() => setShowPassword((prev) => !prev)}
-              className="absolute right-3 top-[38px] z-[10] cursor-pointer"
             >
               {showPassword ? (
                 <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
@@ -77,6 +78,7 @@ const LoginForm = () => {
                 <AiOutlineEye fontSize={24} fill="#AFB2BF" />
               )}
             </span>
+            </div>
           </label>
 
         </div>
