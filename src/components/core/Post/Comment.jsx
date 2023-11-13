@@ -7,7 +7,7 @@ import { useNavigate} from "react-router-dom"
 
 const Comment = (props) => {
     
-    const post = props.postId;
+    const post = props.id;
     console.log(post);
     const { token } = useSelector((state) => state.auth);
     const [commentData, setCommentData] = useState();
@@ -34,7 +34,13 @@ const Comment = (props) => {
         dispatch(commentPost(token, post, body, navigate))
     }
 
-
+    const inlineStyle ={
+        width: '50px',
+        height: '50px' ,
+        borderRadius: '50%',
+        position: 'relative',
+        padding: '5px'
+    }
     
 
   
@@ -56,6 +62,22 @@ const Comment = (props) => {
 
     return (
         <div>
+                 <div className="Container">
+            <div>
+           
+           {commentData?.data.map((comment) => (
+            <div>
+                <div>
+                <img src={comment.user.image} style={inlineStyle}alt="" />
+                <span>{comment.user.firstName} {comment.user.lastName}</span>
+                    </ div>
+               
+        <h2>{comment.body}</h2>
+        </div>
+ 
+        ))}
+        </div>
+            </div>
            
             <form onSubmit={handleOnSubmit} >
           
@@ -78,15 +100,7 @@ const Comment = (props) => {
                     Comment
                 </button>
             </form>
-            <div className="Container">
-            <div>
-           
-           {commentData?.data.map((comment) => (
-        <h2>{comment.body}</h2>
- 
-        ))}
-        </div>
-            </div>
+       
         </div>
     )
 }

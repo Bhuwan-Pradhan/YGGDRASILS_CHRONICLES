@@ -13,7 +13,7 @@
     overflow-y: scroll;
 }
 
-.CommentsBoxHeader {
+.PopupBoxHeader {
     background-color: white;
     position: fixed;
     border-bottom: 2px solid black;

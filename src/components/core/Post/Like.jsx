@@ -1,5 +1,4 @@
 
-
 import { likePost } from "../../../services/post"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
@@ -20,7 +19,9 @@ const Like = (props) => {
  return(
   
          <div>
-            <button onClick={handleLike}>Like</button>
+            <button onClick={handleLike}>  
+
+</button>
          </div>
         
    

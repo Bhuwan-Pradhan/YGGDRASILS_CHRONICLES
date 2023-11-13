@@ -1,10 +1,13 @@
-
+import {  useState} from "react"
 import '../../css/components/PostContainer.css';
-
-
+import { FcLike } from "react-icons/fc";
+import { FiHeart } from "react-icons/fi";
 import Like from '../core/Post/Like';
-import Comment from '../core/Post/Comment';
 
+import Popup from './Popup';
+import { likePost } from "../../services/post"
+import { useDispatch, useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
 
 
 
@@ -12,8 +15,29 @@ import Comment from '../core/Post/Comment';
 
 
 const PostContainer = (props) => {
+  let likesCount;
+  if(props.likes === 0){
+    likesCount = 0;
+  }
+  else{
+    likesCount = props.likes -1;
+  }
 
- 
+ const [likes, setLikes] = useState(likesCount);
+  const[isLike, setIsLike]= useState(props.isLike);
+ const { token } = useSelector((state) => state.auth);
+   
+ const navigate = useNavigate()
+ const dispatch = useDispatch()
+
+ const handleLike=(likes)=>{
+
+    setIsLike(true);
+    
+     setLikes(likesCount+1);
+     dispatch(likePost(token, props.id, navigate));
+     
+   }
  
 
 
@@ -34,10 +58,10 @@ const PostContainer = (props) => {
        
       </div>
       <div className="UserInteractions">
-        {props.isLike ?<div>Likes: you and {props.likes-1} others</div>:<div><Like id={props.id}/></div>}
+        {isLike ?<div><FcLike size="30px"/><span>you and {likes} others</span> </div>:<div><button onClick={handleLike}><FiHeart size="30px"/></button> <span>{likes} likes</span></div>}
          
          <div>Repost</div>
-         <div> <Comment postId={props.id}/></div>
+         <div> <Popup postId={props.id}/></div>
       </div>
     </div>
   );

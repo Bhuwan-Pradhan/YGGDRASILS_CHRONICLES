@@ -1,10 +1,11 @@
-import "./PopupDemo.css";
+import "../../css/components/Popup.css";
 
 import React, { useState } from "react";
 import ReactModal from "react-modal";
-import closeImg from "./assets/cross.png";
+import Comment from "../core/Post/Comment";
+import { GiTireIronCross } from "react-icons/gi";
 
-function Example() {
+function Popup(props) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -17,24 +18,17 @@ function Example() {
         onRequestClose={() => setIsOpen(false)}
       >
         <div className="PopupBox">
-          <div className="CommentsBoxHeader">
+          <div className="PopupBoxHeader">
             <div>Comments</div>
             <button className="CloseButton" onClick={() => setIsOpen(false)}>
-              {" "}
-              &times;{" "}
+             <GiTireIronCross />
             </button>
           </div>
-          <div className="CommentDiv">
-            <div className="UserDetails">
-              {" "}
-              Comment karne wala user ka details{" "}
-            </div>
-            <div className="CommentBody"> Jo comment kiya wo </div>
-          </div>
+         <div><Comment id={props.postId}/></div>
         </div>
       </ReactModal>
     </div>
   );
 }
 
-export default Example;
+export default Popup;
