@@ -2,7 +2,7 @@ import {  useState} from "react"
 import '../../css/components/PostContainer.css';
 import { FcLike } from "react-icons/fc";
 import { FiHeart } from "react-icons/fi";
-import Like from '../core/Post/Like';
+
 
 import Popup from './Popup';
 import { likePost } from "../../services/post"
@@ -50,9 +50,9 @@ const PostContainer = (props) => {
       </div>
       <div className="PostDetails">
         <div className="PostTitle">{props.title}</div>
-        <div className="PostBody">{props.body}</div>
+      
         <div className="PostMedia">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/He1523a.jpg" alt="postImage"/>
+          <img src={props.body} alt="postImage"/>
         </div>
         
        

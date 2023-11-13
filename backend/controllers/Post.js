@@ -1,17 +1,31 @@
 const Post = require("../models/PostModel");
 const User = require("../models/UserModel");
-const Like = require("../models/LikeModel");
+
 const Comment = require("../models/CommentModel");
-const mongoose = require("mongoose");
+
+const { uploadImageToCloudinary } = require('./FileUploader');
 
 exports.createPost = async (req, res) => {
     try {
-        const { title, body, } = req.body;
+        const { title } = req.body;
 
 
         const user = await User.findById(req.user.id);
 
-        const post = new Post({ user: user._id, userImage: user.image, author: user.firstName + " " + user.lastName, title, body });
+
+        const displayFile = req.files.displayFile
+      console.log(displayFile)
+     
+        const file = await uploadImageToCloudinary(
+            displayFile,
+            process.env.FOLDER_NAME,
+            1000,
+            1000
+          )
+      
+            console.log(file.secure_url);
+
+        const post = new Post({ user: user._id, userImage: user.image, author: user.firstName + " " + user.lastName, title, body: file.secure_url });
         const savedPost = await post.save();
 
         res.json({
@@ -120,3 +134,6 @@ exports.getCommentById = async (req, res) => {
 }
 
 
+
+
+  

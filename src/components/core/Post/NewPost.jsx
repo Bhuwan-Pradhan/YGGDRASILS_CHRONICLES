@@ -1,35 +1,53 @@
-import { useState } from "react";
+import {useState } from "react"
+import { FiUpload } from "react-icons/fi"
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { newPost } from "../../../services/post";
+import '../../../css/components/NewPost.css'
 
 const NewPost = () => {
   const { token } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [formData, setFormData] = useState({
-    title: "",
-    body: "",
-  });
+  const [title, setTitle] = useState("");
+  
+  const [file, setFile] = useState(null)
+ 
 
-  const { title, body } = formData;
+
+
 
   const handleOnChange = (e) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      [e.target.name]: e.target.value,
-    }));
+    setTitle(e.target.value);
   };
 
+
+
+
+ 
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0]
+   
+    setFile(selectedFile);
+   
+  }
+
+
+  
   const handleOnSubmit = (e) => {
-    e.preventDefault();
-    dispatch(newPost(title, body, token, navigate));
+    e.preventDefault()
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('displayFile', file);
+    console.log("formdata", formData)
+    dispatch(newPost(formData, token, navigate));
   };
 
   return (
     <div className="CreatePostPopup">
       <form onSubmit={handleOnSubmit}>
+      <div className="file-upload-container">
         <label>
           <div className="Title">Post Title</div>
           <input
@@ -41,20 +59,24 @@ const NewPost = () => {
             onChange={handleOnChange}
           />
         </label>
-        <div className="PostBodyUpload">
-          <label>
+       
+          <label htmlFor="file-upload" className="custom-file-upload">
             <div className="Title">Upload Media</div>
-            <input
-              required
-              type="file"
-              name="body"
-              placeholder="Enter post body"
-              value={body}
-              onChange={handleOnChange}
-            />
+          
+              <input
+                type="file"
+                id="file-upload"
+                onChange={handleFileChange}
+                
+                
+              />
+          <FiUpload />
+           
+            
           </label>
-        </div>
+        
         <button type="submit">Post</button>
+        </div>
       </form>
     </div>
   );

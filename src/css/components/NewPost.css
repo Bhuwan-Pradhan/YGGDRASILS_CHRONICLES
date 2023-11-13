@@ -1,0 +1,20 @@
+.file-upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    
+  }
+  
+  .custom-file-upload {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Optional: Hide the default file input appearance */
+  #file-upload {
+    display: none;
+  }

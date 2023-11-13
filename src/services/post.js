@@ -12,15 +12,15 @@ const {
 } = postEndpoints
 
 
-export function newPost(title, body, token, navigate) {
+export function newPost(formData, token, navigate) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")
-
+    
     try {
-      const response = await apiConnector("POST", NEWPOST_API, {
-        title,
-        body,
-      }, {
+      const response = await apiConnector("POST", NEWPOST_API, 
+        formData,
+      {
+        "Content-Type": "multipart/form-data",
         Authorization: `Bearer ${token}`,
       })
 
