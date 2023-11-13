@@ -7,6 +7,9 @@ import '../css/pages/HomePage.css'
 
 const HomePage = () => {
   const [postData, setPostData] = useState();
+  const user = JSON.parse(localStorage.getItem("user"));
+  const id = user._id;
+  console.log(user._id);
 
   const getAllData = async () => {
     try {
@@ -26,26 +29,18 @@ const HomePage = () => {
 
 
   return (
-    <div>
-      <h1>welcome to homepage</h1>
-
-      <h2>All Post</h2>
-
-
- 
-
     <div className="HomePageDiv">
       <div className="NavBar">
       Yggdrasil's Chronicles
       </div>
       
         {postData?.data.map((post) => (
-          <PostContainer id={post._id} image={post.user.image} name={post.author} title={post.title} body={post.body} isLike={post.likes.includes('654f64c805bd87b97932f8f2')}  likes={post.likes.length}/>
+          <PostContainer id={post._id} image={post.user.image} name={post.author} title={post.title} body={post.body} isLike={post.likes.includes(id)}  likes={post.likes.length} comments = {post.comments}/>
  
         ))}
    
     </div>
-    </div>
+    
   )
 }
 
