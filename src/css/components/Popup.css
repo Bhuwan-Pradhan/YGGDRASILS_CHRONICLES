@@ -1,0 +1,40 @@
+
+
+.PopupBox {
+    display: flex;
+    flex-direction: column;
+    /* background-color: aqua; */
+    border: 2px solid black;
+    border-radius: 10px;
+    height: 90%;
+    width: 50%;
+    position: absolute;
+    padding: 3px;
+    overflow-y: scroll;
+}
+
+.CommentsBoxHeader {
+    background-color: white;
+    position: fixed;
+    border-bottom: 2px solid black;
+    width: inherit;
+    display: flex;
+    align-items: center;
+    /* padding: 2px; */
+    justify-content: space-between;
+}
+
+.RM {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.CloseButton {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+}

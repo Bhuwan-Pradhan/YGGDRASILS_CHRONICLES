@@ -23,7 +23,7 @@ const HomePage = () => {
   }, []);
   console.log(postData);
 
- 
+
   return (
     <div className="HomePageDiv">
       <div className="NavBar">
@@ -32,9 +32,9 @@ const HomePage = () => {
       
         {postData?.data.map((post) => (
           <PostContainer image={post.user.image} name={post.author} title={post.title} body={post.body}/>
- 
+
         ))}
-   
+        
     </div>
   )
 }

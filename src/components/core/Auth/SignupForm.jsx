@@ -20,8 +20,6 @@ const SignupForm = () => {
     confirmPassword: '',
   });
 
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const { firstName, lastName, email, password, confirmPassword } = formData;
 
@@ -133,7 +131,7 @@ const SignupForm = () => {
               <input
                 className='Input'
                 required
-                type={showPassword ? "text" : "password"}
+                type="password"
                 name="password"
           
                 placeholder="Enter Password"
@@ -141,15 +139,7 @@ const SignupForm = () => {
               onChange={handleOnChange}
               />
 
-              <span className='PasswordEye'
-              onClick={() => setShowPassword((prev) => !prev)}
-            >
-              {showPassword ? (
-                <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
-              ) : (
-                <AiOutlineEye fontSize={24} fill="#AFB2BF" />
-              )}
-            </span>
+            
               </div>
          
             </label>
@@ -161,22 +151,14 @@ const SignupForm = () => {
               <input
                 className='Input'
                 required
-                type={showConfirmPassword ? "text" : "password"}
+                type="password"
                 name="confirmPassword"
              
                 placeholder="Confirm Password"
                 value={confirmPassword}
                 onChange={handleOnChange}
               />
-              <span className='PasswordEye'
-              onClick={() => setShowConfirmPassword((prev) => !prev)}
-            >
-              {showConfirmPassword ? (
-                <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
-              ) : (
-                <AiOutlineEye fontSize={24} fill="#AFB2BF" />
-              )}
-            </span>
+      
               </div>
            
                   

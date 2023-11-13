@@ -15,7 +15,7 @@ const LoginForm = () => {
     password: "",
   })
 
-  const [showPassword, setShowPassword] = useState(false)
+
 
   const { email, password } = formData
 
@@ -61,23 +61,13 @@ const LoginForm = () => {
             <input
               className='Input'
               required
-              type={showPassword ? "text" : "password"}
+              type="password"
               name="password"
 
               placeholder="Enter Password"
               value={password}
               onChange={handleOnChange}
             />
-
-            <span className='PasswordEye'
-              onClick={() => setShowPassword((prev) => !prev)}
-            >
-              {showPassword ? (
-                <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
-              ) : (
-                <AiOutlineEye fontSize={24} fill="#AFB2BF" />
-              )}
-            </span>
             </div>
           </label>
 
