@@ -28,6 +28,7 @@ const HomePage = () => {
   console.log(postData);
 
 
+
   return (
     <div className="HomePageDiv">
       <div className="NavBar">
@@ -38,7 +39,7 @@ const HomePage = () => {
           <PostContainer id={post._id} image={post.user.image} name={post.author} title={post.title} body={post.body} isLike={post.likes.includes(id)}  likes={post.likes.length} comments = {post.comments}/>
  
         ))}
-   
+        
     </div>
     
   )
