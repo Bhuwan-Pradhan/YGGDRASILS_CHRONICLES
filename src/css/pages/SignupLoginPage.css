@@ -1,108 +1,81 @@
-* {
-  box-sizing: border-box;
+.SLPage {
+
+  position: absolute;
+  background-image: url(/src/assets/images/HomepageBackground.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #04013a;
+  background-blend-mode: hard-light;
+
+  height: 100vh;
+  width: 100vw;
+
 }
 
-/* .HomePageCss {
-  background: #000020;
+.MainBox{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 40%;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  font-family: "Montserrat", sans-serif;
-  height: 100%;
-  width: 100%;
-  
-} */
-
-/* .Container-SL {
-  background-color: white;
+  justify-content: space-around;
   border-radius: 10px;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  position: relative;
-  overflow: scroll;
-  width: 678px;
-  height: 100%;
-  max-width: 100%;
-  min-height: 400px;
-} */
-
-.LoginContainer {
-  position: absolute;
-  border: 2px solid black;
-  top: 0;
-  height: 100%;
-  transition: all 0.6s ease-in-out;
-  left: 100;
-  width: 50%;
-  z-index: 2;
-  position: absolute;
-  /* ${props => (props.signinIn !== true ? `transform: translateX(100%);` : null)} */
+  animation: fadeIn 3s;
 }
 
-.SignupContainer {
-    position: absolute;
-    border: 2px solid black;
-    top: 0;
-    height: 100%;
-    transition: all 0.6s ease-in-out;
-    left: 0;
-    transform: translateX(100%);
-    width: 50%;
-    z-index: 2;
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
-.Form {
-  background-color: white;
+.TitleText {
+  background-color: rgba(5, 5, 5, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+.TitleText img{
+  width: 100%;
+}
+
+.SignupLogin{
   display: flex;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 50px;
-  height: 100%;
+  
+}
+
+.SignupLogin button {
+  background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  flex-shrink: 0;
+  
+  font-size: 16px;
+  font-weight: 500;
+  height: 4rem;
+  padding: 0 1.6rem;
   text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+  transition: all .5s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
-.Input {
-  background-color: #eee;
-  border: none;
-  padding: 12px 15px;
-  margin: 8px 0;
-  width: 80%;
+.SignupLogin :hover {
+  box-shadow: rgba(245, 245, 245, 0.5) 0 1px 30px;
+  transition-duration: .1s;
 }
 
-.PasswordDiv input{
-  width: 80%;
-}
-
-.PasswordDiv PasswordEye{
-  
-  position: absolute;
-  right: 3;
-  top: 38px;
-  z-index: 10px;
-  
-}
-
-.Title {
-  font-weight: bold;
-  margin: 0;
-}
-
-.Button {
-  border-radius: 20px;
-  border: 1px solid #ff4b2b;
-  background-color: #ff4b2b;
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: bold;
-  padding: 12px 45px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: transform 80ms ease-in;
-  &:active {
-    transform: scale(0.95);
-  }
-  &:focus {
-    outline: none;
+@media (min-width: 768px) {
+  .button-36 {
+    padding: 0 2.6rem;
   }
 }
