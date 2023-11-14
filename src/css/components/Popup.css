@@ -20,14 +20,12 @@
     width: inherit;
     display: flex;
     align-items: center;
-    /* padding: 2px; */
     justify-content: space-between;
 }
 
 .RM {
     display: flex;
     justify-content: center;
-    /* align-items: center; */
 }
 
 .CloseButton {
