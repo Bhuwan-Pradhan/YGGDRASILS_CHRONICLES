@@ -29,6 +29,12 @@ const NewPost = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
+<<<<<<<<< Temporary merge branch 1
+    formData.append("title", title);
+    formData.append("displayFile", file);
+    console.log("formdata", formData);
+    dispatch(newPost(formData, token, navigate));
+=========
     formData.append('title', title);
     formData.append('displayFile', file);
     console.log("formdata", formData)

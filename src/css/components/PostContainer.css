@@ -1,6 +1,6 @@
 .PostContainer{
-    background-color: white;
-    color: black;
+    background-color: rgb(0, 0, 0);
+    color: white;
     border-width: 2px;
     border-style: solid;
     border-color: #000;
@@ -11,6 +11,7 @@
     width : 70%;
     position: relative;
     display: flex;
+    align-items: center;
     flex-direction: column;
     animation-name: Post;
     animation-duration: 1s;
@@ -37,10 +38,9 @@
     text-align: left;
 }
 
-
-
 .PostMedia img {
-    max-width: 100%;
+    max-width: 600px;
+    max-height: 300px;
 }
 
 
@@ -53,7 +53,12 @@
 }
 
 .UserInteractions {
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
 }
 
+.UserInteractions button {
+    background: none;
+    color: white;
+}

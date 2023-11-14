@@ -1,20 +1,42 @@
+.RM {
+  display: flex;
+  justify-content: center;
+}
+
+
+.PopupBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(20, 20, 20, .9);
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  height: 90%;
+  width: 50%;
+  position: absolute;
+  padding-top: 10px;
+  margin-top: 30px;
+  overflow: hidden;
+}
+
 .file-upload-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
-    
-  }
-  
-  .custom-file-upload {
-    background-color: #4caf50;
-    color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  /* Optional: Hide the default file input appearance */
-  #file-upload {
-    display: none;
-  }
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+#FileUploadContainer {
+  height: 30%;
+  width: 60%;
+  border: 2px solid red;
+  padding: 30px;
+  background: white;
+  text-align: center;
+  border-radius: 20px;
+  color: black;
+}

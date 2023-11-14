@@ -72,7 +72,7 @@ export function signUp(
         
         localStorage.setItem("token", JSON.stringify(response.data.token))
         localStorage.setItem("user", JSON.stringify(response.data.user))
-        navigate("/")
+        navigate("/home")
       } catch (error) {
         console.log("LOGIN API ERROR............", error)
         toast.error("Login Failed")
