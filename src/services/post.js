@@ -8,7 +8,8 @@ const {
   GET_ALL_POST_API,
   LIKE_POST_API,
   COMMENT_POST_API,
-  GET_COMMENTS_POST_API
+  GET_COMMENTS_POST_API,
+  GET_USER_POST_API
 } = postEndpoints
 
 
@@ -140,6 +141,26 @@ export const getComment = async (post) => {
     result = response?.data
   } catch (error) {
     console.log("GET_ALL_COMMENT_API API ERROR............", error)
+    toast.error(error.message)
+  }
+  toast.dismiss(toastId)
+  return result
+}
+
+export const getUserPost = async (id,token) => {
+  const toastId = toast.loading("Loading...")
+  let result = null
+  try {
+  
+    const response = await apiConnector("POST", GET_USER_POST_API,{id},{
+      Authorization: `Bearer ${token}`,
+    })
+    if (!response?.data?.success) {
+      throw new Error("Could Not Fetch posts")
+    }
+    result = response?.data
+  } catch (error) {
+    console.log("GET_USER_POST_API API ERROR............", error)
     toast.error(error.message)
   }
   toast.dismiss(toastId)

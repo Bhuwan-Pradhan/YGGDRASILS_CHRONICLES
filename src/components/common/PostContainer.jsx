@@ -7,7 +7,7 @@ import { FiHeart } from "react-icons/fi";
 import Popup from './Popup';
 import { likePost } from "../../services/post"
 import { useDispatch, useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 
 
 
@@ -16,6 +16,12 @@ import { useNavigate } from "react-router-dom"
 
 const PostContainer = (props) => {
   let likesCount;
+  const isUserPosts=props.isUser;
+  const userDetails ={
+    id: props.userId
+  }
+  
+
   if(props.likes === 0){
     likesCount = 0;
   }
@@ -46,7 +52,8 @@ const PostContainer = (props) => {
     <div className="PostContainer">
       <div className="UserDetails">
         <img className="UserImage" src={props.image} alt="userImage" />
-        <p>{props.name}</p>
+        {/* <button onClick={navigate('/profile', { state: {user: props.user}})}>{props.name}</button> */}
+        <Link to="/profile" state={{user: props.user}}>{props.name}</Link>
       </div>
       <div className="PostDetails">
         <div className="PostTitle">{props.title}</div>
@@ -60,8 +67,10 @@ const PostContainer = (props) => {
       <div className="UserInteractions">
         {isLike ?<div><FcLike size="30px"/><span>you and {likes} others</span> </div>:<div><button onClick={handleLike}><FiHeart size="30px"/></button> <span>{likes} likes</span></div>}
          
-         <div>Repost</div>
+         
          <div> <Popup postId={props.id}/></div>
+         {isUserPosts ? <div><button>Delete Post</button><button>Update Post</button></div>:<div><button> Repost </button></div>}
+        
       </div>
     </div>
   );

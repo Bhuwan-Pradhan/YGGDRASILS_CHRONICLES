@@ -4,7 +4,7 @@ const User = require("../models/UserModel");
 const Comment = require("../models/CommentModel");
 
 const { uploadImageToCloudinary } = require('./FileUploader');
-
+const { ObjectId } = require('mongodb');
 exports.createPost = async (req, res) => {
     try {
         const { title } = req.body;
@@ -28,6 +28,16 @@ exports.createPost = async (req, res) => {
         const post = new Post({ user: user._id, userImage: user.image, author: user.firstName + " " + user.lastName, title, body: file.secure_url });
         const savedPost = await post.save();
 
+
+        const updatedUser = await User.findByIdAndUpdate(user, { $push: { post: savedPost._id } },
+            { new: true })
+            .populate("post") //Populates the comment array with the comments document
+            .exec();
+
+        res.json({
+            post: updatedUser,
+        });
+
         res.json({
             post: savedPost
         })
@@ -43,7 +53,7 @@ exports.createPost = async (req, res) => {
 
 exports.getAllPost = async (req, res) => {
     try {
-        const postData = await Post.find({}).populate('user').exec();
+        const postData = await Post.find({}).populate('user').sort({createdAt: -1}).exec();
         res.json({ success: true, data: postData });
     }
     catch (err) {
@@ -122,12 +132,29 @@ exports.getCommentById = async (req, res) => {
     try {
         const {post} =req.body;
    
-        const commentData = await Comment.find({post: post}).populate('user').exec();
-        res.json({ success: true, data: commentData, message: 'mil gaya' });
+        const commentData = await Comment.find({post: post}).populate('user').sort({createdAt: -1}).exec();
+        res.json({ success: true, data: commentData,  });
     }
     catch (err) {
         return res.status(400).json({
             error: "Error While getting Comments",
+            message: err.message
+        })
+    }
+}
+
+
+exports.getPostById = async (req, res) => {
+    try {
+        const id=req.body;
+        const userId = new ObjectId(id);
+   
+        const postData = await Post.find({user: userId}).populate('user').sort({createdAt: -1}).exec();
+        res.json({ success: true, data: postData,  });
+    }
+    catch (err) {
+        return res.status(400).json({
+            error: "Error While getting Posts",
             message: err.message
         })
     }

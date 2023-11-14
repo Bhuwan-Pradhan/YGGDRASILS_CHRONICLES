@@ -5,6 +5,8 @@ import LoginForm from "./components/core/Auth/LoginForm";
 import SignupLoginPage from "./pages/SignupLoginPage";
 import NewPost from "./components/core/Post/NewPost";
 import Comment from "./components/core/Post/Comment";
+import UserPosts from "./pages/UserPosts"
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
 
@@ -17,6 +19,9 @@ function App() {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/newPost" element={<NewPost />} />
         <Route path="/comment"  element={<Comment />} />
+        <Route path="/userPosts"  element={<UserPosts />} />
+        <Route path="/profile"  element={<ProfilePage />} />
+        
       </Routes>
     </div>
   );

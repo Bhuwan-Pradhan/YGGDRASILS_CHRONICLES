@@ -33,7 +33,9 @@ const postSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "user",
     }],
-});
+},
+{ timestamps: true }
+);
 
 // Export the post model
 module.exports = mongoose.model("post", postSchema);

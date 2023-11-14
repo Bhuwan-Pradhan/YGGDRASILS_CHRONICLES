@@ -2,17 +2,19 @@ import React, { useEffect, useState } from "react";
 import PostContainer from '../components/common/PostContainer';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
-import { getAllPost } from "../services/post"
+import { getUserPost } from "../services/post"
+import {  useSelector } from "react-redux";
 import '../css/pages/HomePage.css'
 import DrawerBox from "../components/common/DrawerBox";
 import { GiTireIronCross } from "react-icons/gi";
 
 
-const HomePage = () => {
-  const isUser = false;
+const UserPosts = () => {
+  const isUser=true;
   const [postData, setPostData] = useState();
   const user = JSON.parse(localStorage.getItem("user"));
   const userId = user._id;
+  const { token } = useSelector((state) => state.auth);
 
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -22,7 +24,7 @@ const HomePage = () => {
 
   const getAllData = async () => {
     try {
-      const getPost = await getAllPost();
+      const getPost = await getUserPost(userId,token);
 
 
       setPostData(getPost);
@@ -61,7 +63,7 @@ const HomePage = () => {
       </div>
       
         {postData?.data.map((post) => (
-          <PostContainer id={post._id} image={post.user.image} name={post.author} title={post.title} body={post.body} isLike={post.likes.includes(userId)}  likes={post.likes.length} comments = {post.comments.length} isUser={isUser} user ={post.user}/>
+          <PostContainer id={post._id} image={post.user.image} name={post.author} title={post.title} body={post.body}  isLike={post.likes.includes(userId)}  likes={post.likes.length} comments = {post.comments.length}  isUser={isUser} userId={userId}/>
  
         ))}
         
@@ -70,4 +72,4 @@ const HomePage = () => {
   )
 }
 
-export default HomePage; 
+export default UserPosts; 
