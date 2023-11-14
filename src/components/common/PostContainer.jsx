@@ -55,7 +55,7 @@ const PostContainer = (props) => {
         <div className="PostTitle">{props.title}</div>
       
         <div className="PostMedia">
-          {props.body.includes('image') ?<img src={props.body} alt="" />:<video controls width="300" height="200">
+          {props.body.includes('image') ?<img src={props.body} alt="" />:<video controls width="500" height="200">
           <source src={props.body} />
           Your browser does not support the video tag.
           </video> }

@@ -13,7 +13,7 @@ const {
 } = postEndpoints
 
 
-export function newPost(formData, token) {
+export function newPost(formData, token, navigate) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")
     
@@ -32,7 +32,7 @@ export function newPost(formData, token) {
       toast.success("Post Successful")
       //dispatch(setToken(response.data.token))
 
-
+navigate("/home")
 
      
     } catch (error) {

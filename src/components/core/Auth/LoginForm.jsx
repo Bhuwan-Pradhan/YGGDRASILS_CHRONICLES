@@ -45,7 +45,7 @@ const LoginForm = () => {
             <button className="CloseButton" onClick={() => setIsOpen(false)}>
               &times;
             </button>
-          <div className="PopupboxBody">
+          
             <div className="LoginContainer">
               <form className="Form" onSubmit={handleOnSubmit}>
                 <p className="Title">Login</p>
@@ -86,7 +86,6 @@ const LoginForm = () => {
                 </button>
               </form>
             </div>
-          </div>
         </div>
       </ReactModal>
     </div>

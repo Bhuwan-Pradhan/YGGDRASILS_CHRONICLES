@@ -32,7 +32,7 @@ const NewPost = () => {
     formData.append('title', title);
     formData.append('displayFile', file);
     console.log("formdata", formData)
-    dispatch(newPost(formData, token));
+    dispatch(newPost(formData, token, navigate));
   };
 
   const [isOpen, setIsOpen] = useState(false);
