@@ -29,10 +29,10 @@ const NewPost = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("title", title);
-    formData.append("displayFile", file);
-    console.log("formdata", formData);
-    dispatch(newPost(formData, token, navigate));
+    formData.append('title', title);
+    formData.append('displayFile', file);
+    console.log("formdata", formData)
+    dispatch(newPost(formData, token));
   };
 
   const [isOpen, setIsOpen] = useState(false);

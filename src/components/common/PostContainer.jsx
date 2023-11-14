@@ -7,7 +7,7 @@ import { FiHeart } from "react-icons/fi";
 import Popup from './Popup';
 import { likePost } from "../../services/post"
 import { useDispatch, useSelector } from "react-redux"
-import { useNavigate, Link } from "react-router-dom"
+import {  Link } from "react-router-dom"
 
 
 
@@ -15,12 +15,8 @@ import { useNavigate, Link } from "react-router-dom"
 
 
 const PostContainer = (props) => {
-  let likesCount;
+    let likesCount;
   const isUserPosts=props.isUser;
-  const userDetails ={
-    id: props.userId
-  }
-  
 
   if(props.likes === 0){
     likesCount = 0;
@@ -33,7 +29,7 @@ const PostContainer = (props) => {
   const[isLike, setIsLike]= useState(props.isLike);
  const { token } = useSelector((state) => state.auth);
    
- const navigate = useNavigate()
+
  const dispatch = useDispatch()
 
  const handleLike=(likes)=>{
@@ -41,7 +37,7 @@ const PostContainer = (props) => {
     setIsLike(true);
     
      setLikes(likesCount+1);
-     dispatch(likePost(token, props.id, navigate));
+     dispatch(likePost(token, props.id));
      
    }
  
@@ -59,7 +55,12 @@ const PostContainer = (props) => {
         <div className="PostTitle">{props.title}</div>
       
         <div className="PostMedia">
-          <img src={props.body} alt="postImage"/>
+          {props.body.includes('image') ?<img src={props.body} alt="" />:<video controls width="300" height="200">
+          <source src={props.body} />
+          Your browser does not support the video tag.
+          </video> }
+       
+        
         </div>
         
        

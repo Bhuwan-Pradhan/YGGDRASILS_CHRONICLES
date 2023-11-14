@@ -13,7 +13,7 @@ const {
 } = postEndpoints
 
 
-export function newPost(formData, token, navigate) {
+export function newPost(formData, token) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")
     
@@ -34,7 +34,7 @@ export function newPost(formData, token, navigate) {
 
 
 
-      navigate("/")
+     
     } catch (error) {
       console.log("New Post API ERROR............", error)
       toast.error("post Failed")
@@ -62,7 +62,7 @@ export const getAllPost = async () => {
 }
 
 
-export function likePost(token, post, navigate) {
+export function likePost(token, post) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")
 
@@ -83,7 +83,7 @@ export function likePost(token, post, navigate) {
 
 
 
-      navigate("/")
+      
     } catch (error) {
       console.log("LIKE Post API ERROR............", error)
       toast.error("liked Failed")

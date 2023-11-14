@@ -14,7 +14,9 @@ exports.createPost = async (req, res) => {
 
 
         const displayFile = req.files.displayFile
+        const media_type= req.files.displayFile.mimetype
       console.log(displayFile)
+      console.log(media_type)
      
         const file = await uploadImageToCloudinary(
             displayFile,
@@ -25,7 +27,7 @@ exports.createPost = async (req, res) => {
       
             console.log(file.secure_url);
 
-        const post = new Post({ user: user._id, userImage: user.image, author: user.firstName + " " + user.lastName, title, body: file.secure_url });
+        const post = new Post({ user: user._id, userImage: user.image, author: user.firstName + " " + user.lastName, title, body: file.secure_url, media: media_type });
         const savedPost = await post.save();
 
 
@@ -35,12 +37,11 @@ exports.createPost = async (req, res) => {
             .exec();
 
         res.json({
-            post: updatedUser,
+            user: updatedUser,
+            post: savedPost
         });
 
-        res.json({
-            post: savedPost
-        })
+        
     }
     catch (err) {
         return res.status(400).json({
