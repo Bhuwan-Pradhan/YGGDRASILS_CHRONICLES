@@ -1,42 +1,33 @@
-import {useState } from "react"
-import { FiUpload } from "react-icons/fi"
+import { useState } from "react";
+import { FiUpload } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { newPost } from "../../../services/post";
-import '../../../css/components/NewPost.css'
+import "../../../css/components/NewPost.css";
+
+import ReactModal from "react-modal";
 
 const NewPost = () => {
   const { token } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
-  
-  const [file, setFile] = useState(null)
- 
 
-
-
+  const [file, setFile] = useState(null);
 
   const handleOnChange = (e) => {
     setTitle(e.target.value);
   };
 
-
-
-
- 
   const handleFileChange = (e) => {
-    const selectedFile = e.target.files[0]
-   
+    const selectedFile = e.target.files[0];
+
     setFile(selectedFile);
-   
-  }
+  };
 
-
-  
   const handleOnSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const formData = new FormData();
     formData.append('title', title);
     formData.append('displayFile', file);
@@ -44,40 +35,52 @@ const NewPost = () => {
     dispatch(newPost(formData, token));
   };
 
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="CreatePostPopup">
-      <form onSubmit={handleOnSubmit}>
-      <div className="file-upload-container">
-        <label>
-          <div className="Title">Post Title</div>
-          <input
-            required
-            type="text"
-            name="title"
-            placeholder="Enter post title"
-            value={title}
-            onChange={handleOnChange}
-          />
-        </label>
-       
-          <label htmlFor="file-upload" className="custom-file-upload">
-            <div className="Title">Upload Media</div>
-          
-              <input
-                type="file"
-                id="file-upload"
-                onChange={handleFileChange}
-                
-                
-              />
-          <FiUpload />
-           
-            
-          </label>
-        
-        <button type="submit">Post</button>
+      <button onClick={() => setIsOpen(true)}>Create New Post</button>
+      <ReactModal
+        className="RM"
+        isOpen={isOpen}
+        contentLabel="Example Modal"
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <div className="PopupBox">
+          <button className="CloseButton" onClick={() => setIsOpen(false)}>
+            &times;
+          </button>
+          <div className="PopupboxBody"></div>
+          <form onSubmit={handleOnSubmit}>
+            <div className="file-upload-container">
+              <label>
+                <div className="Title">Post Title</div>
+                <input
+                  required
+                  type="text"
+                  name="title"
+                  placeholder="Enter post title"
+                  value={title}
+                  onChange={handleOnChange}
+                />
+              </label>
+
+              <label htmlFor="file-upload" className="custom-file-upload">
+                <div className="Title">Upload Media</div>
+
+                <input
+                  type="file"
+                  id="file-upload"
+                  onChange={handleFileChange}
+                />
+                <FiUpload />
+              </label>
+
+              <button type="submit">Post</button>
+            </div>
+          </form>
         </div>
-      </form>
+      </ReactModal>
     </div>
   );
 };
