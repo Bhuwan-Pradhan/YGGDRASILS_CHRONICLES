@@ -12,9 +12,11 @@ exports.auth = async (req, res, next) => {
             || req.body.token
             || req.header("Authorization").replace("Bearer ", "");
         console.log("AFTER ToKEN EXTRACTION");
+  
 
         //if token missing, then return response
         if (!token) {
+            console.log("token miss");
             return res.status(401).json({
                 success: false,
                 message: 'TOken is missing',
