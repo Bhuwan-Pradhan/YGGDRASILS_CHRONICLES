@@ -3,6 +3,8 @@ import { commentPost, getComment } from "../../../services/post";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import "../../../css/components/Comment.css"
+
 const Comment = (props) => {
   const post = props.id;
   console.log(post);
@@ -29,6 +31,7 @@ const Comment = (props) => {
   };
 
   const inlineStyle = {
+    
     width: "50px",
     height: "50px",
     borderRadius: "50%",
