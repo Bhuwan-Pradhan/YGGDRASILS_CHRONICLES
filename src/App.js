@@ -7,6 +7,7 @@ import NewPost from "./components/core/Post/NewPost";
 import Comment from "./components/core/Post/Comment";
 import UserPosts from "./pages/UserPosts"
 import ProfilePage from "./pages/ProfilePage";
+import FileFormat from "./components/common/FileFormat";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/comment"  element={<Comment />} />
         <Route path="/userPosts"  element={<UserPosts />} />
         <Route path="/profile"  element={<ProfilePage />} />
+        <Route path="/test"  element={<FileFormat />} />
         
       </Routes>
     </div>

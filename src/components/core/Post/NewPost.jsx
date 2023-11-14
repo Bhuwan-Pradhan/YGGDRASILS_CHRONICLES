@@ -41,7 +41,7 @@ const NewPost = () => {
     formData.append('title', title);
     formData.append('displayFile', file);
     console.log("formdata", formData)
-    dispatch(newPost(formData, token, navigate));
+    dispatch(newPost(formData, token));
   };
 
   return (
