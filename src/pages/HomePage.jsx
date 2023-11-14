@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import PostContainer from "../components/common/PostContainer";
-import Drawer from "@mui/material/Drawer";
-import Button from "@mui/material/Button";
+
 import { getAllPost } from "../services/post";
 import "../css/pages/HomePage.css";
-import DrawerBox from "../components/common/DrawerBox";
-import { GiTireIronCross } from "react-icons/gi";
-import { useNavigate } from "react-router-dom";
+
+
+import { useNavigate , Link} from "react-router-dom";
 import TitleImage from "../assets/images/TitleText.png"
 
 const HomePage = () => {
@@ -15,11 +14,9 @@ const HomePage = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const userId = user._id;
 
-  const [drawerOpen, setDrawerOpen] = useState(false);
+ 
   const navigate = useNavigate();
-  const toggleDrawer = () => {
-    setDrawerOpen(!drawerOpen);
-  };
+
 
   const getAllData = async () => {
     try {
@@ -41,19 +38,12 @@ const HomePage = () => {
       <div className="NavBar">
         <span className="user">
           <img src={user.image} alt="" />
-          <div>
-            <Button onClick={toggleDrawer}>
+          <div style={{color: 'wheat'}}>
+            <Link to="/userPost">
+           
               {user.firstName} {user.lastName}
-            </Button>
-            <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer}>
-              {/* Drawer content goes here */}
-              <div style={{ width: 250, display: "flex" }}>
-                <DrawerBox User={user} />
-                <Button onClick={toggleDrawer}>
-                  <GiTireIronCross size={20} />
-                </Button>
-              </div>
-            </Drawer>
+              </Link>
+          
           </div>
         </span>
         <span className="TitleImage"><img src ={TitleImage}/></span>
