@@ -6,7 +6,7 @@ import { getAllPost } from "../services/post";
 import "../css/pages/HomePage.css";
 import DrawerBox from "../components/common/DrawerBox";
 import { GiTireIronCross } from "react-icons/gi";
-import { useNavigate } from "react-router-dom";
+import NewPost from "../components/core/Post/NewPost";
 import TitleImage from "../assets/images/TitleText.png"
 
 const HomePage = () => {
@@ -16,7 +16,7 @@ const HomePage = () => {
   const userId = user._id;
 
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const navigate = useNavigate();
+
   const toggleDrawer = () => {
     setDrawerOpen(!drawerOpen);
   };
@@ -57,7 +57,7 @@ const HomePage = () => {
           </div>
         </span>
         <span className="TitleImage"><img src ={TitleImage}/></span>
-        <button onClick={()=>navigate("/newPost")}> New Post</button>
+        <NewPost />
       </div>
 
       {postData?.data.map((post) => (

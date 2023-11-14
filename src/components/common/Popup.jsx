@@ -21,7 +21,7 @@ function Popup(props) {
           <div className="PopupBoxHeader">
             <div>Comments</div>
             <button className="CloseButton" onClick={() => setIsOpen(false)}>
-             <GiTireIronCross />
+             &times;
             </button>
           </div>
          <div><Comment id={props.postId}/></div>

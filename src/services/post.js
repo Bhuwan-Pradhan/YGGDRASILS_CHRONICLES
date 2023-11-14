@@ -116,7 +116,7 @@ export function commentPost(token, post, body, navigate) {
 
 
 
-      navigate("/")
+      navigate("/home")
     } catch (error) {
       console.log("COMMENT Post API ERROR............", error)
       toast.error("COMMENT Failed")
