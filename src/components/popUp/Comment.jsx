@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
-import { commentPost, getComment } from "../../../services/post";
+import { commentPost, getComment } from "../../services/post";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import ReactModal from "react-modal";
 
-import "../../../css/components/Comment.css"
+import "../../css/components/Comment.css"
 
 const Comment = (props) => {
-  const post = props.id;
+  const post = props.postId;
   console.log(post);
+  const [isOpen, setIsOpen] = useState(false);
   const { token } = useSelector((state) => state.auth);
   const [commentData, setCommentData] = useState();
   const navigate = useNavigate();
@@ -31,7 +33,7 @@ const Comment = (props) => {
   };
 
   const inlineStyle = {
-    
+
     width: "50px",
     height: "50px",
     borderRadius: "50%",
@@ -56,6 +58,20 @@ const Comment = (props) => {
 
   return (
     <div>
+      <button onClick={()=>setIsOpen(true)}>Comments</button>
+       <ReactModal
+        className="RM"
+        isOpen={isOpen}
+        contentLabel="Example Modal"
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <div className="PopupBox">
+          <div className="PopupBoxHeader">
+            <div>Comments</div>
+            <button className="CloseButton" onClick={() => setIsOpen(false)}>
+              &times;
+            </button>
+          </div>
       <div className="Container">
         <div>
           {commentData?.data.map((comment) => (
@@ -89,6 +105,8 @@ const Comment = (props) => {
         </div>
         <button type="submit">Comment</button>
       </form>
+      </div>
+      </ReactModal>
     </div>
   );
 };

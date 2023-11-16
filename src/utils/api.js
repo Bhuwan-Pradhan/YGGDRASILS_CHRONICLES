@@ -17,4 +17,11 @@ export const postEndpoints = {
   GET_COMMENTS_POST_API: BASE_URL + "/post/getComment",
   GET_USER_POST_API: BASE_URL + "/post/getPost",
 
+}
+
+export const groupEndpoints = {
+
+  NEWGROUP_API: BASE_URL + "/group/createGroup",
+
+
 }  

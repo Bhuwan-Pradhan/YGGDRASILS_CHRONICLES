@@ -16,13 +16,6 @@ const groupSchema = new mongoose.Schema(
 			ref: "user",
 		},
 
-		
-		member: [
-			{
-				type: mongoose.Schema.Types.ObjectId,
-				ref: "user",
-			},
-		],
         role: {
 			type: String,
 			enum: ["Admin", "Moderator", "Member"],
@@ -55,6 +48,7 @@ const groupSchema = new mongoose.Schema(
 
 	
 	},
+	{ timestamps: true }
 	
 );
 

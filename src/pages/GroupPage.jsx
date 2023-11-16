@@ -7,9 +7,8 @@ import "../css/pages/HomePage.css";
 import NewPost from "../components/core/Post/NewPost";
 import TitleImage from "../assets/images/TitleText.png"
 import { Link } from "react-router-dom";
-import NewGroup from "../components/popUp/NewGroup";
 
-const HomePage = () => {
+const GroupPage = () => {
   const isUser = false;
   const [postData, setPostData] = useState();
   const user = JSON.parse(localStorage.getItem("user"));
@@ -48,7 +47,6 @@ const HomePage = () => {
         </span>
         <span className="TitleImage"><img src ={TitleImage}/></span>
         <NewPost />
-        <NewGroup />
       </div>
 
       {postData?.data.map((post) => (
@@ -69,4 +67,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default GroupPage;

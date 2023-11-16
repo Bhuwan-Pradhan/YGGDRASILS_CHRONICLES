@@ -5,17 +5,17 @@ const router = express.Router();
 
 
 const { createPost, getAllPost, likePost, createComment,  getCommentById, getPostById} = require("../controllers/Post");
-const { auth } = require("../middlewares/auth")
+const { auth } = require("../middlewares/auth");
 
 //Route for user signup
 
 
-router.post("/newPost", auth, createPost)
-router.get("/getAllPost", getAllPost)
-router.post("/like", auth, likePost)
-router.post("/comment", auth, createComment)
-router.post("/getComment", getCommentById)
-router.post("/getPost",auth, getPostById)
+router.post("/newPost", auth, createPost);
+router.get("/getAllPost", getAllPost);
+router.post("/like", auth, likePost);
+router.post("/comment", auth, createComment);
+router.post("/getComment", getCommentById);
+router.post("/getPost",auth, getPostById);
 
 
 

@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-
+const groupRoutes = require("./routes/GroupRoute");
 const userRoutes = require("./routes/UserRoutes");
 const postRoutes = require("./routes/PostRoute");
 const database = require("./config/database");
@@ -37,6 +37,7 @@ cloudinaryConnect();
 
 app.use("/api/auth", userRoutes);
 app.use("/api/post", postRoutes);
+app.use("/api/group", groupRoutes);
 
 //default route
 

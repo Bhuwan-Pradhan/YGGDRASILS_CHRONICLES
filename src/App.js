@@ -4,7 +4,7 @@ import HomePage from "./pages/HomePage";
 import LoginForm from "./components/core/Auth/LoginForm";
 import SignupLoginPage from "./pages/SignupLoginPage";
 import NewPost from "./components/core/Post/NewPost";
-import Comment from "./components/core/Post/Comment";
+import Comment from "./components/popUp/Comment";
 import UserPosts from "./pages/UserPosts"
 import ProfilePage from "./pages/ProfilePage";
 import FileFormat from "./components/common/FileFormat";

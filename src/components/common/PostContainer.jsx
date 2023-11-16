@@ -2,9 +2,7 @@ import {  useState} from "react"
 import '../../css/components/PostContainer.css';
 import { FcLike } from "react-icons/fc";
 import { FiHeart } from "react-icons/fi";
-
-
-import Popup from './Popup';
+import Comment from "../popUp/Comment";
 import { likePost } from "../../services/post"
 import { useDispatch, useSelector } from "react-redux"
 import {  Link } from "react-router-dom"
@@ -69,7 +67,7 @@ const PostContainer = (props) => {
         {isLike ?<div><FcLike size="30px"/><span>you and {likes} others</span> </div>:<div><button onClick={handleLike}><FiHeart size="30px"/></button> <span>{likes} likes</span></div>}
          
          
-         <div> <Popup postId={props.id}/></div>
+         <div> <Comment postId={props.id}/></div>
          {isUserPosts ? <div><button>Delete Post</button><button>Update Post</button></div>:<div><button> Repost </button></div>}
         
       </div>
