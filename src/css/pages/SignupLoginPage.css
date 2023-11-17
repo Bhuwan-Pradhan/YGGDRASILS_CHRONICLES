@@ -1,125 +1,95 @@
+/* SignupLoginPage.css */
+
 .SLPage {
-
-  position: absolute;
-  background-image: url(/src/assets/images/HomepageBackground.png);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-color: #04013a;
-  background-blend-mode: hard-light;
-
   height: 100vh;
-  width: 100vw;
-
-}
-
-.MainBox{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 40%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+  background-image: url(/src/assets/images/HomepageBackground.png);
+  background-size: cover;
+  background-position: center;
+  background-color: #04013a;
+  background-blend-mode: hard-light;
+}
+
+.MainBox {
+  background-color: rgba(15, 15, 15, 0.9);
+  padding: 20px;
   border-radius: 10px;
-  animation: fadeIn 2s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  animation: fadeIn 1.5s ease-in-out;
 }
 
 @keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-.TitleText {
-  background-color: rgba(5, 5, 5, 0.5);
-  backdrop-filter: blur(5px);
-}
-
-.TitleText img{
-  width: 100%;
-}
-
-.SignupLogin{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  
-}
-
-.SignupLogin button {
-  background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
-  border-radius: 8px;
-  border-style: none;
-  box-sizing: border-box;
-  color: #FFFFFF;
-  cursor: pointer;
-  flex-shrink: 0;
-  
-  font-size: 16px;
-  font-weight: 500;
-  height: 4rem;
-  padding: 0 1.6rem;
-  text-align: center;
-  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
-  transition: all .5s;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.SignupLogin :hover {
-  box-shadow: rgba(245, 245, 245, 0.5) 0 1px 30px;
-  transition-duration: .1s;
-}
-
-@media (min-width: 768px) {
-  .button-36 {
-    padding: 0 2.6rem;
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
-.RM {
-  display: flex;
-  justify-content: center;
+.TitleText img {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
 }
 
-.PopupBox {
+.SignupLogin {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: rgba(20, 20, 20, .9);
-  border: 2px solid rgb(255, 255, 255);
-  border-radius: 10px;
-  height: 90%;
-  width: 50%;
-  position: absolute;
-  padding-top: 10px;
-  margin-top: 30px;
-  overflow: hidden;
+  flex-direction: row;
+  justify-content:space-evenly;
+  gap: 10px;
 }
 
-.CloseButton {
-  cursor: pointer;
-  border: none;
-  outline: none;
+.Button_Guest {
   background: none;
   color: white;
-  font-size: 2.25rem;
-  font-weight: bolder;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  margin: 5px;
+  border: none;
+  font-size: medium;
+  margin-top: 20px;
 }
 
-.SignupContainer, .LoginContainer {
-  color: white;
-  font-weight: bold;
+.Button_Guest :hover{
+  color: aqua;
+  cursor: pointer;
 }
 
-/* .input {
+/* .PopupButton {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
+.PopupButton:hover {
+  background-color: #2980b9;
+} */
+
+/* .PopupBox {
+  background-color: #242020;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+} */
+
+
+/* .Form {
+  display: flex;
+  flex-direction: column;
+} */
+
+/* .Label {
+  margin-bottom: 10px;
+} */
+
+/* .Input {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 } */

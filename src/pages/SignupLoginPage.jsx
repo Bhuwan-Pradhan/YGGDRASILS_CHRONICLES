@@ -10,15 +10,19 @@ const SignupLoginPage = () => {
 const navigate = useNavigate();
    return (
       <div className="SLPage">
-         <div className="MainBox">
-            <div className="TitleText"><img src={Title} alt="YGGDRASIL'S CHRONICLES"/></div>
-            <div className="SignupLogin">
-               <SignupForm />
-               <LoginForm />
-            </div>
-               <button className="Guest" onClick={()=>navigate('/home')}><span>Continue as Guest?</span></button>
-         </div>
+      <div className="MainBox">
+        <div className="TitleText">
+          <img src={Title} alt="YGGDRASIL'S CHRONICLES" />
+        </div>
+        <div className="SignupLogin">
+          <SignupForm />
+          <LoginForm />
+        </div>
+        <button className="Button_Guest" onClick={() => navigate("/home")}>
+          <span>Continue as Guest?</span>
+        </button>
       </div>
+    </div>
    )
 }
    
