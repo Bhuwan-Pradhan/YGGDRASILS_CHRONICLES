@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import PostContainer from '../components/common/PostContainer';
+import PostContainer from '../components/core/Post/PostContainer';
 
 import { getUserPost } from "../services/post"
 import {  useSelector } from "react-redux";

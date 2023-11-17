@@ -7,7 +7,8 @@ import NewPost from "./components/core/Post/NewPost";
 import Comment from "./components/popUp/Comment";
 import UserPosts from "./pages/UserPosts"
 import ProfilePage from "./pages/ProfilePage";
-import FileFormat from "./components/common/FileFormat";
+
+import GroupPage from "./pages/GroupPage";
 
 function App() {
 
@@ -22,7 +23,9 @@ function App() {
         <Route path="/comment"  element={<Comment />} />
         <Route path="/userPosts"  element={<UserPosts />} />
         <Route path="/profile"  element={<ProfilePage />} />
-        <Route path="/test"  element={<FileFormat />} />
+     
+        <Route path="/allGroups"  element={<GroupPage />} />
+
         
       </Routes>
     </div>

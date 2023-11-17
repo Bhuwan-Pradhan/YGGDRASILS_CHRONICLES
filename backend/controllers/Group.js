@@ -45,3 +45,17 @@ exports.createGroup = async (req, res) => {
 		});
 	}
 };
+
+
+exports.getAllGroup = async (req, res) => {
+    try {
+        const groupData = await Group.find({}).populate('admin').sort({createdAt: -1}).exec();
+        res.json({ success: true, data: groupData });
+    }
+    catch (err) {
+        return res.status(400).json({
+            error: "Error While getting Group",
+            message: err.message
+        })
+    }
+}

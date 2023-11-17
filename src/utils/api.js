@@ -22,6 +22,7 @@ export const postEndpoints = {
 export const groupEndpoints = {
 
   NEWGROUP_API: BASE_URL + "/group/createGroup",
+  GET_ALL_GROUP_API: BASE_URL + "/group/getAllGroup",
 
 
 }  

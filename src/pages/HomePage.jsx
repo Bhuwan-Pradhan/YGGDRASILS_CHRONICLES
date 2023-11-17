@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import PostContainer from "../components/common/PostContainer";
+import PostContainer from "../components/core/Post/PostContainer";
 
 import { getAllPost } from "../services/post";
 import "../css/pages/HomePage.css";
@@ -48,7 +48,7 @@ const HomePage = () => {
         </span>
         <span className="TitleImage"><img src ={TitleImage}/></span>
         <NewPost />
-        <NewGroup />
+        <NewGroup />  
       </div>
 
       {postData?.data.map((post) => (

@@ -9,7 +9,7 @@ import "../../css/components/Comment.css"
 const Comment = (props) => {
   const post = props.postId;
   console.log(post);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(props.isOpen);
   const { token } = useSelector((state) => state.auth);
   const [commentData, setCommentData] = useState();
   const navigate = useNavigate();
@@ -58,7 +58,7 @@ const Comment = (props) => {
 
   return (
     <div>
-      <button onClick={()=>setIsOpen(true)}>Comments</button>
+      
        <ReactModal
         className="RM"
         isOpen={isOpen}
