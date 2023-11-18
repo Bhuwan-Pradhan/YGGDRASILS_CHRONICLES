@@ -65,7 +65,7 @@ exports.createGroup = async (req, res) => {
 
 exports.getAllGroup = async (req, res) => {
     try {
-        const groupData = await Group.find({}).populate('admin').sort({createdAt: -1}).exec();
+        const groupData = await Group.find({}).populate('adminOrOwner').sort({createdAt: -1}).exec();
         res.json({ success: true, data: groupData });
     }
     catch (err) {
@@ -81,7 +81,7 @@ exports.addModerator = async (req, res) => {
 		const {groupId, userId} = req.body;
 		const group = await Group.findById(groupId);
 
-		const existingModerator = group.moderator.find((memberId) => memberId.toString() === req.user.id.toString());
+		const existingModerator = group.moderator.find((memberId) => memberId.toString() === userId.toString());
 		if (existingModerator) {
 			return res.status(400).json({
 				success: false,
@@ -103,7 +103,7 @@ exports.addModerator = async (req, res) => {
 		
 		console.log('pass 2');
 	
-		return res.status(200).json({
+		res.status(200).json({
 			success: true,
 			updatedGroup,
 			updatedUser,
@@ -163,3 +163,28 @@ exports.addMember = async (req, res) => {
         })
 	}
 }
+
+
+exports.searchMember = async (req, res) => {
+	try{
+		const { query } = req.query;
+
+    // Use a regex to perform a case-insensitive search
+    const users = await User.find({  $or: [
+        { firstName: { $regex: new RegExp(query, 'i') } },
+        { lastName: { $regex: new RegExp(query, 'i') } },
+      ], });
+
+    res.status(200).json({ success: true, users });
+	
+		
+	}
+	catch(err){
+		return res.status(400).json({
+            error: "Error While searching member",
+            message: err.message
+        })
+	}
+}
+
+

@@ -6,6 +6,9 @@ import { groupEndpoints } from "../utils/api";
 const {
  NEWGROUP_API,
  GET_ALL_GROUP_API,
+ ADD_MODERATOR_API,
+ ADD_MEMBER_API,
+
 } = groupEndpoints
 
 
@@ -58,6 +61,82 @@ export const getAllGroup = async () => {
   return result
 }
 
+
+
+
+
+export function addModerator(groupId, userId, token, navigate) {
+  return async (dispatch) => {
+    const toastId = toast.loading("Loading...")
+   
+    try {
+      const response = await apiConnector("POST", ADD_MODERATOR_API,
+      {
+        groupId,
+        userId,
+      } ,
+        
+      {
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${token}`,
+      })
+
+      console.log("ADD MODERATOR API RESPONSE............", response)
+
+
+      
+
+      toast.success("Moderator Added Successful")
+      //dispatch(setToken(response.data.token))
+
+navigate("/allGroups")
+
+     
+    } catch (error) {
+      console.log("ADD MODERATOR API ERROR............", error)
+      toast.error("User is already a Moderator of Group")
+    }
+
+    toast.dismiss(toastId)
+  }
+}
+
+
+export function addMember(groupId, userId, token, navigate) {
+  return async (dispatch) => {
+    const toastId = toast.loading("Loading...")
+   
+    try {
+      const response = await apiConnector("POST", ADD_MEMBER_API,
+      {
+        groupId,
+        userId,
+      } ,
+        
+      {
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${token}`,
+      })
+
+      console.log("ADD MEMBER API RESPONSE............", response)
+
+
+      
+
+      toast.success("Member Added Successful")
+      //dispatch(setToken(response.data.token))
+
+navigate("/allGroups")
+
+     
+    } catch (error) {
+      console.log("ADD MEMBER API ERROR............", error)
+      toast.error("User is already a Member of Group")
+    }
+
+    toast.dismiss(toastId)
+  }
+}
 
 
 

@@ -23,6 +23,9 @@ export const groupEndpoints = {
 
   NEWGROUP_API: BASE_URL + "/group/createGroup",
   GET_ALL_GROUP_API: BASE_URL + "/group/getAllGroup",
+  ADD_MODERATOR_API: BASE_URL + "/group/addModerator",
+  ADD_MEMBER_API: BASE_URL + "/group/addMember",
+  SEARCH_MEMBER_API: BASE_URL + "/group/searchMember",
 
 
 }  
