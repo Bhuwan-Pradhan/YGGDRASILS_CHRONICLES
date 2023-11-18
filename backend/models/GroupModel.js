@@ -6,35 +6,39 @@ const groupSchema = new mongoose.Schema(
 	{
 		// Define the name field with type String, required, and trimmed
 		name: {
-            type: String,
-            required: true,
-            trim: true,
-        },
-	
-		admin: {
-			type: mongoose.Schema.Types.ObjectId,
-			ref: "user",
+			type: String,
+			required: true,
+			trim: true,
 		},
 
-        role: {
-			type: String,
-			enum: ["Admin", "Moderator", "Member"],
-			required: true,
+		adminOrOwner: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "user",
+			required: true
 		},
-        followers: [
+
+		moderator: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "user",
+			}
+		],
+		followersOrMembers: [
 			{
 				type: mongoose.Schema.Types.ObjectId,
 				ref: "user",
 			},
+
+
 		],
 
-        post: [
+		post: [
 			{
 				type: mongoose.Schema.Types.ObjectId,
 				ref: "post",
 			},
 		],
-        repost: [
+		repost: [
 			{
 				type: mongoose.Schema.Types.ObjectId,
 				ref: "post",
@@ -44,12 +48,12 @@ const groupSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
-		
 
-	
+
+
 	},
 	{ timestamps: true }
-	
+
 );
 
 // Export the Mongoose model for the group schema, using the name "group"
