@@ -13,6 +13,7 @@ const SignupForm = () => {
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
+    userName: "",
     firstName: "",
     lastName: "",
     email: "",
@@ -20,7 +21,7 @@ const SignupForm = () => {
     confirmPassword: "",
   });
 
-  const { firstName, lastName, email, password, confirmPassword } = formData;
+  const { userName, firstName, lastName, email, password, confirmPassword } = formData;
 
   // Handle input fields, when some value changes
   const handleOnChange = (e) => {
@@ -46,11 +47,12 @@ const SignupForm = () => {
     // To be used after otp verification
     dispatch(setSignupData(signupData));
     dispatch(
-      signUp(firstName, lastName, email, password, confirmPassword, navigate)
+      signUp(userName, firstName, lastName, email, password, confirmPassword, navigate)
     );
 
     // Reset
     setFormData({
+      userName: "",
       firstName: "",
       lastName: "",
       email: "",
@@ -77,6 +79,20 @@ const SignupForm = () => {
           </button>
           <form className="SignupContainer" onSubmit={handleOnSubmit}>
                 <p className="Title">Signup</p>
+                <label>
+                  <p>
+                    userName <sup>*</sup>
+                  </p>
+                  <input
+                    className="Input"
+                    required
+                    type="text"
+                    name="userName"
+                    placeholder="Enter unique userName"
+                    value={userName}
+                    onChange={handleOnChange}
+                  />
+                </label>
                 <span className="NameSpan">
                   <label>
                     <p>

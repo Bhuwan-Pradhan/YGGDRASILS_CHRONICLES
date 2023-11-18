@@ -10,6 +10,7 @@ const {
   } = endpoints
 
 export function signUp(
+  userName,
     firstName,
     lastName,
     email,
@@ -22,6 +23,7 @@ export function signUp(
       dispatch(setLoading(true))
       try {
         const response = await apiConnector("POST", SIGNUP_API, {
+          userName,
           firstName,
           lastName,
           email,
@@ -38,6 +40,7 @@ export function signUp(
         navigate("/login")
       } catch (error) {
         console.log("SIGNUP API ERROR............", error)
+        
         toast.error("Signup Failed")
         navigate("/signup")
       }
