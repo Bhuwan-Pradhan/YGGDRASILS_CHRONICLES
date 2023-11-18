@@ -26,7 +26,10 @@ const PostContainer = (props) => {
 
   const dispatch = useDispatch();
 
-  const handleLike = (likes) => {
+  const dispatch = useDispatch()
+
+  const handleLike = () => {
+
     setIsLike(true);
 
     setLikes(likesCount + 1);

@@ -35,23 +35,10 @@ const GroupPage = () => {
 
   return (
     <div className="HomePageDiv">
-      <div className="NavBar">
-        <span className="user">
-          <img src={user.image} alt="" />
-          <div style={{ color: 'wheat' }}>
-            <Link to="/userPosts">
-
-              {user.firstName} {user.lastName}
-            </Link>
-
-          </div>
-        </span>
-        <span className="TitleImage"><img src={TitleImage} /></span>
-        <NewPost />
-      </div>
+   
 
       {groupData?.data.map((group) => (
-      <GroupContainer id={group._id} name={group.name} admin={group.admin} followers={group.followers}/>
+      <GroupContainer id={group._id} name={group.name} admin={group.adminOrOwner} followers={group.followersOrMembers}/>
 
       ))}
     </div>

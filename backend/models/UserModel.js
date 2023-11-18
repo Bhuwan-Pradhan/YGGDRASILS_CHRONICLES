@@ -27,11 +27,15 @@ const userSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
-		groups: [
-			{
+		groups: [{
+			group: {
 				type: mongoose.Schema.Types.ObjectId,
 				ref: "group",
 			},
+			role:{
+				type: String
+			}
+		}
 		],
 		followers: [
 			{

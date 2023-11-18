@@ -9,6 +9,7 @@ import UserPosts from "./pages/UserPosts"
 import ProfilePage from "./pages/ProfilePage";
 
 import GroupPage from "./pages/GroupPage";
+import SearchUser from "./components/popUp/SearchUser";
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/profile"  element={<ProfilePage />} />
      
         <Route path="/allGroups"  element={<GroupPage />} />
+        <Route path="/search"  element={<SearchUser />} />
 
         
       </Routes>

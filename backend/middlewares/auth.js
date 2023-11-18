@@ -1,5 +1,7 @@
 const jwt = require("jsonwebtoken");
+const Group = require("../models/GroupModel");
 require("dotenv").config();
+const { ObjectId } = require('mongodb');
 
 
 //auth
@@ -46,3 +48,80 @@ exports.auth = async (req, res, next) => {
         });
     }
 }
+
+exports.isAdmin = async (req, res, next) => {
+    const { groupId } = req.body;
+  
+    try {
+      const group = await Group.findById(groupId);
+      if (!group) {
+        return res.status(404).json({ success: false, message: 'Group not found.' });
+      }
+  
+      console.log(group.adminOrOwner)
+      const userId = new ObjectId(req.user.id);
+      console.log(userId)
+      if (group.adminOrOwner.equals(userId)) {
+        // User is a Admin, proceed to the next middleware or route handler
+        console.log('Admin Found')
+        next();
+      } else {
+        // User is not a member, send a forbidden response
+        res.status(403).json({ success: false, message: 'Permission denied.' });
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ success: false, message: 'Internal Server Error.' });
+    }
+  };
+
+exports.isModerator = async (req, res, next) => {
+    const { groupId } = req.body;
+    console.log(groupId);
+  
+    try {
+      const group = await Group.findById(groupId);
+      if (!group) {
+        return res.status(404).json({ success: false, message: 'Group not found.' });
+      }
+      console.log('group found');
+      console.log(group.moderator)
+      const userRole = group.moderator.find((moderatorId) => moderatorId.toString() === req.user.id.toString());
+      console.log(userRole)
+      if (userRole) {
+        // User is an admin, proceed to the next middleware or route handler
+        next();
+      } else {
+        // User is not an admin, send a forbidden response
+        res.status(403).json({ success: false, message: 'Permission denied.' });
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ success: false, message: 'Internal Server Error.' });
+    }
+  };
+  
+  exports.isMember = async (req, res, next) => {
+    const { groupId } = req.body;
+  
+    try {
+      const group = await Group.findById(groupId);
+      if (!group) {
+        return res.status(404).json({ success: false, message: 'Group not found.' });
+      }
+  
+      const userRole = group.followersOrMembers.find((member) => member.equals(req.user._id));
+      if (userRole) {
+        // User is a member, proceed to the next middleware or route handler
+        next();
+      } else {
+        // User is not a member, send a forbidden response
+        res.status(403).json({ success: false, message: 'Permission denied.' });
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ success: false, message: 'Internal Server Error.' });
+    }
+  };
+  
+ 

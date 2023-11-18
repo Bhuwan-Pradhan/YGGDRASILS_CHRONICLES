@@ -1,5 +1,5 @@
 
-
+import SearchUser from '../../popUp/SearchUser';
 
 
 
@@ -14,6 +14,7 @@ const GroupContainer = (props) => {
       
       <p>admin: {props.admin.firstName} {props.admin.lastName}</p>
       <p>followers: {props.followers.length}</p>
+      <SearchUser id={props.id}/>
     </div>
   );
 };
