@@ -1,0 +1,152 @@
+/* AuthForms.css */
+
+.PopupButton {
+    background-color: #3498db;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .PopupButton:hover {
+    background-color: #2980b9;
+    box-shadow: 0 0 20px rgba(151, 181, 201, 0.8);
+  }
+  
+  .PopupContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .PopupOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 10%;
+    height: 10%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .Popup {
+    background-color: #1f1f1f;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    max-height: 600px;
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+    /* overflow-y: scroll; */
+  }
+  
+  .CloseButton {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    color: #ffffff;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .CloseButton:hover {
+    color: #ffdede;
+  }
+
+
+  
+  .Form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .Label {
+    margin-bottom: 10px;
+  }
+  
+  .Input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .SignupContainer {
+    display: flex;
+    flex-direction: column;
+
+  }
+  
+  .SignupContainer label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .SignupContainer span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .LoginContainer {
+    display: flex;
+    flex-direction: column;
+
+  }
+  
+.LoginContainer label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+  }
+  
+.LoginContainer span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }  
+  
+  .NameSpan input {
+    width: calc(60% - 5px);
+    margin-right: 5px;
+  }
+  
+  .SubmitButton {
+    background-color: #27ae60;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .SubmitButton:hover {
+    background-color: #219d54;
+  }
+  
+  .PasswordDiv input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }

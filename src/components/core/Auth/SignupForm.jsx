@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setSignupData } from "../../../slices/authSlice";
 import { signUp } from "../../../services/authApi";
 
 import ReactModal from "react-modal";
-import { GiTireIronCross } from "react-icons/gi";
+import "../../../css/components/AuthForms.css"
 
 const SignupForm = () => {
   const navigate = useNavigate();
@@ -63,22 +62,22 @@ const SignupForm = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <button onClick={() => setIsOpen(true)}>Signup</button>
+      <button className="PopupButton" onClick={() => setIsOpen(true)}>
+        Signup
+      </button>
       <ReactModal
-        className="RM"
+        className="PopupContainer"
         isOpen={isOpen}
-        contentLabel="Example Modal"
+        contentLabel="Signup Modal"
         onRequestClose={() => setIsOpen(false)}
       >
-        <div className="PopupBox">
-            <button className="CloseButton" onClick={() => setIsOpen(false)}>
-              &times;
-            </button>
-          <div className="PopupboxBody">
-            <div className="SignupContainer">
-              <form className="Form" onSubmit={handleOnSubmit}>
+        <div className="Popup">
+          <button className="CloseButton" onClick={() => setIsOpen(false)}>
+            &times;
+          </button>
+          <form className="SignupContainer" onSubmit={handleOnSubmit}>
                 <p className="Title">Signup</p>
-                <span>
+                <span className="NameSpan">
                   <label>
                     <p>
                       First Name <sup>*</sup>
@@ -156,12 +155,10 @@ const SignupForm = () => {
                     </div>
                   </label>
                 </div>
-                <button className="Button" type="submit">
+                <button className="SubmitButton" type="submit">
                   Create Account
                 </button>
               </form>
-            </div>
-          </div>
         </div>
       </ReactModal>
     </div>

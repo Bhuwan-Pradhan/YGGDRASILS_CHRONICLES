@@ -1,0 +1,91 @@
+
+
+.CommentBoxHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2em;
+  font-size: medium;
+  font-weight: bold;
+}
+
+.CloseButton {
+  background: none;
+  border: none;
+  font-weight: bolder;
+  font-size: 1.2em;
+  cursor: pointer;
+  color: black;
+}
+
+.CommentContainer {
+  margin-top: 20px;
+  flex-grow: 1;
+}
+
+.CommentItem {
+  margin-bottom: 15px;
+}
+
+.UserInfo {
+  display: flex;
+  align-items: center;
+}
+
+.UserInfo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.UserInfo span {
+    font-weight: bolder;
+}
+
+form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1em;
+  /* color: #ddd; */
+}
+
+.inputContainer {
+    display: flex;
+  }
+
+input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #555;
+  color: #ddd;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.PostComment {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.PostComment:hover {
+  background-color: #45a049;
+}
+
+.NewComment {
+    position: absolute;
+    width: 90%;
+    bottom: 5%;
+}

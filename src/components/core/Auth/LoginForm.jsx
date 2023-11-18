@@ -3,9 +3,9 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ReactModal from "react-modal";
-import { GiTireIronCross } from "react-icons/gi";
-
 import { login } from "../../../services/authApi";
+
+import "../../../css/components/AuthForms.css"
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -33,21 +33,20 @@ const LoginForm = () => {
 
   return (
     <div>
-      <button onClick={() => setIsOpen(true)}>Login</button>
+      <button className="PopupButton" onClick={() => setIsOpen(true)}>
+        Login
+      </button>
       <ReactModal
-        className="RM"
+        className="PopupContainer"
         isOpen={isOpen}
-        contentLabel="Example Modal"
+        contentLabel="Login Modal"
         onRequestClose={() => setIsOpen(false)}
       >
-        <div className="PopupBox">
-          
-            <button className="CloseButton" onClick={() => setIsOpen(false)}>
-              &times;
-            </button>
-          
-            <div className="LoginContainer">
-              <form className="Form" onSubmit={handleOnSubmit}>
+        <div className="Popup">
+          <button className="CloseButton" onClick={() => setIsOpen(false)}>
+            &times;
+          </button>
+          <form className="LoginContainer" onSubmit={handleOnSubmit}>
                 <p className="Title">Login</p>
                 <label>
                   <p>
@@ -81,11 +80,10 @@ const LoginForm = () => {
                     </div>
                   </label>
                 </div>
-                <button className="Button" type="submit">
+                <button className="SubmitButton" type="submit">
                   Login
                 </button>
               </form>
-            </div>
         </div>
       </ReactModal>
     </div>

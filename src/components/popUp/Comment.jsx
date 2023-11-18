@@ -1,15 +1,13 @@
-import { useState, useEffect } from "react";
+
+import React, { useState, useEffect } from "react";
 import { commentPost, getComment } from "../../services/post";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ReactModal from "react-modal";
-
-import "../../css/components/Comment.css"
+import "../../css/components/Comment.css";
 
 const Comment = (props) => {
   const post = props.postId;
-  console.log(post);
-  const [isOpen, setIsOpen] = useState(props.isOpen);
   const { token } = useSelector((state) => state.auth);
   const [commentData, setCommentData] = useState();
   const navigate = useNavigate();
@@ -29,24 +27,14 @@ const Comment = (props) => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
+    props.modalV(false);
     dispatch(commentPost(token, post, body, navigate));
-  };
-
-  const inlineStyle = {
-
-    width: "50px",
-    height: "50px",
-    borderRadius: "50%",
-    position: "relative",
-    padding: "5px",
   };
 
   const getAllData = async () => {
     try {
       const getSingleComment = await getComment(post);
-
       setCommentData(getSingleComment);
-      console.log(getSingleComment);
     } catch (error) {
       console.log(error);
     }
@@ -56,56 +44,67 @@ const Comment = (props) => {
     getAllData();
   }, []);
 
+  const myStyle = {
+    width:'100px',
+    overlay: {
+      backgroundColor: "rgba(0, 0, 0, 0.9)",
+    },
+     content: {
+      color: 'black',
+      backgroundColor: 'white',
+      width: "35%",
+      height: "70%",
+      margin: "auto",
+      borderRadius: "10px",
+    },
+  };
+
   return (
     <div>
-      
-       <ReactModal
-        className="RM"
-        isOpen={isOpen}
-        contentLabel="Example Modal"
-        onRequestClose={() => setIsOpen(false)}
+      <ReactModal
+       
+        isOpen={props.isOpen}
+        contentLabel="Comment Modal"
+        onRequestClose={() => props.modalV(false)}
+        style={myStyle}
       >
-        <div className="PopupBox">
-          <div className="PopupBoxHeader">
+        <div>
+          <div className="CommentBoxHeader">
             <div>Comments</div>
-            <button className="CloseButton" onClick={() => setIsOpen(false)}>
+            <button className="CloseButton" onClick={() => props.modalV(false)}>
               &times;
             </button>
           </div>
-      <div className="Container">
-        <div>
-          {commentData?.data.map((comment) => (
-            <div>
-              <div>
-                <img src={comment.user.image} style={inlineStyle} alt="" />
-                <span>
-                  {comment.user.firstName} {comment.user.lastName}
-                </span>
+          <div className="CommentContainer">
+            {commentData?.data.map((comment) => (
+              <div className="CommentItem" key={comment.id}>
+                <div className="UserInfo">
+                  <img src={comment.user.image} alt="" />
+                  <span>
+                    {comment.user.firstName} {comment.user.lastName}
+                  </span>
+                </div>
+                <div className="CommentBody">{comment.body}</div>
               </div>
+            ))}
+          </div>
 
-              <h2>{comment.body}</h2>
+          <div className="NewComment">
+          <form onSubmit={handleOnSubmit}>
+            <div className="inputContainer">
+              <input
+                required
+                type="text"
+                name="body"
+                placeholder="Enter your comment"
+                value={body}
+                onChange={handleOnChange}
+              />
+            <button className="PostComment" title="Post your comment?" type="submit">Comment</button>
             </div>
-          ))}
+          </form>
+          </div>
         </div>
-      </div>
-
-      <form onSubmit={handleOnSubmit}>
-        <div>
-          <label>
-            <p>Comment</p>
-          </label>
-          <input
-            required
-            type="text"
-            name="body"
-            placeholder="Enter your comment"
-            value={body}
-            onChange={handleOnChange}
-          />
-        </div>
-        <button type="submit">Comment</button>
-      </form>
-      </div>
       </ReactModal>
     </div>
   );
