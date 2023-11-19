@@ -29,21 +29,22 @@ const PostContainer = (props) => {
 
   const handleLike = () => {
 
+
     setIsLike(true);
 
-    setLikes(likesCount + 1);
-    dispatch(likePost(token, props.id));
-  };
+      setLikes(likesCount + 1);
+      dispatch(likePost(token, props.id));
+    };
 
-  const modalV = (val) => {
-    setIsOpen(val);
-  };
+    const modalV = (val) => {
+      setIsOpen(val);
+    };
 
   return (
     <div className="PostContainer">
       <Comment postId={props.id} isOpen={isOpen} modalV={modalV} />
-      <div className="PosterDetails">
-        <img src={props.image} alt="PosterImage" />
+      <div className="UserDetails">
+        <img className="UserImage" src={props.image} alt="userImage" />
         {/* <button onClick={navigate('/profile', { state: {user: props.user}})}>{props.name}</button> */}
         <Link to="/profile" state={{ user: props.user }}>
           {props.name}
@@ -52,48 +53,48 @@ const PostContainer = (props) => {
       <div className="PostDetails">
         <div className="PostTitle">{props.title}</div>
 
-        <div className="PostMedia">
-          {props.body.includes("image") ? (
-            <img src={props.body} alt="" />
+          <div className="PostMedia">
+            {props.body.includes("image") ? (
+              <img src={props.body} alt="" />
+            ) : (
+              <video controls width="500" height="200">
+                <source src={props.body} />
+                Your browser does not support the video tag.
+              </video>
+            )}
+          </div>
+        </div>
+        <div className="UserInteractions">
+          <div className="Comment">
+            <button title="Comment" onClick={() => setIsOpen(true)}>
+              <FaRegComment size="30px" />
+            </button>
+          </div>
+          {isUserPosts ? (
+            <div>
+              <button>Delete Post</button>
+              <button>Update Post</button>
+            </div>
           ) : (
-            <video controls width="500" height="200">
-              <source src={props.body} />
-              Your browser does not support the video tag.
-            </video>
+            <div className="Repost">
+              <button title="Repost">
+                <BiRepost size="30px" />
+              </button>
+            </div>
           )}
+          <div className="Like">
+            {isLike ? (
+              <FcLike size="30px" />
+            ) : (
+              <button title="Like" onClick={handleLike}>
+                <FiHeart size="30px" />
+              </button>
+            )}{" "}
+            <span>{likes} likes</span>{" "}
+          </div>
         </div>
       </div>
-      <div className="UserInteractions">
-            <div className="Comment">
-          <button title="Comment" onClick={() => setIsOpen(true)}>
-            <FaRegComment size="30px" />
-          </button>
-          </div>
-        {isUserPosts ? (
-          <div>
-            <button>Delete Post</button>
-            <button>Update Post</button>
-          </div>
-        ) : (
-          <div className="Repost">
-            <button title="Repost">
-              <BiRepost size="30px" />
-            </button>
-          </div>
-        )}
-        <div className="Like">
-          {isLike ? (
-            <FcLike size="30px" />
-          ) : (
-            <button title="Like" onClick={handleLike}>
-              <FiHeart size="30px" />
-            </button>
-          )}{" "}
-          <span>{likes} likes</span>{" "}
-        </div>
-      </div>
-    </div>
-  );
-};
+    );
+  };
 
-export default PostContainer;
+  export default PostContainer;

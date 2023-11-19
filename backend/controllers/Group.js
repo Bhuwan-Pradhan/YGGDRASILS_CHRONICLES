@@ -36,11 +36,14 @@ exports.createGroup = async (req, res) => {
 		const savedGroup = await group.save();
 		
 		
-
+		const updatedGroup = await Group.findByIdAndUpdate(savedGroup._id, { $push: { moderator: admin } },
+            { new: true })
+            .populate("adminOrOwner") //Populates the comment array with the comments document
+            .exec();
 		
             
 		const updatedUser = await User.findByIdAndUpdate(admin, 
-			{ $push: { groups: {group: savedGroup._id, role: 'Admin' } }},
+			{ $push: { groups: {group: updatedGroup._id, role: 'Admin' } }},
             { new: true })
             .populate("groups") //Populates the comment array with the comments document
             .exec();
@@ -48,7 +51,7 @@ exports.createGroup = async (req, res) => {
       
 		return res.status(200).json({
 			success: true,
-			group,
+			updatedGroup,
 			updatedUser,
 			
 			message: "Group Created successfully",
@@ -170,10 +173,7 @@ exports.searchMember = async (req, res) => {
 		const { query } = req.query;
 
     // Use a regex to perform a case-insensitive search
-    const users = await User.find({  $or: [
-        { firstName: { $regex: new RegExp(query, 'i') } },
-        { lastName: { $regex: new RegExp(query, 'i') } },
-      ], });
+    const users = await User.find({ });
 
     res.status(200).json({ success: true, users });
 	

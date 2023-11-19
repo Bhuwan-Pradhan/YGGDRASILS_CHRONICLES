@@ -58,9 +58,9 @@ exports.isAdmin = async (req, res, next) => {
         return res.status(404).json({ success: false, message: 'Group not found.' });
       }
   
-      console.log(group.adminOrOwner)
+      
       const userId = new ObjectId(req.user.id);
-      console.log(userId)
+      
       if (group.adminOrOwner.equals(userId)) {
         // User is a Admin, proceed to the next middleware or route handler
         console.log('Admin Found')
@@ -77,17 +77,17 @@ exports.isAdmin = async (req, res, next) => {
 
 exports.isModerator = async (req, res, next) => {
     const { groupId } = req.body;
-    console.log(groupId);
+    
   
     try {
       const group = await Group.findById(groupId);
       if (!group) {
         return res.status(404).json({ success: false, message: 'Group not found.' });
       }
-      console.log('group found');
-      console.log(group.moderator)
+      
+      
       const userRole = group.moderator.find((moderatorId) => moderatorId.toString() === req.user.id.toString());
-      console.log(userRole)
+      
       if (userRole) {
         // User is an admin, proceed to the next middleware or route handler
         next();

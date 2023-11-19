@@ -8,6 +8,7 @@ exports.signup = async (req, res) => {
 	try {
 		// Destructure fields from the request body
 		const {
+			userName,
 			firstName,
 			lastName,
 			email,
@@ -16,23 +17,33 @@ exports.signup = async (req, res) => {
 		} = req.body;
 		// Check if All Details are there or not
 		if (
+			!userName ||
 			!firstName ||
 			!lastName ||
 			!email ||
 			!password ||
-			!confirmPassword 
+			!confirmPassword
 		) {
 			return res.status(403).send({
 				success: false,
 				message: "All Fields are required",
 			});
 		}
+		// Check if userName already exists
+		const existingUserName = await User.findOne({ userName });
 		// Check if password and confirm password match
 		if (password !== confirmPassword) {
 			return res.status(400).json({
 				success: false,
 				message:
 					"Password and Confirm Password do not match. Please try again.",
+			});
+		}
+
+		else if (existingUserName) {
+			return res.status(400).json({
+				success: false,
+				message: "UserName already exists. Please try another one.",
 			});
 		}
 
@@ -51,6 +62,7 @@ exports.signup = async (req, res) => {
 
 
 		const user = await User.create({
+			userName,
 			firstName,
 			lastName,
 			email,
@@ -103,7 +115,7 @@ exports.login = async (req, res) => {
 		// Generate JWT token and Compare Password
 		if (await bcrypt.compare(password, user.password)) {
 			const token = jwt.sign(
-				{ email: user.email, id: user._id},
+				{ email: user.email, id: user._id },
 				process.env.JWT_SECRET,
 				{
 					expiresIn: "24h",
@@ -111,7 +123,7 @@ exports.login = async (req, res) => {
 			);
 
 			// Save token to user document in database
-			
+
 			user.token = token;
 			user.password = undefined;
 			// Set cookie for token and return success response
