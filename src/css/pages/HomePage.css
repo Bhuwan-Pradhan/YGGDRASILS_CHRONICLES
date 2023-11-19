@@ -1,46 +1,86 @@
-.HomePageDiv {
-    margin-top: 75px;
-    background: #000020;
-    text-align: center;
-    color: black;
+.DemoPageDiv {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.LeftWala {
+    display: flex;
     flex-direction: column;
-    font-family: "Montserrat", sans-serif;
+    width: 20%;
+}
+
+.UserDetails {
+    border: 2px solid yellow;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Logout {
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightcoral; /* Add your desired background color */
+    cursor: pointer;
+}
+
+.Links {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Links div {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightblue; /* Add your desired background color */
+    cursor: pointer;
+}
+
+.RightWala {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
 }
 
 .NavBar {
     top: 0;
-    font-size: x-large;
-    height: 75px;
-    width: 100%;
-    z-index: 1;
-    background-color: black;
-    opacity: 0.95;
-    display: flex;
-    justify-content: space-between;
     position: fixed;
+    width: 100%;
+    background-color: white;
+    opacity: 0.95;
+    height: 10%;
 }
 
-.TitleImage img{
-
-    width: 50vw;
+.NavBar img{
+    position: absolute;
     left: 0;
+    height: 100%;
 }
 
-.user{
-    position: relative;
-    float: left;
-    color: black;
-    display: flex;
-    width: 10%;
-}
 
-.user img{
-    width: 50px;
-    height: 50px; 
+.UserDetails img {
+    width: 130px;
+    height: 130px; 
     border-radius: 50%;
     position: relative;
     padding: 5px;
+}
+
+
+
+.PostsFeedDiv {
+    margin-top: 10%;
+    display: flex;
+    align-items: center;
+    overflow-y: scroll;
+    flex-direction: column;
+    font-family: "Montserrat", sans-serif;
 }

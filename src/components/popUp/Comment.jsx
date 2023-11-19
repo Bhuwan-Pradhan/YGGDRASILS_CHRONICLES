@@ -62,7 +62,6 @@ const Comment = (props) => {
   return (
     <div>
       <ReactModal
-       
         isOpen={props.isOpen}
         contentLabel="Comment Modal"
         onRequestClose={() => props.modalV(false)}
