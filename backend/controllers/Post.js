@@ -5,52 +5,56 @@ const Comment = require("../models/CommentModel");
 
 const { uploadImageToCloudinary } = require('./FileUploader');
 const { ObjectId } = require('mongodb');
+
+
 exports.createPost = async (req, res) => {
     try {
-        const { title } = req.body;
-
-
-        const user = await User.findById(req.user.id);
-
-
-        const displayFile = req.files.displayFile
-        const media_type= req.files.displayFile.mimetype
-      console.log(displayFile)
-      console.log(media_type)
-     
-        const file = await uploadImageToCloudinary(
-            displayFile,
-            process.env.FOLDER_NAME,
-            1000,
-            1000
-          )
-      
-            console.log(file.secure_url);
-
-        const post = new Post({ user: user._id, userImage: user.image, author: user.firstName + " " + user.lastName, title, body: file.secure_url, media: media_type });
-        const savedPost = await post.save();
-
-
-        const updatedUser = await User.findByIdAndUpdate(user, { $push: { post: savedPost._id } },
-            { new: true })
-            .populate("post") //Populates the comment array with the comments document
-            .exec();
-
-        res.json({
-            user: updatedUser,
-            post: savedPost
-        });
-
-        
+      const { title, tagUser } = req.body;
+      const user = await User.findById(req.user.id);
+ 
+      const displayFile = req.files.displayFile;
+      const media_type = req.files.displayFile.mimetype;
+  
+      const file = await uploadImageToCloudinary(
+        displayFile,
+        process.env.FOLDER_NAME,
+        1000,
+        1000
+      );
+  
+      const post = new Post({
+        user: user._id,
+        userImage: user.image,
+        author: user.firstName + " " + user.lastName,
+        title,
+        body: file.secure_url,
+        tagUser: JSON.parse(tagUser).map((tagUserId) =>
+          new ObjectId(tagUserId)
+        ),
+        media: media_type,
+      });
+  
+      const savedPost = await post.save();
+  
+      const updatedUser = await User.findByIdAndUpdate(
+        user,
+        { $push: { post: savedPost._id } },
+        { new: true }
+      )
+        .populate("post")
+        .exec();
+  
+      res.json({
+        user: updatedUser,
+        post: savedPost,
+      });
+    } catch (err) {
+      return res.status(400).json({
+        error: "Error While Creating Post",
+        message: err.message,
+      });
     }
-    catch (err) {
-        return res.status(400).json({
-            error: "Error While Creating Post",
-            message: err.message
-        })
-    }
-}
-
+  };
 
 exports.getAllPost = async (req, res) => {
     try {

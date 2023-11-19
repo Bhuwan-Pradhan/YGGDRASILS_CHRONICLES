@@ -7,14 +7,16 @@ import { newPost } from "../../../services/post";
 import "../../../css/components/NewPost.css";
 
 import ReactModal from "react-modal";
+import SelectUser from "../../common/SelectUser";
 
 const NewPost = () => {
+  const [selectedUsers, setSelectedUsers] = useState([]);
   const { token } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
-
   const [file, setFile] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleOnChange = (e) => {
     setTitle(e.target.value);
@@ -22,26 +24,27 @@ const NewPost = () => {
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
-
     setFile(selectedFile);
   };
 
-  const handleOnSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-
-    formData.append("title", title);
-    formData.append("displayFile", file);
-    console.log("formdata", formData);
-    dispatch(newPost(formData, token, navigate));
-
-    formData.append('title', title);
-    formData.append('displayFile', file);
-    console.log("formdata", formData)
-    dispatch(newPost(formData, token));
+  const handleOnClick = (data) => {
+    setSelectedUsers(data);
+    console.log('Data received from child:', data);
   };
 
-  const [isOpen, setIsOpen] = useState(false);
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("displayFile", file);
+
+    // Extracting the user ids from selectedUsers
+    const tagUserIds = selectedUsers.map((user) => user.tagUserId);
+    formData.append("tagUser", JSON.stringify(tagUserIds));
+
+    dispatch(newPost(formData, token, navigate));
+  };
 
   return (
     <div className="CreatePostPopup">
@@ -73,7 +76,6 @@ const NewPost = () => {
 
               <label htmlFor="file-upload" className="custom-file-upload">
                 <div className="Title">Upload Media</div>
-
                 <input
                   type="file"
                   id="file-upload"
@@ -81,6 +83,9 @@ const NewPost = () => {
                 />
                 <FiUpload />
               </label>
+              <div style={{ color: 'black' }}>
+                <SelectUser usersData={handleOnClick} />
+              </div>
 
               <button type="submit">Post</button>
             </div>
