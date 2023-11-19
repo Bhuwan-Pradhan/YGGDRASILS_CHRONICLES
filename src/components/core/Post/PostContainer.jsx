@@ -26,7 +26,6 @@ const PostContainer = (props) => {
 
   const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
 
   const handleLike = () => {
 
@@ -43,8 +42,8 @@ const PostContainer = (props) => {
   return (
     <div className="PostContainer">
       <Comment postId={props.id} isOpen={isOpen} modalV={modalV} />
-      <div className="UserDetails">
-        <img className="UserImage" src={props.image} alt="userImage" />
+      <div className="PosterDetails">
+        <img src={props.image} alt="PosterImage" />
         {/* <button onClick={navigate('/profile', { state: {user: props.user}})}>{props.name}</button> */}
         <Link to="/profile" state={{ user: props.user }}>
           {props.name}

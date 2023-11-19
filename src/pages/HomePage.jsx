@@ -3,20 +3,18 @@ import PostContainer from "../components/core/Post/PostContainer";
 
 import { getAllPost } from "../services/post";
 import "../css/pages/HomePage.css";
+import backgroundImage from "../assets/images/stars.jpg";
 
 import NewPost from "../components/core/Post/NewPost";
-import TitleImage from "../assets/images/TitleText.png"
+import TitleImage from "../assets/images/TitleText.png";
 import { Link } from "react-router-dom";
 import NewGroup from "../components/popUp/NewGroup";
 
-const HomePage = () => {
+const DemoPage = () => {
   const isUser = false;
   const [postData, setPostData] = useState();
   const user = JSON.parse(localStorage.getItem("user"));
   const userId = user._id;
-
- 
- 
 
   const getAllData = async () => {
     try {
@@ -34,39 +32,54 @@ const HomePage = () => {
   console.log(postData);
 
   return (
-    <div className="HomePageDiv">
-      <div className="NavBar">
-        <span className="user">
+    <div className="DemoPageDiv">
+      <div className="LeftWala">
+        <div className="UserDetails">
           <img src={user.image} alt="" />
-          <div style={{color: 'wheat'}}>
+          <div style={{ color: "wheat" }}>
             <Link to="/userPosts">
-           
               {user.firstName} {user.lastName}
-              </Link>
-          
+            </Link>
           </div>
-        </span>
-        <span className="TitleImage"><img src ={TitleImage}/></span>
-        <NewPost />
-        <NewGroup />  
+          <div className="Stats">
+          <p>Following : 22</p>
+          <p>Followers : 2000</p>
+          </div>
+        </div>
+        <div className="Links">
+          <div>Home</div>
+          <div>My Posts</div>
+          <div>Groups</div>
+          <div>Profile</div>
+          <div>Filler</div>
+        </div>
+        <div className="Logout">
+        <p>Logout</p>
+        </div>
       </div>
-
-      {postData?.data.map((post) => (
-        <PostContainer
-          id={post._id}
-          image={post.user.image}
-          name={post.author}
-          title={post.title}
-          body={post.body}
-          isLike={post.likes.includes(userId)}
-          likes={post.likes.length}
-          comments={post.comments.length}
-          isUser={isUser}
-          user={post.user}
-        />
-      ))}
+      <div className="RightWala">
+        <div className="NavBar">
+          <img src={TitleImage} />
+        </div>
+        <div className="PostsFeedDiv">
+          {postData?.data.map((post) => (
+            <PostContainer
+              id={post._id}
+              image={post.user.image}
+              name={post.author}
+              title={post.title}
+              body={post.body}
+              isLike={post.likes.includes(userId)}
+              likes={post.likes.length}
+              comments={post.comments.length}
+              isUser={isUser}
+              user={post.user}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
 
-export default HomePage;
+export default DemoPage;
