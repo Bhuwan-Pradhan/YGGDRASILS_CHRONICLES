@@ -3,14 +3,14 @@ import PostContainer from "../components/core/Post/PostContainer";
 
 import { getAllPost } from "../services/post";
 import "../css/pages/HomePage.css";
-import backgroundImage from "../assets/images/stars.jpg";
+
 
 import NewPost from "../components/core/Post/NewPost";
 import TitleImage from "../assets/images/TitleText.png";
 import { Link } from "react-router-dom";
 import NewGroup from "../components/popUp/NewGroup";
 
-const DemoPage = () => {
+const HomePage = () => {
   const isUser = false;
   const [postData, setPostData] = useState();
   const user = JSON.parse(localStorage.getItem("user"));
@@ -32,7 +32,7 @@ const DemoPage = () => {
   console.log(postData);
 
   return (
-    <div className="DemoPageDiv">
+    <div className="HomePageDiv">
       <div className="LeftWala">
         <div className="UserDetails">
           <img src={user.image} alt="" />
@@ -47,7 +47,9 @@ const DemoPage = () => {
           </div>
         </div>
         <div className="Links">
-          <div>Home</div>
+          <div><Link to="/userPosts">
+              Home
+            </Link></div>
           <div>My Posts</div>
           <div>Groups</div>
           <div>Profile</div>
@@ -61,7 +63,7 @@ const DemoPage = () => {
         <div className="NavBar">
           <img src={TitleImage} />
         </div>
-        <div className="PostsFeedDiv">
+        <div className="MainContentDiv">
           {postData?.data.map((post) => (
             <PostContainer
               id={post._id}
@@ -82,4 +84,4 @@ const DemoPage = () => {
   );
 };
 
-export default DemoPage;
+export default HomePage;
