@@ -14,6 +14,7 @@ exports.createPost = async (req, res) => {
  
       const displayFile = req.files.displayFile;
       const media_type = req.files.displayFile.mimetype;
+      console.log(media_type)
   console.log("pass1")
   const file = await uploadMediaToCloudinary(displayFile, process.env.FOLDER_NAME, media_type);
   console.log("pass2")
@@ -160,6 +161,40 @@ exports.getPostById = async (req, res) => {
     }
 }
 
+
+exports.deletePost = async (req, res) => {
+
+    const {postId} =req.body;
+
+    const post = await Post.findById(postId);
+
+    if (!post) {
+        console.log("Post not found");
+        return;
+      }
+
+  // Remove the post from the user's post array
+  try {
+    const user = await User.findByIdAndUpdate(
+      req.user.id,
+      { $pull: { post: postId } },
+      { new: true }
+    );
+    console.log("User updated:", user);
+  } catch (error) {
+    console.error("Error updating user:", error);
+  }
+
+  // Remove the post from the post collection
+  try {
+    const deletedPost = await Post.findByIdAndDelete(postId);
+    console.log("Deleted post:", deletedPost);
+    res.json({ success: true, message: "Deleted Post successfully"  });
+  } catch (error) {
+    console.error("Error deleting post:", error);
+  }
+
+}
 
 
 

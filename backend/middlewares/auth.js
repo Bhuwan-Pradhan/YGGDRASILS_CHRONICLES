@@ -14,7 +14,7 @@ exports.auth = async (req, res, next) => {
             || req.body.token
             || req.header("Authorization").replace("Bearer ", "");
         console.log("AFTER ToKEN EXTRACTION");
-  
+   console.log("dsdsdsd");
 
         //if token missing, then return response
         if (!token) {

@@ -4,7 +4,7 @@ const router = express.Router();
 // Import the required controllers and middleware functions
 
 
-const { createPost, getAllPost, likePost, createComment,  getCommentById, getPostById} = require("../controllers/Post");
+const { createPost, getAllPost, likePost, createComment,  getCommentById, getPostById, deletePost} = require("../controllers/Post");
 const { auth } = require("../middlewares/auth");
 
 //Route for user signup
@@ -16,6 +16,7 @@ router.post("/like", auth, likePost);
 router.post("/comment", auth, createComment);
 router.post("/getComment", getCommentById);
 router.post("/getPost",auth, getPostById);
+router.post("/delete", auth, deletePost);
 
 
 
