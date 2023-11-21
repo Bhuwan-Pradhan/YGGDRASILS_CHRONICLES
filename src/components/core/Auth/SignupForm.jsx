@@ -64,27 +64,29 @@ const SignupForm = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <button className="PopupButton" onClick={() => setIsOpen(true)}>
+      <button className="AuthPopupButton" onClick={() => setIsOpen(true)}>
         Signup
       </button>
       <ReactModal
-        className="PopupContainer"
+        className="AuthPopupContainer"
         isOpen={isOpen}
         contentLabel="Signup Modal"
         onRequestClose={() => setIsOpen(false)}
       >
-        <div className="Popup">
-          <button className="CloseButton" onClick={() => setIsOpen(false)}>
+        <div className="AuthPopup">
+        <div className="AuthHeader">
+          <p className="AuthTitle">Signup</p>
+          <button className="AuthCloseButton" onClick={() => setIsOpen(false)}>
             &times;
           </button>
+        </div>
           <form className="SignupContainer" onSubmit={handleOnSubmit}>
-                <p className="Title">Signup</p>
                 <label>
                   <p>
                     userName <sup>*</sup>
                   </p>
                   <input
-                    className="Input"
+                    className="AuthInput"
                     required
                     type="text"
                     name="userName"
@@ -99,7 +101,7 @@ const SignupForm = () => {
                       First Name <sup>*</sup>
                     </p>
                     <input
-                      className="Input"
+                      className="AuthInput"
                       required
                       type="text"
                       name="firstName"
@@ -113,7 +115,7 @@ const SignupForm = () => {
                       Last Name <sup>*</sup>
                     </p>
                     <input
-                      className="Input"
+                      className="AuthInput"
                       required
                       type="text"
                       name="lastName"
@@ -128,7 +130,7 @@ const SignupForm = () => {
                     Email Address <sup>*</sup>
                   </p>
                   <input
-                    className="Input"
+                    className="AuthInput"
                     required
                     type="text"
                     name="email"
@@ -144,7 +146,7 @@ const SignupForm = () => {
                     </p>
                     <div className="PasswordDiv">
                       <input
-                        className="Input"
+                        className="AuthInput"
                         required
                         type="password"
                         name="password"
@@ -160,7 +162,7 @@ const SignupForm = () => {
                     </p>
                     <div className="PasswordDiv">
                       <input
-                        className="Input"
+                        className="AuthInput"
                         required
                         type="password"
                         name="confirmPassword"

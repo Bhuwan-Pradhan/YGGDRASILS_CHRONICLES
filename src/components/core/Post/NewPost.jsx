@@ -40,7 +40,7 @@ const NewPost = () => {
 
   const handleOnClick = (data) => {
     setSelectedUsers(data);
-    console.log('Data received from child:', data);
+    console.log("Data received from child:", data);
   };
 
   const handleOnSubmit = async (e) => {
@@ -57,20 +57,39 @@ const NewPost = () => {
     dispatch(newPost(formData, token, navigate));
   };
 
+  const myStyle = {
+    width: "100px",
+    overlay: {
+      backgroundColor: "rgba(0, 0, 0, 0.9)",
+    },
+    content: {
+      color: "black",
+      backgroundColor: "white",
+      width: "35%",
+      height: "70%",
+      margin: "auto",
+      borderRadius: "10px",
+    },
+  };
+
   return (
-    <div className="CreatePostPopup">
-      <button onClick={() => setIsOpen(true)}>Create New Post</button>
+    <div>
+    <button onClick={() => setIsOpen(true)}>Create New Post</button>
       <ReactModal
         className="RM"
         isOpen={isOpen}
-        contentLabel="Example Modal"
+        contentLabel="NewPost Modal"
         onRequestClose={() => setIsOpen(false)}
+        style={myStyle}
       >
-        <div className="PopupBox">
-          <button className="CloseButton" onClick={() => setIsOpen(false)}>
-            &times;
-          </button>
-          <div className="PopupboxBody"></div>
+        <div>
+        <div className="NewPostBoxHeader">
+            <div>Comments</div>
+            <button className="NewPostCloseButton" onClick={() => props.modalV(false)}>
+              &times;
+            </button>
+          </div>
+          <div className="NewPostContainer"></div>
           <form onSubmit={handleOnSubmit}>
             <div className="file-upload-container">
               <label>
@@ -95,7 +114,7 @@ const NewPost = () => {
                 <FiUpload />
               </label>
               <div style={{ color: 'black' }}>
-                <SelectUser usersData={(data)=>setSelectedUsers(data)} />
+                <SelectUser usersData={handleOnClick} />
               </div>
 
               <button type="submit">Post</button>

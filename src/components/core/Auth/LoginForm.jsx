@@ -33,27 +33,29 @@ const LoginForm = () => {
 
   return (
     <div>
-      <button className="PopupButton" onClick={() => setIsOpen(true)}>
+      <button className="AuthPopupButton" onClick={() => setIsOpen(true)}>
         Login
       </button>
       <ReactModal
-        className="PopupContainer"
+        className="AuthPopupContainer"
         isOpen={isOpen}
         contentLabel="Login Modal"
         onRequestClose={() => setIsOpen(false)}
       >
-        <div className="Popup">
-          <button className="CloseButton" onClick={() => setIsOpen(false)}>
+        <div className="AuthPopup">
+        <div className="AuthHeader">
+          <p className="AuthTitle">Login</p>
+          <button className="AuthCloseButton" onClick={() => setIsOpen(false)}>
             &times;
           </button>
+        </div>
           <form className="LoginContainer" onSubmit={handleOnSubmit}>
-                <p className="Title">Login</p>
                 <label>
                   <p>
                     Email Address <sup>*</sup>
                   </p>
                   <input
-                    className="Input"
+                    className="AuthInput"
                     required
                     type="text"
                     name="email"
@@ -69,7 +71,7 @@ const LoginForm = () => {
                     </p>
                     <div className="PasswordDiv">
                       <input
-                        className="Input"
+                        className="AuthInput"
                         required
                         type="password"
                         name="password"

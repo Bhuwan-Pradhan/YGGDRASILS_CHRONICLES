@@ -3,7 +3,7 @@ import PostContainer from "../components/core/Post/PostContainer";
 
 import { getAllPost } from "../services/post";
 import "../css/pages/HomePage.css";
-import backgroundImage from "../assets/images/stars.jpg";
+
 
 import NewPost from "../components/core/Post/NewPost";
 import TitleImage from "../assets/images/TitleText.png";
@@ -32,7 +32,7 @@ const HomePage = () => {
   console.log(postData);
 
   return (
-    <div className="DemoPageDiv">
+    <div className="HomePageDiv">
       <div className="LeftWala">
         <div className="UserDetails">
           <img src={user.image} alt="" />
@@ -47,7 +47,9 @@ const HomePage = () => {
           </div>
         </div>
         <div className="Links">
-          <div>Home</div>
+          <div><Link to="/userPosts">
+              Home
+            </Link></div>
           <div>My Posts</div>
           <div>Groups</div>
           <div>Profile</div>
@@ -61,7 +63,7 @@ const HomePage = () => {
         <div className="NavBar">
           <img src={TitleImage} />
         </div>
-        <div className="PostsFeedDiv">
+        <div className="MainContentDiv">
           {postData?.data.map((post) => (
             <PostContainer
               id={post._id}

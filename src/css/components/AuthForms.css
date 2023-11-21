@@ -1,6 +1,6 @@
 /* AuthForms.css */
 
-.PopupButton {
+.AuthPopupButton {
     background-color: #3498db;
     color: #fff;
     padding: 15px 30px;
@@ -12,19 +12,19 @@
     overflow: hidden;
   }
   
-  .PopupButton:hover {
+  .AuthPopupButton:hover {
     background-color: #2980b9;
     box-shadow: 0 0 20px rgba(151, 181, 201, 0.8);
   }
   
-  .PopupContainer {
+  .AuthPopupContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
   }
   
-  .PopupOverlay {
+  .AuthPopupOverlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -36,10 +36,11 @@
     align-items: center;
   }
   
-  .Popup {
+  .AuthPopup {
     background-color: #1f1f1f;
     color: white;
     padding: 20px;
+    padding-top: 0px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
     max-height: 600px;
@@ -48,8 +49,17 @@
     position: relative;
     /* overflow-y: scroll; */
   }
+
+  .AuthHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /* height: 15px; */
+    margin-top: 0px;
+  }
   
-  .CloseButton {
+  .AuthCloseButton {
     background-color: transparent;
     border: none;
     font-size: 20px;
@@ -60,22 +70,18 @@
     right: 10px;
   }
   
-  .CloseButton:hover {
+  .AuthCloseButton:hover {
     color: #ffdede;
   }
 
-
+  /* .PasswordDiv input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  } */
   
-  .Form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .Label {
-    margin-bottom: 10px;
-  }
-  
-  .Input {
+  .AuthInput {
     margin-bottom: 2px;
     padding: 10px;
     border: 1px solid #ccc;
@@ -85,13 +91,13 @@
   .SignupContainer {
     display: flex;
     flex-direction: column;
-
+    margin-top: 0;
   }
   
   .SignupContainer label {
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px;
+    margin: 0px;
     /* display: flex; */
     justify-content: center;
     align-items: center;
@@ -107,14 +113,12 @@
   .LoginContainer {
     display: flex;
     flex-direction: column;
-
+    margin-top: 0px;
   }
   
 .LoginContainer label {
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px;
-    /* display: flex; */
     justify-content: center;
     align-items: center;
   }
@@ -135,6 +139,7 @@
     background-color: #27ae60;
     color: #fff;
     padding: 10px 20px;
+    margin-top: 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -144,9 +149,3 @@
     background-color: #219d54;
   }
   
-  .PasswordDiv input {
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }

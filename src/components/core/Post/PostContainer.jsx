@@ -30,6 +30,7 @@ const PostContainer = (props) => {
   const handleLike = () => {
 
 
+
     setIsLike(true);
 
     setLikes(likesCount + 1);
@@ -43,8 +44,8 @@ const PostContainer = (props) => {
   return (
     <div className="PostContainer">
       <Comment postId={props.id} isOpen={isOpen} modalV={modalV} />
-      <div className="UserDetails">
-        <img className="UserImage" src={props.image} alt="userImage" />
+      <div className="PosterDetails">
+        <img className="PosterImage" src={props.image} alt="userImage" />
         {/* <button onClick={navigate('/profile', { state: {user: props.user}})}>{props.name}</button> */}
         <Link to="/profile" state={{ user: props.user }}>
           {props.name}
