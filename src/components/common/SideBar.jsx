@@ -16,12 +16,12 @@ const SideBar = () => {
           </Link>
         </div>
         <div className="Stats">
-          <p>Following : 22</p>
-          <p>Followers : 2000</p>
+          <p>Following : {user.followers.length}</p>
+          <p>Followers : {user.following.length}</p>
         </div>
       </div>
       <div className="Links">
-        <div><Link to="/home">
+        <div><Link to="/">
           Home
         </Link></div>
         <div><Link to="/userPosts">

@@ -11,15 +11,20 @@ import GuestPage from "./pages/GuestPage";
 import GroupPage from "./pages/GroupPage";
 import SearchUser from "./components/popUp/SearchUser";
 import NewGroup from "./components/popUp/NewGroup";
+import { useSelector } from "react-redux";
+
 
 function App() {
 
+  const { token } = useSelector((state) => state.auth)
+
+  if(token){
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<SignupLoginPage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/guest" element={<GuestPage />}/>
-        <Route path="/home" element={<HomePage />} />
+        <Route path="/slPage" element={<SignupLoginPage />} />
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/newPost" element={<NewPost />} />
@@ -35,6 +40,28 @@ function App() {
       </Routes>
     </div>
   );
+  }
+  else{
+    return(
+    <div className="App">
+    <Routes>
+      <Route path="/" element={<SignupLoginPage />} />
+      <Route path="/guest" element={<GuestPage />}/>
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/signup" element={<SignupForm />} />
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/newPost" element={<NewPost />} />
+        <Route path="/comment"  element={<Comment />} />
+        <Route path="/userPosts"  element={<UserPosts />} />
+        <Route path="/profile"  element={<ProfilePage />} />
+        <Route path="/group"  element={<NewGroup />} />
+     
+        <Route path="/allGroups"  element={<GroupPage />} />
+        <Route path="/search"  element={<SearchUser />} />
+    </Routes>
+  </div>
+);
+  }
 }
 
 export default App;

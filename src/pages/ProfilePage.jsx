@@ -1,3 +1,5 @@
+import NavBar from "../components/common/NavBar";
+import SideBar from "../components/common/SideBar";
 import "../css/pages/ProfilePage.css";
 import { useLocation } from "react-router-dom";
 
@@ -7,7 +9,11 @@ const ProfilePage = () => {
   const { user } = location.state; // Read values passed on state
 
   return (
-    <div className="profile">
+    <div className="HomePageDiv">
+      <SideBar />
+      <div className="RightWala">
+        <NavBar />
+      <div className="MainContentDiv">
       <div className="user">
         <img src={user.image} alt="" />
         <h1>
@@ -17,6 +23,9 @@ const ProfilePage = () => {
         <p>{user.followers.length}</p>
       </div>
     </div>
+      </div>
+    </div>
+
   );
 };
 
