@@ -32,7 +32,7 @@ export function newPost(formData, token, navigate) {
       toast.success("Post Successful")
       //dispatch(setToken(response.data.token))
 
-navigate("/home")
+navigate("/")
 
      
     } catch (error) {

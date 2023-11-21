@@ -30,6 +30,10 @@ const SelectUser = ({ usersData }) => {
     handleSearch();
   }, []);
 
+  useEffect(() => {
+    sendData(); // Automatically send user data when selectedUsers changes
+  }, [selectedUsers]);
+
   return (
     <div>
       <Select
@@ -39,7 +43,7 @@ const SelectUser = ({ usersData }) => {
         onChange={(selectedOptions) => setSelectedUsers(selectedOptions)}
         placeholder="Select users"
       />
-      <button onClick={sendData}>Select</button>
+      {/* <button onClick={sendData}>Select</button> */}
     </div>
   );
 };

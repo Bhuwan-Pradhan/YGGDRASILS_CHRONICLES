@@ -1,38 +1,45 @@
-import { useState } from "react";
-import { FiUpload } from "react-icons/fi";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-import { newPost } from "../../../services/post";
-import "../../../css/components/NewPost.css";
+const PreviewPost = ({ mediaProp, title }) => {
+  const [media, setMedia] = useState({ url: null, type: null });
 
-import ReactModal from "react-modal";
-import SelectUser from "../../common/SelectUser";
+  useEffect(() => {
+    // When mediaProp changes, update the state
+    setMedia(mediaProp);
+  }, [mediaProp]);
 
-const PreviewPost = (props) => {
-    const media=props.mediaProp;
-    
-
- 
-  
-    const renderPreview = () => {
-      if (media.type.startsWith('image/')) {
-        return <img src={media.url} alt="Image Preview" style={{ maxWidth: '100%', maxHeight: '200px' }} />;
-      } else if (media.type.startsWith('video/')) {
-        return <video controls src={media.url} style={{ maxWidth: '100%', maxHeight: '200px' }} />;
-      } else if (media.type.startsWith('audio/')) {
+  const renderPreview = () => {
+    if (media.type && media.url) {
+      if (media.type.startsWith("image/")) {
+        return (
+          <img
+            src={media.url}
+            alt="Image Preview"
+            style={{ maxWidth: "100%", maxHeight: "200px" }}
+          />
+        );
+      } else if (media.type.startsWith("video/")) {
+        return (
+          <video
+            controls width="500" height="200">
+              <source src={media.url} />
+            </video>
+          
+        );
+      } else if (media.type.startsWith("audio/")) {
         return <audio controls src={media.url} />;
       } else {
         return <p>Unsupported media type</p>;
       }
-    };
-  
-    return (
-      <div style={{width: '100%'}}>
-      
-        {media.url && renderPreview()}
-      </div>
-    );
+    } else {
+      return <p>No media preview available</p>;
+    }
   };
+
+  return <div style={{ width: "100%" }}>
+    <h1>{title}</h1>
+    {renderPreview()}
+    </div>;
+};
 
 export default PreviewPost;
