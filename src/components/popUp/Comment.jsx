@@ -27,7 +27,7 @@ const Comment = (props) => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    props.modalV(false);
+    // props.modalV(false);
     dispatch(commentPost(token, post, body, navigate));
   };
 
@@ -42,7 +42,7 @@ const Comment = (props) => {
 
   useEffect(() => {
     getAllData();
-  }, []);
+  }, [commentData]);
 
   const myStyle = {
     width:'100px',

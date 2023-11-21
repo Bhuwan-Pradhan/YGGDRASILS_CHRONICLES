@@ -10,7 +10,7 @@ import TitleImage from "../assets/images/TitleText.png";
 import { Link } from "react-router-dom";
 import NewGroup from "../components/popUp/NewGroup";
 
-const DemoPage = () => {
+const HomePage = () => {
   const isUser = false;
   const [postData, setPostData] = useState();
   const user = JSON.parse(localStorage.getItem("user"));
@@ -82,4 +82,4 @@ const DemoPage = () => {
   );
 };
 
-export default DemoPage;
+export default HomePage;

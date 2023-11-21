@@ -31,7 +31,7 @@ export function newGroup(name, token, navigate) {
       toast.success("Group Created Successful")
       //dispatch(setToken(response.data.token))
 
-navigate("/home")
+navigate("/allGroups")
 
      
     } catch (error) {
@@ -45,7 +45,7 @@ navigate("/home")
 
 
 export const getAllGroup = async () => {
-  const toastId = toast.loading("Loading...")
+  // const toastId = toast.loading("Loading...")
   let result = []
   try {
     const response = await apiConnector("GET", GET_ALL_GROUP_API)
@@ -57,7 +57,7 @@ export const getAllGroup = async () => {
     console.log("GET_ALL_GROUP_API API ERROR............", error)
     toast.error(error.message)
   }
-  toast.dismiss(toastId)
+  // toast.dismiss(toastId)
   return result
 }
 

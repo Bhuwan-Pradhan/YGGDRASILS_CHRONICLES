@@ -45,7 +45,7 @@ navigate("/home")
 }
 
 export const getAllPost = async () => {
-  const toastId = toast.loading("Loading...")
+  // const toastId = toast.loading("Loading...")
   let result = []
   try {
     const response = await apiConnector("GET", GET_ALL_POST_API)
@@ -57,7 +57,7 @@ export const getAllPost = async () => {
     console.log("GET_ALL_POST_API API ERROR............", error)
     toast.error(error.message)
   }
-  toast.dismiss(toastId)
+  // toast.dismiss(toastId)
   return result
 }
 
@@ -97,7 +97,7 @@ export function likePost(token, post) {
 
 export function commentPost(token, post, body, navigate) {
   return async (dispatch) => {
-    const toastId = toast.loading("Loading...")
+    // const toastId = toast.loading("Loading...")
 
 
     try {
@@ -123,14 +123,14 @@ export function commentPost(token, post, body, navigate) {
     }
 
 
-    toast.dismiss(toastId)
+    // toast.dismiss(toastId)
 
   }
 }
 
 
 export const getComment = async (post) => {
-  const toastId = toast.loading("Loading...")
+  // const toastId = toast.loading("Loading...")
   let result = null
   try {
 
@@ -143,12 +143,12 @@ export const getComment = async (post) => {
     console.log("GET_ALL_COMMENT_API API ERROR............", error)
     toast.error(error.message)
   }
-  toast.dismiss(toastId)
+  // toast.dismiss(toastId)
   return result
 }
 
 export const getUserPost = async (id,token) => {
-  const toastId = toast.loading("Loading...")
+  // const toastId = toast.loading("Loading...")
   let result = null
   try {
   
@@ -163,6 +163,6 @@ export const getUserPost = async (id,token) => {
     console.log("GET_USER_POST_API API ERROR............", error)
     toast.error(error.message)
   }
-  toast.dismiss(toastId)
+  // toast.dismiss(toastId)
   return result
 }

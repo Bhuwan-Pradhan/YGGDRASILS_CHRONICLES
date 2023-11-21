@@ -1,6 +1,6 @@
 import { toast } from "react-hot-toast";
 
-import { setLoading, setToken } from "../slices/authSlice";
+import { setLoading, setToken, setUser } from "../slices/authSlice";
 import { apiConnector } from "./apiConnector";
 import { endpoints } from "../utils/api";
 
@@ -84,4 +84,18 @@ export function signUp(
       toast.dismiss(toastId)
     }
   }
+
+
+  
+export function logout(navigate) {
+  return (dispatch) => {
+    dispatch(setToken(null))
+    dispatch(setUser(null))
+    localStorage.removeItem("token")
+    localStorage.removeItem("user")
+    toast.success("Logged Out")
+    navigate("/")
+  }
+}
+
   

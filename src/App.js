@@ -10,6 +10,7 @@ import ProfilePage from "./pages/ProfilePage";
 
 import GroupPage from "./pages/GroupPage";
 import SearchUser from "./components/popUp/SearchUser";
+import NewGroup from "./components/popUp/NewGroup";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/comment"  element={<Comment />} />
         <Route path="/userPosts"  element={<UserPosts />} />
         <Route path="/profile"  element={<ProfilePage />} />
+        <Route path="/group"  element={<NewGroup />} />
      
         <Route path="/allGroups"  element={<GroupPage />} />
         <Route path="/search"  element={<SearchUser />} />
