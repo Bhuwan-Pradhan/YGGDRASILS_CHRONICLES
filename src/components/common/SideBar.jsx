@@ -11,7 +11,7 @@ const SideBar = () => {
       <div className="UserDetails">
         <img src={user.image} alt="" />
         <div style={{ color: "wheat" }}>
-          <Link to="/userPosts">
+          <Link to="/userPosts"> 
             {user.firstName} {user.lastName}
           </Link>
         </div>
@@ -33,10 +33,9 @@ const SideBar = () => {
         <div><Link to="/profile">
           Profile
         </Link></div>
-        <div> <button onClick={() => {dispatch(logout(navigate))}}>Logout</button></div>
       </div>
       <div className="Logout">
-       
+      <button onClick={() => {dispatch(logout(navigate))}}>Logout</button>
       </div>
      
     </div>
