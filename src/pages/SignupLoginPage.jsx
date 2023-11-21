@@ -18,7 +18,7 @@ const navigate = useNavigate();
           <SignupForm />
           <LoginForm />
         </div>
-        <button className="Button_Guest" onClick={() => navigate("/home")}>
+        <button className="Button_Guest" onClick={() => navigate("/guest")}>
           <span>Continue as Guest?</span>
         </button>
       </div>

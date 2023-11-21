@@ -7,7 +7,7 @@ import NewPost from "./components/core/Post/NewPost";
 import Comment from "./components/popUp/Comment";
 import UserPosts from "./pages/UserPosts"
 import ProfilePage from "./pages/ProfilePage";
-
+import GuestPage from "./pages/GuestPage";
 import GroupPage from "./pages/GroupPage";
 import SearchUser from "./components/popUp/SearchUser";
 import NewGroup from "./components/popUp/NewGroup";
@@ -18,6 +18,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<SignupLoginPage />} />
+        <Route path="/guest" element={<GuestPage />}/>
         <Route path="/home" element={<HomePage />} />
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/login" element={<LoginForm />} />

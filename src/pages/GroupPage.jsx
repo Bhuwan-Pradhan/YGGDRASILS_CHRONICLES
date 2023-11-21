@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import TitleImage from "../assets/images/TitleText.png";
 import { getAllGroup } from "../services/group";
 import GroupContainer from "../components/core/Group/GroupContainer";
+import SideBar from "../components/common/SideBar";
+import NavBar from "../components/common/NavBar";
 
 const GroupPage = () => {
   const isUser = false;
@@ -32,34 +34,9 @@ const GroupPage = () => {
 
   return (
     <div className="HomePageDiv">
-      <div className="LeftWala">
-        <div className="UserDetails">
-          <img src={user.image} alt="" />
-          <div style={{ color: "wheat" }}>
-            <Link to="/userPosts">
-              {user.firstName} {user.lastName}
-            </Link>
-          </div>
-          <div className="Stats">
-            <p>Following : 22</p>
-            <p>Followers : 2000</p>
-          </div>
-        </div>
-        <div className="Links">
-          <div>Home</div>
-          <div>My Posts</div>
-          <div>Groups</div>
-          <div>Profile</div>
-          <div>Filler</div>
-        </div>
-        <div className="Logout">
-          <p>Logout</p>
-        </div>
-      </div>
+ <SideBar />
       <div className="RightWala">
-        <div className="NavBar">
-          <img src={TitleImage} />
-        </div>
+     <NavBar />
         <div className="MainContentDiv">
           {groupData?.data.map((group) => (
             <GroupContainer

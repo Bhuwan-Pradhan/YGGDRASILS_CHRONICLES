@@ -10,7 +10,7 @@ import ReactModal from "react-modal";
 import SelectUser from "../../common/SelectUser";
 import PreviewPost from "./PreviewPost";
 
-const NewPost = () => {
+const NewPost = (props) => {
   const [media, setMedia] = useState({ url: null, type: null });
   const [selectedUsers, setSelectedUsers] = useState([]);
   const { token } = useSelector((state) => state.auth);

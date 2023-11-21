@@ -8,12 +8,14 @@ import { FiHeart } from "react-icons/fi";
 import { FcLike } from "react-icons/fc";
 import { FaRegComment } from "react-icons/fa";
 import { BiRepost } from "react-icons/bi";
+import LoginFirst from "../../popUp/LoginFirst";
 
 const PostContainer = (props) => {
   let likesCount;
-  const [isOpen, setIsOpen] = useState(false);
+  const [isCommentOpen, setIsCommentOpen] = useState(false);
+  const [isLoginFirstOpen, setIsLoginFirstOpen] = useState(false);
   const isUserPosts = props.isUser;
-
+ const isGuest = props.isGuest;
   if (props.likes === 0) {
     likesCount = 0;
   } else {
@@ -37,13 +39,18 @@ const PostContainer = (props) => {
     dispatch(likePost(token, props.id));
   };
 
-  const modalV = (val) => {
-    setIsOpen(val);
+  const modalComment = (val) => {
+    setIsCommentOpen(val);
+  };
+
+  const modalLoginFirst = (val) => {
+    setIsLoginFirstOpen(val);
   };
 
   return (
     <div className="PostContainer">
-      <Comment postId={props.id} isOpen={isOpen} modalV={modalV} />
+      <Comment postId={props.id} isOpen={isCommentOpen} modalV={modalComment} />
+      <LoginFirst isOpen={isLoginFirstOpen} modalV={modalLoginFirst} />
       <div className="PosterDetails">
         <img className="PosterImage" src={props.image} alt="userImage" />
         {/* <button onClick={navigate('/profile', { state: {user: props.user}})}>{props.name}</button> */}
@@ -66,10 +73,12 @@ const PostContainer = (props) => {
         </div>
       </div>
       <div className="UserInteractions">
+
         <div className="Comment">
-          <button title="Comment" onClick={() => setIsOpen(true)}>
+          {isGuest?<div><button onClick={()=> setIsLoginFirstOpen(true)}><FaRegComment size="30px" /></button></div>:<button title="Comment" onClick={() => setIsCommentOpen(true)}>
             <FaRegComment size="30px" />
-          </button>
+          </button>}
+          
         </div>
         {isUserPosts ? (
           <div>
@@ -78,12 +87,14 @@ const PostContainer = (props) => {
           </div>
         ) : (
           <div className="Repost">
-            <button title="Repost">
+            {isGuest?<div><button onClick={()=> setIsLoginFirstOpen(true)}><BiRepost size="30px" /></button></div>:<button title="Repost">
               <BiRepost size="30px" />
-            </button>
+            </button>}
+            
           </div>
         )}
         <div className="Like">
+          {isGuest ?<div><button onClick={()=> setIsLoginFirstOpen(true)}><FiHeart size="30px" /></button></div>:<div>
           {isLike ? (
             <FcLike size="30px" />
           ) : (
@@ -92,6 +103,8 @@ const PostContainer = (props) => {
             </button>
           )}{" "}
           <span>{likes} likes</span>{" "}
+            </div>}
+     
         </div>
       </div>
     </div>
