@@ -1,7 +1,8 @@
 
 import SearchUser from '../../popUp/SearchUser';
-
-
+import "../../../css/components/GroupContainer.css"
+import { IoMdAdd } from "react-icons/io";
+import { IoMdCheckmark } from "react-icons/io";
 
 
 
@@ -9,12 +10,21 @@ const GroupContainer = (props) => {
  
 
   return (
-    <div className="GroupContainer" style={{backgroundColor: 'white', color: 'red', width: '80%', margin: '20px'}}>
+    <div className="GroupContainer">
+    <div className='GroupInfo'>
       <h1>{props.name}</h1>
-      
-      <p>admin: {props.admin.firstName} {props.admin.lastName}</p>
-      <p>followers: {props.followers.length}</p>
-      <SearchUser id={props.id}/>
+      <p>Created By : {props.admin.firstName} {props.admin.lastName}</p>
+      <button>{props.followers.length} Members</button>
+      {/* <SearchUser id={props.id}/> */}
+    </div>
+    <div className='JoinGroup'>
+      <button>
+        <IoMdAdd size={"40px"}/>
+        <p>Join</p>
+        {/* <IoMdCheckmark size={"40px"}/>
+        <p>Joined</p> */}
+      </button>
+    </div>
     </div>
   );
 };

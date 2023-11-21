@@ -1,0 +1,45 @@
+.GroupContainer {
+    background-color: gray;
+    color: white;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #000;
+    border-radius: 20px;
+    margin-top: 0%;
+    margin: 20px;
+    padding: 20px;
+    width: 60%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    /* flex-direction: column; */
+    animation-name: Post;
+    animation-duration: 1s;
+}
+
+.GroupInfo {
+    width: 80%;
+}
+
+.GroupInfo button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: white;
+}
+
+.GroupInfo button:hover {
+    color: aqua;
+}
+
+.JoinGroup button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: white;
+    font-size: large;
+}
+
+.JoinGroup button:hover {
+    color: aqua;
+}
