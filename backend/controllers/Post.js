@@ -3,7 +3,7 @@ const User = require("../models/UserModel");
 
 const Comment = require("../models/CommentModel");
 
-const { uploadImageToCloudinary } = require('./FileUploader');
+const { uploadMediaToCloudinary } = require('./FileUploader');
 const { ObjectId } = require('mongodb');
 
 
@@ -14,14 +14,9 @@ exports.createPost = async (req, res) => {
  
       const displayFile = req.files.displayFile;
       const media_type = req.files.displayFile.mimetype;
-  
-      const file = await uploadImageToCloudinary(
-        displayFile,
-        process.env.FOLDER_NAME,
-        1000,
-        1000
-      );
-  
+  console.log("pass1")
+  const file = await uploadMediaToCloudinary(displayFile, process.env.FOLDER_NAME, media_type);
+  console.log("pass2")
       const post = new Post({
         user: user._id,
         userImage: user.image,

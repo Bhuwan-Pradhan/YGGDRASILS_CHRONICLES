@@ -19,6 +19,7 @@ const NewPost = (props) => {
   const [title, setTitle] = useState("");
   const [file, setFile] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [isPreview, setIsPreview] = useState(false);
 
   const handleOnChange = (e) => {
     setTitle(e.target.value);
@@ -46,15 +47,21 @@ const NewPost = (props) => {
   const handleOnSubmit = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("displayFile", file);
+    if (isPreview) {
+      // If in preview mode, just close the preview
+      setIsPreview(false);
+    } else {
+      // If not in preview mode, submit the post
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("displayFile", file);
 
-    // Extracting the user ids from selectedUsers
-    const tagUserIds = selectedUsers.map((user) => user.tagUserId);
-    formData.append("tagUser", JSON.stringify(tagUserIds));
+      // Extracting the user ids from selectedUsers
+      const tagUserIds = selectedUsers.map((user) => user.tagUserId);
+      formData.append("tagUser", JSON.stringify(tagUserIds));
 
-    dispatch(newPost(formData, token, navigate));
+      dispatch(newPost(formData, token, navigate));
+    }
   };
 
   const myStyle = {
@@ -74,7 +81,7 @@ const NewPost = (props) => {
 
   return (
     <div>
-    <button onClick={() => setIsOpen(true)}>Create New Post</button>
+      <button onClick={() => setIsOpen(true)}>Create New Post</button>
       <ReactModal
         className="RM"
         isOpen={isOpen}
@@ -83,45 +90,54 @@ const NewPost = (props) => {
         style={myStyle}
       >
         <div>
-        <div className="NewPostBoxHeader">
+          <div className="NewPostBoxHeader">
             <div>Comments</div>
-            <button className="NewPostCloseButton" onClick={() => props.modalV(false)}>
+            <button
+              className="NewPostCloseButton"
+              onClick={() => props.modalV(false)}
+            >
               &times;
             </button>
           </div>
-          <div className="NewPostContainer"></div>
-          <form onSubmit={handleOnSubmit}>
-            <div className="file-upload-container">
-              <label>
-                <div className="Title">Post Title</div>
-                <input
-                  required
-                  type="text"
-                  name="title"
-                  placeholder="Enter post title"
-                  value={title}
-                  onChange={handleOnChange}
-                />
-              </label>
+          <div className="NewPostContainer">
+            <button onClick={() => setIsPreview(!isPreview)}>
+              {isPreview ? "Back to Edit" : "Preview"}
+            </button>
+            {isPreview && <PreviewPost mediaProp={media}  title={title} />}
+          </div>
+          {!isPreview && (
+            <form onSubmit={handleOnSubmit}>
+              <div className="file-upload-container">
+                <label>
+                  <div className="Title">Post Title</div>
+                  <input
+                    required
+                    type="text"
+                    name="title"
+                    placeholder="Enter post title"
+                    value={title}
+                    onChange={handleOnChange}
+                  />
+                </label>
 
-              <label htmlFor="file-upload" className="custom-file-upload">
-                <div className="Title">Upload Media</div>
-                <input
-                  type="file"
-                  id="file-upload"
-                  onChange={handleFileChange}
-                />
-                <FiUpload />
-              </label>
-              <div style={{ color: 'black' }}>
-                <SelectUser usersData={handleOnClick} />
+                <label htmlFor="file-upload" className="custom-file-upload">
+                  <div className="Title">Upload Media</div>
+                  <input
+                    type="file"
+                    id="file-upload"
+                    onChange={handleFileChange}
+                  />
+                  <FiUpload />
+                </label>
+                <div style={{ color: "black" }}>
+                  <SelectUser usersData={handleOnClick} />
+                </div>
+
+                <button type="submit">Post</button>
               </div>
-
-              <button type="submit">Post</button>
-            </div>
-          </form>
+            </form>
+          )}
         </div>
-        <PreviewPost mediaProp={media} />
       </ReactModal>
     </div>
   );
