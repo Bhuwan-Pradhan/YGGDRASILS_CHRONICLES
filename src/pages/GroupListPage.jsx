@@ -43,7 +43,7 @@ const GroupPage = (props) => {
     <div className="HomePageDiv">
        <NewGroup isOpen={isNewGrOpen} modalV={modalNewGr}/>
        <button className="floating-button" onClick={() => setIsNewGrOpen(true)}>
-  +
+  <p>New Group</p>
     </button>
  <SideBar />
       <div className="RightWala">

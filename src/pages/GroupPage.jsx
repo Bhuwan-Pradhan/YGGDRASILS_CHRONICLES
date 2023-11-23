@@ -1,27 +1,29 @@
 import React, { useEffect, useState } from "react";
 import PostContainer from "../components/core/Post/PostContainer";
 
-import { getAllPost } from "../services/post";
+import { getUserPost } from "../services/post"
+import {  useSelector } from "react-redux";
 import "../css/pages/HomePage.css";
 
 
-import NewPost from "../components/popUp/NewPost";
 
-import { Link } from "react-router-dom";
-import NewGroup from "../components/popUp/NewGroup";
 import SideBar from "../components/common/SideBar";
 import NavBar from "../components/common/NavBar";
+import { useLocation } from "react-router-dom";
+import { getGroupPost } from "../services/group";
+import NewPost from "../components/popUp/NewPost";
 
-const HomePage = () => {
-  
-  const isUser = false;
+const GroupPage = () => {
+  const location = useLocation();
+  const group = location.state;
+  const [isNewPostOpen, setIsNewPostOpen] = useState(false);
   const [postData, setPostData] = useState();
-  const user = JSON.parse(localStorage.getItem("user"));
+  const { user } = useSelector((state) => state.auth);
   const userId = user._id;
 
   const getAllData = async () => {
     try {
-      const getPost = await getAllPost();
+      const getPost = await getGroupPost(group);
 
       setPostData(getPost);
     } catch (error) {
@@ -32,14 +34,21 @@ const HomePage = () => {
   useEffect(() => {
     getAllData();
   }, []);
-  console.log(postData);
+
+  const modalNewPost=(val)=>{
+    setIsNewPostOpen(val);
+  };
+
 
   return (
     <div className="HomePageDiv">
-<SideBar />
-
+       <NewPost id={group.id} isOpen={isNewPostOpen} modalV={modalNewPost}/>
+       <button className="floating-button" onClick={() => setIsNewPostOpen(true)}>
+  <p>New Group</p>
+    </button>
+  <SideBar />
       <div className="RightWala">
-        <NavBar />
+    <NavBar />
         <div className="MainContentDiv">
           {postData?.data.map((post) => (
             <PostContainer
@@ -51,8 +60,9 @@ const HomePage = () => {
               isLike={post.likes.includes(userId)}
               likes={post.likes.length}
               comments={post.comments.length}
-              isUser={isUser}
-              user={post.user}
+              
+              userId={userId}
+             
             />
           ))}
         </div>
@@ -61,4 +71,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default GroupPage;

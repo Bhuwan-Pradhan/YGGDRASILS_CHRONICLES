@@ -4,10 +4,12 @@ import { IoMdAdd } from "react-icons/io";
 import { IoMdCheckmark } from "react-icons/io";
 import { useState } from "react";
 import AddInGroup from "../../popUp/AddInGroup"
+import { useNavigate } from "react-router-dom";
 
 
 const GroupContainer = (props) => {
-  
+
+ const navigate = useNavigate();
  const [ isAddOpen, setIsAddOpen]= useState(false);
  const [ isForMember, setIsForMember]= useState(false);
 
@@ -24,6 +26,7 @@ const GroupContainer = (props) => {
       <button>{props.followers.length} Members</button>
       <button onClick={()=> {setIsAddOpen(true);  setIsForMember(true);}}>Add Member</button>
       <button onClick={()=>{setIsAddOpen(true); setIsForMember(false);}}>Add Moderator</button>
+      <button onClick={()=> navigate("/selectGroup", {state: {id: props.id}})}>Click Me</button>
     </div>
     <div className='JoinGroup'>
       <button>

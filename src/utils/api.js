@@ -5,6 +5,7 @@ export const endpoints = {
 
   SIGNUP_API: BASE_URL + "/auth/signup",
   LOGIN_API: BASE_URL + "/auth/login",
+  SEARCH_MEMBER_API: BASE_URL + "/auth/searchMember",
 
 }
 
@@ -26,7 +27,8 @@ export const groupEndpoints = {
   GET_ALL_GROUP_API: BASE_URL + "/group/getAllGroup",
   ADD_MODERATOR_API: BASE_URL + "/group/addModerator",
   ADD_MEMBER_API: BASE_URL + "/group/addMember",
-  SEARCH_MEMBER_API: BASE_URL + "/group/searchMember",
+  GET_ALL_POST_API: BASE_URL + "/group/allPost",
+  
 
 
 }  
