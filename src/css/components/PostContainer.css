@@ -28,6 +28,13 @@
   }
 }
 
+/* .RepostDetails{
+  width: 100%;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin-bottom: 5px;
+} */
+
 .PosterDetails {
   height: 50px;
   width: 100%;
@@ -72,7 +79,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: 15px;
+  /* margin-top: 15px; */
   width: 100%;
 }
 
@@ -92,7 +99,7 @@
 .UserInteractions div {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
 .UserInteractions span {
@@ -102,4 +109,13 @@
 .FiHeart,
 .FcLike {
   color: #fff;
+}
+
+.UserInteractionsData {
+  width: 100%;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 5px;
 }

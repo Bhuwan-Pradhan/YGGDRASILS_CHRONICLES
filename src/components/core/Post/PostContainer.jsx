@@ -16,7 +16,7 @@ const PostContainer = (props) => {
   const [isCommentOpen, setIsCommentOpen] = useState(false);
   const [isLoginFirstOpen, setIsLoginFirstOpen] = useState(false);
   const isUserPosts = props.isUser;
- const isGuest = props.isGuest;
+  const isGuest = props.isGuest;
   if (props.likes === 0) {
     likesCount = 0;
   } else {
@@ -29,11 +29,7 @@ const PostContainer = (props) => {
 
   const dispatch = useDispatch();
 
-
   const handleLike = () => {
-
-
-
     setIsLike(true);
 
     setLikes(likesCount + 1);
@@ -41,11 +37,8 @@ const PostContainer = (props) => {
   };
 
   const handleDelete = () => {
-
     dispatch(deletePost(token, props.id));
   };
-
-
 
   const modalComment = (val) => {
     setIsCommentOpen(val);
@@ -59,6 +52,10 @@ const PostContainer = (props) => {
     <div className="PostContainer">
       <Comment postId={props.id} isOpen={isCommentOpen} modalV={modalComment} />
       <LoginFirst isOpen={isLoginFirstOpen} modalV={modalLoginFirst} />
+      {/* <div className="RepostDetails">
+        Reposted by Dummy Name
+      </div> */}
+      
       <div className="PosterDetails">
         <img className="PosterImage" src={props.image} alt="userImage" />
         {/* <button onClick={navigate('/profile', { state: {user: props.user}})}>{props.name}</button> */}
@@ -80,39 +77,66 @@ const PostContainer = (props) => {
           )}
         </div>
       </div>
+      <div className="UserInteractionsData">
+        <span>12 Comments</span>
+        <span>6 Reposts</span>
+        <span>123 Likes</span>
+      </div>
       <div className="UserInteractions">
-
         <div className="Comment">
-          {isGuest?<div><button onClick={()=> setIsLoginFirstOpen(true)}><FaRegComment size="30px" /></button></div>:<button title="Comment" onClick={() => setIsCommentOpen(true)}>
-            <FaRegComment size="30px" />
-          </button>}
-          
+          {isGuest ? (
+            <div>
+              <button onClick={() => setIsLoginFirstOpen(true)}>
+                <FaRegComment size="30px" />
+              </button>
+            </div>
+          ) : (
+            <button title="Comment" onClick={() => setIsCommentOpen(true)}>
+              <FaRegComment size="30px" />
+            </button>
+          )}
         </div>
         {isUserPosts ? (
           <div>
-            <button title="Delete" onClick={handleDelete}>Delete Post</button>
+            <button title="Delete" onClick={handleDelete}>
+              Delete Post
+            </button>
             <button>Update Post</button>
           </div>
         ) : (
           <div className="Repost">
-            {isGuest?<div><button onClick={()=> setIsLoginFirstOpen(true)}><BiRepost size="30px" /></button></div>:<button title="Repost">
-              <BiRepost size="30px" />
-            </button>}
-            
+            {isGuest ? (
+              <div>
+                <button onClick={() => setIsLoginFirstOpen(true)}>
+                  <BiRepost size="30px" />
+                </button>
+              </div>
+            ) : (
+              <button title="Repost">
+                <BiRepost size="45px" />
+              </button>
+            )}
           </div>
         )}
         <div className="Like">
-          {isGuest ?<div><button onClick={()=> setIsLoginFirstOpen(true)}><FiHeart size="30px" /></button></div>:<div>
-          {isLike ? (
-            <FcLike size="30px" />
+          {isGuest ? (
+            <div>
+              <button onClick={() => setIsLoginFirstOpen(true)}>
+                <FiHeart size="30px" />
+              </button>
+            </div>
           ) : (
-            <button title="Like" onClick={handleLike}>
-              <FiHeart size="30px" />
-            </button>
-          )}{" "}
-          <span>{likes} likes</span>{" "}
-            </div>}
-     
+            <div>
+              {isLike ? (
+                <FcLike size="30px" />
+              ) : (
+                <button title="Like" onClick={handleLike}>
+                  <FiHeart size="30px" />
+                </button>
+              )}{" "}
+              {/* <span>{likes} likes</span>{" "} */}
+            </div>
+          )}
         </div>
       </div>
     </div>
