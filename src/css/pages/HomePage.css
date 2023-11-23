@@ -102,7 +102,7 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 50px;
+    width: max-content;
     height: 50px;
     border-radius: 50%;
     background-color: #007bff; /* Change the background color as needed */

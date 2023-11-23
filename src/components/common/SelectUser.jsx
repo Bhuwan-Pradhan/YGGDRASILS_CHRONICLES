@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Select from 'react-select';
-import { groupEndpoints } from '../../utils/api';
+import { endpoints } from '../../utils/api';
 
 const SelectUser = ({ usersData }) => {
-  const { SEARCH_MEMBER_API } = groupEndpoints;
+  const { SEARCH_MEMBER_API } = endpoints;
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [users, setUsers] = useState([]);
 

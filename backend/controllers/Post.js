@@ -9,9 +9,9 @@ const { ObjectId } = require('mongodb');
 
 exports.createPost = async (req, res) => {
     try {
-      const { title, tagUser } = req.body;
+      const { title, tagUser, groupId } = req.body;
       const user = await User.findById(req.user.id);
- 
+  console.log(groupId);
       const displayFile = req.files.displayFile;
       const media_type = req.files.displayFile.mimetype;
       console.log(media_type)
@@ -20,6 +20,7 @@ exports.createPost = async (req, res) => {
   console.log("pass2")
       const post = new Post({
         user: user._id,
+        groupId: groupId,
         userImage: user.image,
         author: user.firstName + " " + user.lastName,
         title,

@@ -8,6 +8,7 @@ const {
  GET_ALL_GROUP_API,
  ADD_MODERATOR_API,
  ADD_MEMBER_API,
+ GET_ALL_POST_API
 
 } = groupEndpoints
 
@@ -132,6 +133,23 @@ export function addMember(fromData, token, newJoin) {
   }
 }
 
+
+export const getGroupPost = async (id) => {
+  // const toastId = toast.loading("Loading...")
+  let result = []
+  try {
+    const response = await apiConnector("POST", GET_ALL_POST_API, id)
+    if (!response?.data?.success) {
+      throw new Error("Could Not Fetch posts")
+    }
+    result = response?.data
+  } catch (error) {
+    console.log("GET_ALL_POST_API API ERROR............", error)
+    toast.error(error.message)
+  }
+  // toast.dismiss(toastId)
+  return result
+}
 
 
 

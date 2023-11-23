@@ -1,6 +1,7 @@
 const Group = require("../models/GroupModel");
 
 const User = require("../models/UserModel");
+const Post = require("../models/PostModel");
 const { ObjectId } = require('mongodb');
 
 
@@ -170,23 +171,24 @@ exports.addMember = async (req, res) => {
 }
 
 
-exports.searchMember = async (req, res) => {
-	try {
-		const { query } = req.query;
-
-		// Use a regex to perform a case-insensitive search
-		const users = await User.find({});
-
-		res.status(200).json({ success: true, users });
 
 
-	}
-	catch (err) {
-		return res.status(400).json({
-			error: "Error While searching member",
-			message: err.message
-		})
-	}
+
+exports.getGroupPost = async (req, res) => {
+    try {
+		const id = req.body;
+		const groupId = new ObjectId(id);
+
+        const postData = await Post.find({groupId: groupId}).populate('user').sort({createdAt: -1}).exec();
+
+        res.json({ success: true, data: postData });
+    }
+    catch (err) {
+        return res.status(400).json({
+            error: "Error While getting Post",
+            message: err.message
+        })
+    }
 }
 
 

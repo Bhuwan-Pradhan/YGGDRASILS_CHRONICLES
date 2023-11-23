@@ -6,7 +6,7 @@ import {  useSelector } from "react-redux";
 import "../css/pages/HomePage.css";
 
 
-import NewPost from "../components/core/Post/NewPost";
+import NewPost from "../components/popUp/NewPost";
 import TitleImage from "../assets/images/TitleText.png";
 import { Link } from "react-router-dom";
 import NewGroup from "../components/popUp/NewGroup";

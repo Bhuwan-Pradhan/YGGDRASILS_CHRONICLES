@@ -153,3 +153,22 @@ exports.login = async (req, res) => {
 	}
 };
 
+
+exports.searchMember = async (req, res) => {
+	try {
+		const { query } = req.query;
+
+		// Use a regex to perform a case-insensitive search
+		const users = await User.find({});
+
+		res.status(200).json({ success: true, users });
+
+
+	}
+	catch (err) {
+		return res.status(400).json({
+			error: "Error While searching member",
+			message: err.message
+		})
+	}
+}

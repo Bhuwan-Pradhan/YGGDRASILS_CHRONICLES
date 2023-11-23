@@ -3,12 +3,12 @@ import { FiUpload } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { newPost } from "../../../services/post";
-import "../../../css/components/NewPost.css";
+import { newPost } from "../../services/post";
+import "../../css/components/NewPost.css";
 
 import ReactModal from "react-modal";
-import SelectUser from "../../common/SelectUser";
-import PreviewPost from "./PreviewPost";
+import SelectUser from "../common/SelectUser";
+import PreviewPost from "../core/Post/PreviewPost";
 
 const NewPost = (props) => {
   const [media, setMedia] = useState({ url: null, type: null });
@@ -20,7 +20,7 @@ const NewPost = (props) => {
   const [file, setFile] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isPreview, setIsPreview] = useState(false);
-
+  const groupId = props.id;
   const handleOnChange = (e) => {
     setTitle(e.target.value);
   };
@@ -54,7 +54,10 @@ const NewPost = (props) => {
       // If not in preview mode, submit the post
       const formData = new FormData();
       formData.append("title", title);
+      formData.append("groupId", groupId);
+      console.log(groupId);
       formData.append("displayFile", file);
+      
 
       // Extracting the user ids from selectedUsers
       const tagUserIds = selectedUsers.map((user) => user.tagUserId);
@@ -64,14 +67,15 @@ const NewPost = (props) => {
     }
   };
 
+
   const myStyle = {
-    width: "100px",
+    width:'100px',
     overlay: {
       backgroundColor: "rgba(0, 0, 0, 0.9)",
     },
-    content: {
-      color: "black",
-      backgroundColor: "white",
+     content: {
+      color: 'black',
+      backgroundColor: 'white',
       width: "35%",
       height: "70%",
       margin: "auto",
@@ -79,19 +83,20 @@ const NewPost = (props) => {
     },
   };
 
+
   return (
     <div>
-      <button onClick={() => setIsOpen(true)}>Create New Post</button>
-      <ReactModal
-        className="RM"
-        isOpen={isOpen}
-        contentLabel="NewPost Modal"
-        onRequestClose={() => setIsOpen(false)}
-        style={myStyle}
-      >
+     
+    <ReactModal
+    
+     isOpen={props.isOpen}
+     contentLabel="Example Modal"
+     onRequestClose={() => props.modalV(false)}
+     style={myStyle}
+   >
         <div>
           <div className="NewPostBoxHeader">
-            <div>Comments</div>
+            <div>New Post</div>
             <button
               className="NewPostCloseButton"
               onClick={() => props.modalV(false)}

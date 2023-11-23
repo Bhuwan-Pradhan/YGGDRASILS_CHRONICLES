@@ -3,7 +3,7 @@ import SignupForm from "./components/core/Auth/SignupForm";
 import HomePage from "./pages/HomePage";
 import LoginForm from "./components/core/Auth/LoginForm";
 import SignupLoginPage from "./pages/SignupLoginPage";
-import NewPost from "./components/core/Post/NewPost";
+import NewPost from "./components/popUp/NewPost";
 import Comment from "./components/popUp/Comment";
 import UserPosts from "./pages/UserPosts"
 import ProfilePage from "./pages/ProfilePage";
@@ -12,6 +12,7 @@ import GroupListPage from "./pages/GroupListPage";
 import SearchUser from "./components/popUp/SearchUser";
 import NewGroup from "./components/popUp/NewGroup";
 import { useSelector } from "react-redux";
+import GroupPage from "./pages/GroupPage";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route path="/group"  element={<NewGroup />} />
      
         <Route path="/allGroups"  element={<GroupListPage />} />
+        <Route path="/selectGroup"  element={<GroupPage />} />
         <Route path="/search"  element={<SearchUser />} />
 
         
@@ -57,6 +59,7 @@ function App() {
         <Route path="/group"  element={<NewGroup />} />
      
         <Route path="/allGroups"  element={<GroupListPage />} />
+        <Route path="/selectGroup"  element={<GroupPage />} />
         <Route path="/search"  element={<SearchUser />} />
     </Routes>
   </div>
