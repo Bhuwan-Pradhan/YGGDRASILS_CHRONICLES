@@ -96,7 +96,7 @@ export function likePost(token, post) {
   }
 }
 
-export function commentPost(token, post, body, navigate) {
+export function commentPost(token, post, body) {
   return async (dispatch) => {
     // const toastId = toast.loading("Loading...")
 
@@ -117,7 +117,7 @@ export function commentPost(token, post, body, navigate) {
 
 
 
-      navigate("/home")
+      
     } catch (error) {
       console.log("COMMENT Post API ERROR............", error)
       toast.error("COMMENT Failed")

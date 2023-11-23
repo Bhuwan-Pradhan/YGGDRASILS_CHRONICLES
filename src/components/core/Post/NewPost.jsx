@@ -91,7 +91,7 @@ const NewPost = (props) => {
       >
         <div>
           <div className="NewPostBoxHeader">
-            <div>Comments</div>
+            <div >New Post</div>
             <button
               className="NewPostCloseButton"
               onClick={() => props.modalV(false)}

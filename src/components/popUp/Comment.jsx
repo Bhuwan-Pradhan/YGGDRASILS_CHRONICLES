@@ -10,7 +10,7 @@ const Comment = (props) => {
   const post = props.postId;
   const { token } = useSelector((state) => state.auth);
   const [commentData, setCommentData] = useState();
-  const navigate = useNavigate();
+ 
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     body: "",
@@ -28,7 +28,7 @@ const Comment = (props) => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     // props.modalV(false);
-    dispatch(commentPost(token, post, body, navigate));
+    dispatch(commentPost(token, post, body));
   };
 
   const getAllData = async () => {
@@ -67,7 +67,7 @@ const Comment = (props) => {
         onRequestClose={() => props.modalV(false)}
         style={myStyle}
       >
-        <div>
+        <div className="Comment">
           <div className="CommentBoxHeader">
             <div>Comments</div>
             <button className="CloseButton" onClick={() => props.modalV(false)}>
@@ -75,33 +75,35 @@ const Comment = (props) => {
             </button>
           </div>
           <div className="CommentContainer">
-            {commentData?.data.map((comment) => (
-              <div className="CommentItem" key={comment.id}>
-                <div className="UserInfo">
-                  <img src={comment.user.image} alt="" />
-                  <span>
-                    {comment.user.firstName} {comment.user.lastName}
-                  </span>
+            <div className="CommentsList">
+              {commentData?.data.map((comment) => (
+                <div className="CommentItem" key={comment.id}>
+                  <div className="UserInfo">
+                    <img src={comment.user.image} alt="" />
+                    <span>
+                      {comment.user.firstName} {comment.user.lastName}
+                    </span>
+                  </div>
+                  <div className="CommentBody">{comment.body}</div>
                 </div>
-                <div className="CommentBody">{comment.body}</div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
-          <div className="NewComment">
-          <form onSubmit={handleOnSubmit}>
-            <div className="inputContainer">
-              <input
-                required
-                type="text"
-                name="body"
-                placeholder="Enter your comment"
-                value={body}
-                onChange={handleOnChange}
-              />
-            <button className="PostComment" title="Post your comment?" type="submit">Comment</button>
-            </div>
-          </form>
+          <div className="NewCommentContainer">
+            <form onSubmit={handleOnSubmit}>
+              <div className="inputContainer">
+                <input
+                  required
+                  type="text"
+                  name="body"
+                  placeholder="Enter your comment"
+                  value={body}
+                  onChange={handleOnChange}
+                />
+                <button className="PostComment" title="Post your comment?" type="submit">Comment</button>
+              </div>
+            </form>
           </div>
         </div>
       </ReactModal>
