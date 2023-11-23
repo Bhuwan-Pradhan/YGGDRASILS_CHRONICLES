@@ -63,7 +63,7 @@ exports.isAdmin = async (req, res, next) => {
       
       if (group.adminOrOwner.equals(userId)) {
         // User is a Admin, proceed to the next middleware or route handler
-        console.log('Admin Found')
+       
         next();
       } else {
         // User is not a member, send a forbidden response

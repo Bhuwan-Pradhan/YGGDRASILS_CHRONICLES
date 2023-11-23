@@ -14,6 +14,7 @@ const SelectUser = ({ usersData }) => {
       const formattedUsers = response.data.users.map((user) => ({
         value: user._id,
         tagUserId: user._id,
+        userId: user._id,
         label: `${user.firstName} ${user.lastName}`,
       }));
       setUsers(formattedUsers);

@@ -8,7 +8,7 @@ import Comment from "./components/popUp/Comment";
 import UserPosts from "./pages/UserPosts"
 import ProfilePage from "./pages/ProfilePage";
 import GuestPage from "./pages/GuestPage";
-import GroupPage from "./pages/GroupPage";
+import GroupListPage from "./pages/GroupListPage";
 import SearchUser from "./components/popUp/SearchUser";
 import NewGroup from "./components/popUp/NewGroup";
 import { useSelector } from "react-redux";
@@ -33,7 +33,7 @@ function App() {
         <Route path="/profile"  element={<ProfilePage />} />
         <Route path="/group"  element={<NewGroup />} />
      
-        <Route path="/allGroups"  element={<GroupPage />} />
+        <Route path="/allGroups"  element={<GroupListPage />} />
         <Route path="/search"  element={<SearchUser />} />
 
         
@@ -56,7 +56,7 @@ function App() {
         <Route path="/profile"  element={<ProfilePage />} />
         <Route path="/group"  element={<NewGroup />} />
      
-        <Route path="/allGroups"  element={<GroupPage />} />
+        <Route path="/allGroups"  element={<GroupListPage />} />
         <Route path="/search"  element={<SearchUser />} />
     </Routes>
   </div>

@@ -1,15 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ReactModal from "react-modal";
 
-import "../../css/components/Comment.css"
+
 import { newGroup } from "../../services/group";
 
-const NewGroup = () => {
+const NewGroup = (props) => {
 
-  const [isOpen, setIsOpen] = useState(false);
   const { token } = useSelector((state) => state.auth);
 
   const navigate = useNavigate();
@@ -29,24 +28,41 @@ const NewGroup = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
+    props.modalV(false);
     dispatch(newGroup(formData, token, navigate));
   };
 
 
+  const myStyle = {
+    width:'100px',
+    overlay: {
+      backgroundColor: "rgba(0, 0, 0, 0.9)",
+    },
+     content: {
+      color: 'black',
+      backgroundColor: 'white',
+      width: "35%",
+      height: "70%",
+      margin: "auto",
+      borderRadius: "10px",
+    },
+  };
+
 
   return (
     <div>
-      <button onClick={()=>setIsOpen(true)}>New Group</button>
+     
        <ReactModal
-        className="RM"
-        isOpen={isOpen}
+       
+        isOpen={props.isOpen}
         contentLabel="Example Modal"
-        onRequestClose={() => setIsOpen(false)}
+        onRequestClose={() => props.modalV(false)}
+        style={myStyle}
       >
         <div className="PopupBox">
           <div className="PopupBoxHeader">
             <div>New Group</div>
-            <button className="CloseButton" onClick={() => setIsOpen(false)}>
+            <button className="CloseButton" onClick={() => props.modalV(false)}>
               &times;
             </button>
           </div>
