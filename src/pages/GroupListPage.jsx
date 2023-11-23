@@ -5,15 +5,17 @@ import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import TitleImage from "../assets/images/TitleText.png";
 import { getAllGroup } from "../services/group";
-import GroupContainer from "../components/core/Group/GroupContainer";
+import GroupContainer from "../components/core/Group/GroupListContainer";
 import SideBar from "../components/common/SideBar";
 import NavBar from "../components/common/NavBar";
+import NewGroup from "../components/popUp/NewGroup";
 
-const GroupPage = () => {
-  const isUser = false;
+const GroupPage = (props) => {
+  
+  const [isNewGrOpen, setIsNewGrOpen] = useState(false);
   const [groupData, setGroupData] = useState();
-  const user = JSON.parse(localStorage.getItem("user"));
-  const userId = user._id;
+ 
+ 
 
 
 
@@ -30,10 +32,19 @@ const GroupPage = () => {
 
   useEffect(() => {
     getAllData();
-  }, []);
+  }, [groupData]);
+
+
+  const modalNewGr=(val)=>{
+    setIsNewGrOpen(val);
+  };
 
   return (
     <div className="HomePageDiv">
+       <NewGroup isOpen={isNewGrOpen} modalV={modalNewGr}/>
+       <button className="floating-button" onClick={() => setIsNewGrOpen(true)}>
+  +
+    </button>
  <SideBar />
       <div className="RightWala">
      <NavBar />
@@ -44,6 +55,7 @@ const GroupPage = () => {
               name={group.name}
               admin={group.adminOrOwner}
               followers={group.followersOrMembers}
+              moderators={group.moderator}
             />
           ))}
         </div>

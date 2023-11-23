@@ -16,6 +16,7 @@ export const postEndpoints = {
   COMMENT_POST_API: BASE_URL + "/post/comment",
   GET_COMMENTS_POST_API: BASE_URL + "/post/getComment",
   GET_USER_POST_API: BASE_URL + "/post/getPost",
+  DELETE_POST_API: BASE_URL + "/post/delete",
 
 }
 

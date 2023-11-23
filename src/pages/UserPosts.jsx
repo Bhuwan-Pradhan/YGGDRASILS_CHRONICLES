@@ -16,7 +16,7 @@ import NavBar from "../components/common/NavBar";
 const UserPosts = () => {
   const isUser=true;
   const [postData, setPostData] = useState();
-  const user = JSON.parse(localStorage.getItem("user"));
+  const { user } = useSelector((state) => state.auth);
   const userId = user._id;
   const { token } = useSelector((state) => state.auth);
 
@@ -33,7 +33,8 @@ const UserPosts = () => {
   useEffect(() => {
     getAllData();
   }, []);
-  console.log(postData);
+
+ 
 
   return (
     <div className="HomePageDiv">
@@ -53,6 +54,7 @@ const UserPosts = () => {
               comments={post.comments.length}
               isUser={isUser}
               userId={userId}
+             
             />
           ))}
         </div>

@@ -9,7 +9,8 @@ const {
   LIKE_POST_API,
   COMMENT_POST_API,
   GET_COMMENTS_POST_API,
-  GET_USER_POST_API
+  GET_USER_POST_API,
+  DELETE_POST_API,
 } = postEndpoints
 
 
@@ -165,4 +166,39 @@ export const getUserPost = async (id,token) => {
   }
   // toast.dismiss(toastId)
   return result
+}
+
+
+
+export function deletePost(token, postId) {
+  return async (dispatch) => {
+    const toastId = toast.loading("Loading...")
+
+
+    try {
+      const response = await apiConnector("POST", DELETE_POST_API, {
+        postId,
+      }, {
+        Authorization: `Bearer ${token}`,
+      })
+
+      console.log("DELETE POST API RESPONSE............", response)
+
+
+
+      toast.success("Post Deleted Successful")
+      //dispatch(setToken(response.data.token))
+
+
+
+      
+    } catch (error) {
+      console.log("Delete Post API ERROR............", error)
+      toast.error("post deletation Failed")
+    }
+
+
+    toast.dismiss(toastId)
+
+  }
 }

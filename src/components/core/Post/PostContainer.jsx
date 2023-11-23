@@ -9,6 +9,7 @@ import { FcLike } from "react-icons/fc";
 import { FaRegComment } from "react-icons/fa";
 import { BiRepost } from "react-icons/bi";
 import LoginFirst from "../../popUp/LoginFirst";
+import { deletePost } from "../../../services/post";
 
 const PostContainer = (props) => {
   let likesCount;
@@ -38,6 +39,13 @@ const PostContainer = (props) => {
     setLikes(likesCount + 1);
     dispatch(likePost(token, props.id));
   };
+
+  const handleDelete = () => {
+
+    dispatch(deletePost(token, props.id));
+  };
+
+
 
   const modalComment = (val) => {
     setIsCommentOpen(val);
@@ -82,7 +90,7 @@ const PostContainer = (props) => {
         </div>
         {isUserPosts ? (
           <div>
-            <button>Delete Post</button>
+            <button title="Delete" onClick={handleDelete}>Delete Post</button>
             <button>Update Post</button>
           </div>
         ) : (

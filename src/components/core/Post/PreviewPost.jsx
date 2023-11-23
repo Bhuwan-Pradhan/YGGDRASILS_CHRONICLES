@@ -21,7 +21,7 @@ const PreviewPost = ({ mediaProp, title }) => {
       } else if (media.type.startsWith("video/")) {
         return (
           <video
-            controls width="500" height="200">
+            controls width="100%" height="200">
               <source src={media.url} />
             </video>
           
