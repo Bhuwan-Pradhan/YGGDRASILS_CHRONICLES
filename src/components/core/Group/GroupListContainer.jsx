@@ -6,17 +6,27 @@ import { useState } from "react";
 import AddInGroup from "./AddInGroup"
 import { useNavigate } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
+import { useDispatch, useSelector } from "react-redux";
+import { requestToJoinGroup } from "../../../services/group";
+
 
 
 const GroupContainer = (props) => {
 
+ const dispatch = useDispatch();
  const navigate = useNavigate();
+ const { token } = useSelector((state) => state.auth);
  const [ isAddOpen, setIsAddOpen]= useState(false);
  const [ isForMember, setIsForMember]= useState(false);
+ const groupId = props.id;
 
   const modalAddIn = (val) => {
     setIsAddOpen(val);
   };
+
+  const handleRequest = async() =>{
+   dispatch(requestToJoinGroup(groupId, token));
+  }
 
   return (
     <div className="GroupContainer">
@@ -33,7 +43,7 @@ const GroupContainer = (props) => {
       </div>
     </div>
     <div className='JoinGroup'>
-      <button title="Request to join group">
+      <button title="Request to join group" onClick={handleRequest}>
         <IoMdAdd size={"40px"}/>
         <p>Join</p>
         {/* <IoMdCheckmark size={"40px"}/>

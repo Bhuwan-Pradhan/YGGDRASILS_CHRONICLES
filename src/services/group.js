@@ -4,11 +4,14 @@ import { apiConnector } from "./apiConnector";
 import { groupEndpoints } from "../utils/api";
 
 const {
- NEWGROUP_API,
- GET_ALL_GROUP_API,
- ADD_MODERATOR_API,
- ADD_MEMBER_API,
- GET_ALL_POST_API
+  NEWGROUP_API,
+  GET_ALL_GROUP_API,
+  ADD_MODERATOR_API,
+  ADD_MEMBER_API,
+  GET_ALL_POST_API,
+  INVITE_TO_GROUP_API,
+  REQUEST_TO_JOIN_API,
+  ACCEPT_THE_REQUEST_API,
 
 } = groupEndpoints
 
@@ -16,14 +19,14 @@ const {
 export function newGroup(name, token, navigate) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")
-    
+
     try {
-      const response = await apiConnector("POST", NEWGROUP_API, 
+      const response = await apiConnector("POST", NEWGROUP_API,
         name,
-      {
-        "Content-Type": "multipart/form-data",
-        Authorization: `Bearer ${token}`,
-      })
+        {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        })
 
       console.log("NEWGROUP API RESPONSE............", response)
 
@@ -32,9 +35,9 @@ export function newGroup(name, token, navigate) {
       toast.success("Group Created Successful")
       //dispatch(setToken(response.data.token))
 
-navigate("/allGroups")
+      navigate("/allGroups")
 
-     
+
     } catch (error) {
       console.log("New Group API ERROR............", error)
       toast.error("Group Not Created")
@@ -69,27 +72,27 @@ export const getAllGroup = async () => {
 export function addModerator(fromData, token, newJoin) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")
-   
+
     try {
       const response = await apiConnector("POST", ADD_MODERATOR_API,
-      fromData ,
-        
-      {
-        "Content-Type": "multipart/form-data",
-        Authorization: `Bearer ${token}`,
-      })
+        fromData,
+
+        {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        })
 
       console.log("ADD MODERATOR API RESPONSE............", response)
 
 
-      
+
 
       toast.success(` ${newJoin} new Moderators are Added Successfully`)
       //dispatch(setToken(response.data.token))
 
 
 
-     
+
     } catch (error) {
       console.log("ADD MODERATOR API ERROR............", error)
       toast.error("Failed")
@@ -103,27 +106,27 @@ export function addModerator(fromData, token, newJoin) {
 export function addMember(fromData, token, newJoin) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")
-   
+
     try {
       const response = await apiConnector("POST", ADD_MEMBER_API,
-      fromData ,
-        
-      {
-        "Content-Type": "multipart/form-data",
-        Authorization: `Bearer ${token}`,
-      })
+        fromData,
+
+        {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        })
 
       console.log("ADD MEMBER API RESPONSE............", response)
 
 
-      
+
 
       toast.success(` ${newJoin} new Members are Added Successfully`)
       //dispatch(setToken(response.data.token))
 
 
 
-     
+
     } catch (error) {
       console.log("ADD MEMBER API ERROR............", error)
       toast.error("Failed")
@@ -153,7 +156,78 @@ export const getGroupPost = async (id) => {
 
 
 
+export function inviteMember(fromData, token, newJoin) {
+  return async (dispatch) => {
+    // const toastId = toast.loading("Loading...")
 
+
+    try {
+      const response = await apiConnector("POST", INVITE_TO_GROUP_API,
+        fromData,
+
+        {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        })
+
+      console.log("INVITE TO GROUP API RESPONSE............", response)
+
+
+
+      toast.success(` ${newJoin} new Members are Invited Successfully`)
+      //dispatch(setToken(response.data.token))
+
+
+
+
+    } catch (error) {
+      console.log("Invite API ERROR............", error)
+      toast.error("Invitation  Failed")
+    }
+
+
+    // toast.dismiss(toastId)
+
+  }
+}
+
+
+
+export function requestToJoinGroup(groupId, token) {
+  return async (dispatch) => {
+    // const toastId = toast.loading("Loading...")
+
+    
+    try {
+      const response = await apiConnector("POST", REQUEST_TO_JOIN_API,
+      {
+        id: groupId,
+      },
+
+        {
+          Authorization: `Bearer ${token}`,
+        })
+
+      console.log("REQUEST TO GROUP API RESPONSE............", response)
+
+
+
+      toast.success("Request send successfully");
+      //dispatch(setToken(response.data.token))
+
+
+
+
+    } catch (error) {
+      console.log("Request API ERROR............", error)
+      toast.error("Request  Failed")
+    }
+
+
+    // toast.dismiss(toastId)
+
+  }
+}
 
 
 

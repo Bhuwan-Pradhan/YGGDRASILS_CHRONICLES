@@ -192,3 +192,96 @@ exports.getGroupPost = async (req, res) => {
 }
 
 
+exports.inviteMember = async (req, res) => {
+	try {
+		const { groupId, members } = req.body;
+		
+  
+	 
+	  const updatedGroup = await Group.findByIdAndUpdate(
+		groupId,
+		{
+			$addToSet: {
+				invitations: JSON.parse(members).map(userId => new ObjectId(userId))
+			  }
+		},
+		{ new: true }
+	  );
+  
+	  return res.status(200).json({
+		success: true,
+		updatedGroup,
+		message: 'Member invited successfully.',
+	  });
+	} catch (err) {
+	  console.error(err);
+	  return res.status(500).json({
+		error: 'Internal Server Error',
+		message: err.message,
+	  });
+	}
+  };
+  
+  exports.requestToJoinGroup = async (req, res) => {
+	try {
+		const groupId  = req.body.id;
+		const userId = req.user.id
+	   
+		
+	  const updatedGroup = await Group.findByIdAndUpdate(
+		groupId,
+		{ $push: { joinRequests: userId } },
+		{ new: true }
+	  );
+  
+	  return res.status(200).json({
+		success: true,
+		updatedGroup,
+		message: 'Join request sent successfully.',
+	  });
+	} catch (err) {
+	  console.error(err);
+	  return res.status(500).json({
+		error: 'Internal Server Error',
+		message: err.message,
+	  });
+	}
+  };
+  
+  exports.acceptJoinRequest = async (req, res) => {
+	try {
+	  const { groupId, userId } = req.body;
+  
+	  // Remove the user from the group's join request list
+	  const updatedGroup = await Group.findByIdAndUpdate(
+		groupId,
+		{ $pull: { joinRequests: userId } },
+		{ new: true }
+	  );
+  
+	  // Add the user to the group's member list
+	  const updatedUser = await User.findByIdAndUpdate(
+		userId,
+		{ $push: { groups: { group: groupId, role: 'Member' } } },
+		{ new: true }
+	  );
+  
+	  return res.status(200).json({
+		success: true,
+		updatedGroup,
+		updatedUser,
+		message: 'Join request accepted successfully.',
+	  });
+	} catch (err) {
+	  console.error(err);
+	  return res.status(500).json({
+		error: 'Internal Server Error',
+		message: err.message,
+	  });
+	}
+  };
+
+
+
+
+

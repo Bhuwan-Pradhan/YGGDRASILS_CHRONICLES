@@ -28,6 +28,9 @@ export const groupEndpoints = {
   ADD_MODERATOR_API: BASE_URL + "/group/addModerator",
   ADD_MEMBER_API: BASE_URL + "/group/addMember",
   GET_ALL_POST_API: BASE_URL + "/group/allPost",
+  INVITE_TO_GROUP_API: BASE_URL + "/group/invite",
+  REQUEST_TO_JOIN_API: BASE_URL + "/group/request",
+  ACCEPT_THE_REQUEST_API: BASE_URL + "/group/accept",
   
 
 
