@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { groupEndpoints } from "../../../utils/api";
 import ReactModal from "react-modal";
-import { addMember, addModerator } from '../../../services/group';
+import { addMember, addModerator, inviteMember } from '../../../services/group';
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from 'react-router-dom';
 import SelectUser from '../../common/SelectUser';
@@ -57,6 +57,24 @@ const AddInGroup = (props) => {
           }
         };
 
+        const handleInvite = async() => {
+          const userIds = selectedUsers.map((user) => user.userId);
+          const newMembers = userIds.filter(userId => !alreadyJoinedMembers.includes(userId));
+          const newJoin = newMembers.length;
+          if (newMembers.length > 0) {
+            const formData = new FormData();
+        
+            formData.append("groupId", groupId);  
+            formData.append('members', JSON.stringify(newMembers));
+           
+            dispatch(inviteMember(formData, token, newJoin));
+          } else {
+            // Notify the user that all selected users are already members
+            toast.error('All selected users are already members.');
+          }
+          
+        };
+
         const handleOnClick = (data) => {
           setSelectedUsers(data);
           console.log("Data received from child:", data);
@@ -100,6 +118,7 @@ const AddInGroup = (props) => {
                   <div className="Add member">
                     <SelectUser usersData={handleOnClick} />
                     <button onClick={handleMember}>Add As Member</button>
+                    <button onClick={handleInvite}>Invite</button>
               </div>
                   </div>
                 </div>

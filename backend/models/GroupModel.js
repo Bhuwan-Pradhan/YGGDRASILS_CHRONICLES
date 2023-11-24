@@ -31,6 +31,22 @@ const groupSchema = new mongoose.Schema(
 
 
 		],
+		invitations: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "user",
+			},
+
+
+		],
+		joinRequests: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "user",
+			},
+
+
+		],
 
 		post: [
 			{
