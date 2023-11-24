@@ -172,3 +172,66 @@ exports.searchMember = async (req, res) => {
 		})
 	}
 }
+
+
+exports.follow = async (req, res) => {
+	const { userId } = req.body;
+	const  followerId  = req.user.id;
+ 
+	try {
+	
+      
+	
+  
+	  // Update the user's followers and the follower's following
+	  const updatedUser = await User.findByIdAndUpdate(userId, { $push: { followers: followerId } },
+		{ new: true })
+		.populate("followers") 
+		.exec();
+		const updatedFollower = await User.findByIdAndUpdate(followerId, { $push: { following: userId } },
+			{ new: true })
+			.populate("following") //Populates the comment array with the comments document
+			.exec();
+	 
+  
+	  
+  
+	  return res.status(200).json({ success: true , updatedUser, updatedFollower});
+	} catch (error) {
+	  console.error(error.message);
+	  return res.status(500).json({ error: 'Internal Server Error' });
+	}
+}
+
+
+exports.unfollow = async (req, res) => {
+	const { userId } = req.body;
+	const  followerId  = req.user.id;
+  
+	try {
+		
+	
+	
+	
+		// Remove the follower from the user's followers and the following from the follower
+	 
+	  const updatedUser = await User.findByIdAndUpdate(userId, { $pull: { followers: followerId } },
+		{ new: true })
+		.populate("followers") 
+		.exec();
+		const updatedFollower = await User.findByIdAndUpdate(followerId, { $pull: { following: userId } },
+			{ new: true })
+			.populate("following") //Populates the comment array with the comments document
+			.exec();
+	
+		
+	
+		return res.status(200).json({ success: true , updatedUser, updatedFollower});
+	  } catch (error) {
+		console.error(error.message);
+		return res.status(500).json({ error: 'Internal Server Error' });
+	  }
+	
+}
+
+

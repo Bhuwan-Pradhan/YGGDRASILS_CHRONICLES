@@ -5,10 +5,12 @@ const router = express.Router();
 const {
     signup,
     login,
-    searchMember
+    searchMember,
+    follow,
+    unfollow
 } = require("../controllers/Auth");
 
-
+const {auth} = require("../middlewares/auth");
 
 
 //Route for user signup
@@ -17,6 +19,8 @@ router.post("/signup", signup);
 router.post("/login", login);
 
 router.get("/searchMember", searchMember);
+router.post("/follow",auth, follow);
+router.post("/unfollow", auth, unfollow);
 
 
 

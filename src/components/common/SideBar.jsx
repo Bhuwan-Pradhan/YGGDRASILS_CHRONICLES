@@ -33,7 +33,7 @@ const SideBar = () => {
         </div>
         <div>
           <button
-            onClick={() => navigate("/profile", { state: { user: user } })}
+            onClick={() => navigate("/profile", { state: { userProfile: user } })}
           >
             Profile
           </button>

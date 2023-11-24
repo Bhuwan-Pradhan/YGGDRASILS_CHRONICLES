@@ -7,6 +7,8 @@ import { endpoints } from "../utils/api";
 const {
     SIGNUP_API,
     LOGIN_API,
+    FOLLOW_MEMBER_API,
+    UNFOLLOW_MEMBER_API,
   } = endpoints
 
 export function signUp(
@@ -96,6 +98,74 @@ export function logout(navigate) {
     localStorage.removeItem("user")
     toast.success("Logged Out")
     navigate("/")
+  }
+}
+
+
+export function follow(token, userId) {
+  return async (dispatch) => {
+    const toastId = toast.loading("Loading...")
+
+
+    try {
+      const response = await apiConnector("POST", FOLLOW_MEMBER_API, {
+        userId,
+      }, {
+        Authorization: `Bearer ${token}`,
+      })
+
+      console.log("FOLLOW API RESPONSE............", response)
+
+
+
+      toast.success("Followed Successful")
+      //dispatch(setToken(response.data.token))
+
+
+
+      
+    } catch (error) {
+      console.log("Follow API ERROR............", error)
+      toast.error("Follow Failed")
+    }
+
+
+    toast.dismiss(toastId)
+
+  }
+}
+
+
+export function unfollow(token, userId) {
+  return async (dispatch) => {
+    const toastId = toast.loading("Loading...")
+
+
+    try {
+      const response = await apiConnector("POST", UNFOLLOW_MEMBER_API, {
+        userId,
+      }, {
+        Authorization: `Bearer ${token}`,
+      })
+
+      console.log("UNFOLLOW API RESPONSE............", response)
+
+
+
+      toast.success("UNFollowed Successful")
+      //dispatch(setToken(response.data.token))
+
+
+
+      
+    } catch (error) {
+      console.log("UNFollow API ERROR............", error)
+      toast.error("UNFollow Failed")
+    }
+
+
+    toast.dismiss(toastId)
+
   }
 }
 

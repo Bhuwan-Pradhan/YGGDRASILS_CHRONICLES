@@ -59,7 +59,7 @@ const PostContainer = (props) => {
       <div className="PosterDetails">
         <img className="PosterImage" src={props.image} alt="userImage" />
         {/* <button onClick={navigate('/profile', { state: {user: props.user}})}>{props.name}</button> */}
-        <Link to="/profile" state={{ user: props.user }}>
+        <Link to="/profile" state={{ userProfile: props.user }}>
           {props.name}
         </Link>
       </div>
