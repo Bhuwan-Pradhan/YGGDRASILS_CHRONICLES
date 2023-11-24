@@ -128,3 +128,27 @@
 .floating-button:hover {
   background-color: #0056b3;
 }
+
+.floating-invitation-container {
+  position: fixed;
+  top: 140px;
+  right: 40px;
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.floating-invitation-container button {
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(255, 162, 0);
+  color: #fff;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.floating-invitation-container button:hover {
+  background-color: rgb(189, 124, 2);
+}
