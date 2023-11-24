@@ -16,9 +16,9 @@ const SideBar = () => {
             {user.firstName} {user.lastName}
           </Link>
         </div>
-        <div className="Stats">
-          <p>Following : {user.followers.length}</p>
-          <p>Followers : {user.following.length}</p>
+        <div className="SidebarUserStats">
+          <button>Following : {user.followers.length}</button>
+          <button>Followers : {user.following.length}</button>
         </div>
       </div>
       <div className="Links">

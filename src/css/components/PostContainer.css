@@ -29,6 +29,14 @@
   }
 }
 
+#TaggedUsersList {
+  position: absolute;
+  bottom: 60px;
+  left: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 .RepostDetails{
   width: 100%;
   border-top: 1px solid black;
