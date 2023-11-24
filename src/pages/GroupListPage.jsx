@@ -10,6 +10,7 @@ import SideBar from "../components/common/SideBar";
 import NavBar from "../components/common/NavBar";
 import NewGroup from "../components/core/Group/NewGroup";
 import { IoMdAdd } from "react-icons/io";
+import { IoMdMailUnread } from "react-icons/io";
 
 
 const GroupPage = (props) => {
@@ -46,6 +47,16 @@ const GroupPage = (props) => {
         <IoMdAdd size={"40px"}/>
       </button>
       <p>New Group</p>
+      </div>
+      <div className="floating-invitation-container">
+      <button
+        className="floating-invitation-button"
+        title="Group Invitations"
+        // onClick={() => setIsNewPostOpen(true)}
+      >
+        <IoMdMailUnread />
+      </button>
+      <p>Invitations</p>
       </div>
       <SideBar />
       <div className="RightWala">
