@@ -12,7 +12,7 @@ import SideBar from "../components/common/SideBar";
 import NavBar from "../components/common/NavBar";
 import { useLocation } from "react-router-dom";
 import { getGroupPost } from "../services/group";
-import NewPost from "../components/popUp/NewPost";
+import NewPost from "../components/core/Post/NewPost";
 
 const GroupPage = () => {
   const location = useLocation();

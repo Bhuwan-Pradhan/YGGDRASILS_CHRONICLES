@@ -1,10 +1,10 @@
 
 import React, { useState, useEffect } from "react";
-import { commentPost, getComment } from "../../services/post";
+import { commentPost, getComment } from "../../../services/post";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ReactModal from "react-modal";
-import "../../css/components/Comment.css";
+import "../../../css/components/Comment.css";
 
 const Comment = (props) => {
   const post = props.postId;

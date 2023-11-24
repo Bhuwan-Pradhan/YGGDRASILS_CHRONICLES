@@ -3,7 +3,7 @@ import "../../../css/components/GroupContainer.css"
 import { IoMdAdd } from "react-icons/io";
 import { IoMdCheckmark } from "react-icons/io";
 import { useState } from "react";
-import AddInGroup from "../../popUp/AddInGroup"
+import AddInGroup from "./AddInGroup"
 import { useNavigate } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
 

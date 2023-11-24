@@ -5,10 +5,10 @@ import { getAllPost } from "../services/post";
 import "../css/pages/HomePage.css";
 
 
-import NewPost from "../components/popUp/NewPost";
+import NewPost from "../components/core/Post/NewPost";
 
 import { Link } from "react-router-dom";
-import NewGroup from "../components/popUp/NewGroup";
+import NewGroup from "../components/core/Group/NewGroup";
 import SideBar from "../components/common/SideBar";
 import NavBar from "../components/common/NavBar";
 
