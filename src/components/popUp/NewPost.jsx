@@ -77,7 +77,7 @@ const NewPost = (props) => {
       color: 'black',
       backgroundColor: 'white',
       width: "35%",
-      height: "70%",
+      height: "65%",
       margin: "auto",
       borderRadius: "10px",
     },
@@ -94,11 +94,12 @@ const NewPost = (props) => {
      onRequestClose={() => props.modalV(false)}
      style={myStyle}
    >
-        <div>
-          <div className="NewPostBoxHeader">
+        <div >
+          <div className="NewPostBoxHeader" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '1.2rem', fontWeight: 'bold'}}>
             <div>New Post</div>
             <button
               className="NewPostCloseButton"
+              style={{background: 'none', border: 'none', fontWeight: 'bolder', fontSize: '1.2em', cursor: 'pointer', color: 'black'}}
               onClick={() => props.modalV(false)}
             >
               &times;

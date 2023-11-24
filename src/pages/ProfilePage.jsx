@@ -13,19 +13,25 @@ const ProfilePage = () => {
       <SideBar />
       <div className="RightWala">
         <NavBar />
-      <div className="MainContentDiv">
-      <div className="user">
-        <img src={user.image} alt="" />
-        <h1>
-          {user.firstName} {user.lastName}
-        </h1>
-        <h2>{user.email}</h2>
-        <p>{user.followers.length}</p>
+        <div className="MainContentDiv">
+          <div className="UserProfile">
+            <div className="ProfileImage">
+              <img src={user.image} alt="" />
+              <button>Edit Profile</button>
+              {/* <button>Follow</button> */}
+            </div>
+            <div className="UserDetailsProfile">
+              <h1>
+                {user.firstName} {user.lastName}
+              </h1>
+              <h2>{user.email}</h2>
+              <p>Following : *121*</p>
+              <p>Followers : {user.followers.length}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-      </div>
-    </div>
-
   );
 };
 

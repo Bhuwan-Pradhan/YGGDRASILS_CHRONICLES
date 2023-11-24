@@ -9,16 +9,12 @@ import GroupContainer from "../components/core/Group/GroupListContainer";
 import SideBar from "../components/common/SideBar";
 import NavBar from "../components/common/NavBar";
 import NewGroup from "../components/popUp/NewGroup";
+import { IoMdAdd } from "react-icons/io";
+
 
 const GroupPage = (props) => {
-  
   const [isNewGrOpen, setIsNewGrOpen] = useState(false);
   const [groupData, setGroupData] = useState();
- 
- 
-
-
-
 
   const getAllData = async () => {
     try {
@@ -34,20 +30,26 @@ const GroupPage = (props) => {
     getAllData();
   }, [groupData]);
 
-
-  const modalNewGr=(val)=>{
+  const modalNewGr = (val) => {
     setIsNewGrOpen(val);
   };
 
   return (
     <div className="HomePageDiv">
-       <NewGroup isOpen={isNewGrOpen} modalV={modalNewGr}/>
-       <button className="floating-button" onClick={() => setIsNewGrOpen(true)}>
-  <p>New Group</p>
-    </button>
- <SideBar />
+      <NewGroup isOpen={isNewGrOpen} modalV={modalNewGr} />
+      <div className="floating-button-container">
+      <button
+        className="floating-button"
+        title="Crete new group"
+        onClick={() => setIsNewGrOpen(true)}
+      >
+        <IoMdAdd size={"40px"}/>
+      </button>
+      <p>New Group</p>
+      </div>
+      <SideBar />
       <div className="RightWala">
-     <NavBar />
+        <NavBar />
         <div className="MainContentDiv">
           {groupData?.data.map((group) => (
             <GroupContainer
