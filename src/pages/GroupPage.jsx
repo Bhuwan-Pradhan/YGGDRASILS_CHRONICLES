@@ -57,9 +57,11 @@ const GroupPage = () => {
       <div className="RightWala">
         <NavBar />
         <div className="GroupDetails">
-          <div id="GroupName">Demo Group name</div>
-          <div>
+          <div className="GroupName">
+          Demo Group name
           <button>100 Members</button>
+          </div>
+          <div className="GroupControls">
           <button>Add Members</button>
           <button>Add Moderators</button>
           <button>Approve Requests</button>
