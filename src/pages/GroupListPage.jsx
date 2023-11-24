@@ -11,10 +11,11 @@ import NavBar from "../components/common/NavBar";
 import NewGroup from "../components/core/Group/NewGroup";
 import { IoMdAdd } from "react-icons/io";
 import { IoMdMailUnread } from "react-icons/io";
-
+import UserList from "../components/common/UserList";
 
 const GroupPage = (props) => {
   const [isNewGrOpen, setIsNewGrOpen] = useState(false);
+  const [isUsersOpen, setIsUsersOpen] = useState(false);
   const [groupData, setGroupData] = useState();
 
   const getAllData = async () => {
@@ -35,9 +36,14 @@ const GroupPage = (props) => {
     setIsNewGrOpen(val);
   };
 
+  const modalUsers = (val) => {
+    setIsUsersOpen(val);
+  };
+
   return (
     <div className="HomePageDiv">
       <NewGroup isOpen={isNewGrOpen} modalV={modalNewGr} />
+      <UserList isOpen={isUsersOpen} modalV={modalUsers} />
       <div className="floating-button-container">
       <button
         className="floating-button"
@@ -52,7 +58,7 @@ const GroupPage = (props) => {
       <button
         className="floating-invitation-button"
         title="Group Invitations"
-        // onClick={() => setIsNewPostOpen(true)}
+        onClick={() => setIsUsersOpen(true)}
       >
         <IoMdMailUnread />
       </button>
