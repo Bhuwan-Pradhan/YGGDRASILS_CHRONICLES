@@ -52,9 +52,9 @@ const PostContainer = (props) => {
     <div className="PostContainer">
       <Comment postId={props.id} isOpen={isCommentOpen} modalV={modalComment} />
       <LoginFirst isOpen={isLoginFirstOpen} modalV={modalLoginFirst} />
-      {/* <div className="RepostDetails">
+      <div className="RepostDetails">
         Reposted by Dummy Name
-      </div> */}
+      </div>
       
       <div className="PosterDetails">
         <img className="PosterImage" src={props.image} alt="userImage" />
@@ -87,12 +87,12 @@ const PostContainer = (props) => {
           {isGuest ? (
             <div>
               <button onClick={() => setIsLoginFirstOpen(true)}>
-                <FaRegComment size="30px" />
+                <FaRegComment size="25px" />
               </button>
             </div>
           ) : (
             <button title="Comment" onClick={() => setIsCommentOpen(true)}>
-              <FaRegComment size="30px" />
+              <FaRegComment size="25px" />
             </button>
           )}
         </div>
@@ -113,7 +113,7 @@ const PostContainer = (props) => {
               </div>
             ) : (
               <button title="Repost">
-                <BiRepost size="45px" />
+                <BiRepost size="30px" />
               </button>
             )}
           </div>
@@ -122,16 +122,16 @@ const PostContainer = (props) => {
           {isGuest ? (
             <div>
               <button onClick={() => setIsLoginFirstOpen(true)}>
-                <FiHeart size="30px" />
+                <FiHeart size="25px" />
               </button>
             </div>
           ) : (
             <div>
               {isLike ? (
-                <FcLike size="30px" />
+                <FcLike size="25px" />
               ) : (
                 <button title="Like" onClick={handleLike}>
-                  <FiHeart size="30px" />
+                  <FiHeart size="25px" />
                 </button>
               )}{" "}
               {/* <span>{likes} likes</span>{" "} */}

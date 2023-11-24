@@ -32,6 +32,12 @@
     color: aqua;
 }
 
+.JoinGroup {
+    /* height: 100%; */
+    border-right: 2px dotted black;
+    padding-right: 10px;
+}
+
 .JoinGroup button {
     border: none;
     background: none;
@@ -41,5 +47,16 @@
 }
 
 .JoinGroup button:hover {
+    color: aqua;
+}
+
+.ViewGroup button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: white;
+}
+
+.ViewGroup button:hover {
     color: aqua;
 }

@@ -7,8 +7,9 @@
   border-radius: 20px;
   margin-top: 0%;
   margin: 20px;
-  padding: 20px;
-  width: 70%;
+  padding: 10px;
+  padding-bottom: 0;
+  width: 50%;
   position: relative;
   display: flex;
   align-items: center;
@@ -28,12 +29,12 @@
   }
 }
 
-/* .RepostDetails{
+.RepostDetails{
   width: 100%;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   margin-bottom: 5px;
-} */
+}
 
 .PosterDetails {
   height: 50px;
@@ -68,9 +69,9 @@
 }
 
 .PostMedia img {
-  max-width: 600px;
+  max-width: 400px;
   width: 90%;
-  max-height: 300px;
+  max-height: 200px;
   height: 45%;
   border: 2px solid black;
 }

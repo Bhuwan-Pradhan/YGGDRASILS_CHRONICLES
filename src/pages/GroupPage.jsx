@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import PostContainer from "../components/core/Post/PostContainer";
 
-import { getUserPost } from "../services/post"
-import {  useSelector } from "react-redux";
-import "../css/pages/HomePage.css";
-
+import { getUserPost } from "../services/post";
+import { useSelector } from "react-redux";
+// import "../css/pages/HomePage.css";
+import "../css/pages/GroupPage.css";
+import { IoMdAdd } from "react-icons/io";
 
 
 import SideBar from "../components/common/SideBar";
@@ -35,21 +36,32 @@ const GroupPage = () => {
     getAllData();
   }, []);
 
-  const modalNewPost=(val)=>{
+  const modalNewPost = (val) => {
     setIsNewPostOpen(val);
   };
 
-
   return (
     <div className="HomePageDiv">
-       <NewPost id={group.id} isOpen={isNewPostOpen} modalV={modalNewPost}/>
-       <button className="floating-button" onClick={() => setIsNewPostOpen(true)}>
-  <p>New Group</p>
-    </button>
-  <SideBar />
+      <NewPost id={group.id} isOpen={isNewPostOpen} modalV={modalNewPost} />
+      <div className="floating-button-container">
+      <button
+        className="floating-button"
+        title="Crete new post"
+        onClick={() => setIsNewPostOpen(true)}
+      >
+        <IoMdAdd size={"40px"}/>
+      </button>
+      <p>New Post</p>
+      </div>
+      <SideBar />
       <div className="RightWala">
-    <NavBar />
-        <div className="MainContentDiv">
+        <NavBar />
+        <div className="GroupDetails">
+          <span>Demo Group name</span>
+          <button>100 Members</button>
+        </div>
+        <div className="GroupInsideDiv">
+        {/* <div className="MainContentDiv"> */}
           {postData?.data.map((post) => (
             <PostContainer
               id={post._id}
@@ -60,9 +72,7 @@ const GroupPage = () => {
               isLike={post.likes.includes(userId)}
               likes={post.likes.length}
               comments={post.comments.length}
-              
               userId={userId}
-             
             />
           ))}
         </div>
