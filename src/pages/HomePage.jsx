@@ -31,7 +31,7 @@ const HomePage = () => {
 
   useEffect(() => {
     getAllData();
-  }, []);
+  }, [postData]);
   console.log(postData);
 
   return (
@@ -43,6 +43,7 @@ const HomePage = () => {
         <div className="MainContentDiv">
           {postData?.data.map((post) => (
             <PostContainer
+              
               id={post._id}
               image={post.user.image}
               name={post.author}
@@ -53,6 +54,8 @@ const HomePage = () => {
               comments={post.comments.length}
               isUser={isUser}
               user={post.user}
+              repost={post.repost}
+              media={post.media}
             />
           ))}
         </div>

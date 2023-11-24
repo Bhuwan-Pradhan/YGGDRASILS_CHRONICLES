@@ -16,10 +16,13 @@ export const postEndpoints = {
   NEWPOST_API: BASE_URL + "/post/newPost",
   GET_ALL_POST_API: BASE_URL + "/post/getAllPost",
   LIKE_POST_API: BASE_URL + "/post/like",
+  DISLIKE_POST_API: BASE_URL + "/post/dislike",
   COMMENT_POST_API: BASE_URL + "/post/comment",
   GET_COMMENTS_POST_API: BASE_URL + "/post/getComment",
   GET_USER_POST_API: BASE_URL + "/post/getPost",
   DELETE_POST_API: BASE_URL + "/post/delete",
+  REPOST_POST_API: BASE_URL + "/post/repost",
+  UPDATE_POST_API: BASE_URL + "/post/update",
 
 }
 

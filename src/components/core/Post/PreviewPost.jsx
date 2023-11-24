@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 
-const PreviewPost = ({ mediaProp, title }) => {
-  const [media, setMedia] = useState({ url: null, type: null });
+const PreviewPost = ({ mediaProp, title, body, mediaType }) => {
+  const [media, setMedia] = useState({ url: body, type: mediaType });
 
-  useEffect(() => {
-    // When mediaProp changes, update the state
-    setMedia(mediaProp);
-  }, [mediaProp]);
+  // useEffect(() => {
+  //   // When mediaProp changes, update the state
+  //   setMedia(mediaProp);
+  // }, [mediaProp]);
 
   const renderPreview = () => {
     if (media.type && media.url) {
