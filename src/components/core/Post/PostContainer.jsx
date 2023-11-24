@@ -10,6 +10,7 @@ import { FaRegComment } from "react-icons/fa";
 import { BiRepost } from "react-icons/bi";
 import LoginFirst from "../../core/Auth/LoginFirst";
 import { deletePost } from "../../../services/post";
+import { IoMdPerson } from "react-icons/io";
 
 const PostContainer = (props) => {
   let likesCount;
@@ -75,6 +76,7 @@ const PostContainer = (props) => {
               Your browser does not support the video tag.
             </video>
           )}
+          <button id="TaggedUsersList" title="Tagged Users"><IoMdPerson size={"20px"}/></button>
         </div>
       </div>
       <div className="UserInteractionsData">

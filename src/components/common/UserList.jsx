@@ -3,6 +3,10 @@ import axios from 'axios';
 import ReactModal from "react-modal";
 import { endpoints } from '../../utils/api';
 
+import "../../css/components/UserList.css"
+import { IoMdCheckmark } from "react-icons/io";
+import { IoMdClose } from "react-icons/io";
+
 const UserList = (props) => {
   const { SEARCH_MEMBER_API } = endpoints;
   
@@ -56,19 +60,22 @@ const UserList = (props) => {
               &times;
             </button>
           </div>
-          <div className="CommentContainer">
-            <div className="CommentsList">
+          <div className="ListUserContainer">
             {usersData?.map((user) => (
-                <div className="UserItem" key={user.id}>
-                  <div className="UserInfo">
-                  <img src={user.image} alt="" />
-                  <span>@username</span>
-                  
-                    <span>{user.firstName} {user.lastName}</span>
+                <div className="ListUserItem" key={user.id}>
+                  <div className='ListUserImage'>
+                    <img src={user.image} alt="" />
+                  </div>
+                  <div className='ListUserDetail'>
+                    <div id='ListUserFullName'>{user.firstName} {user.lastName}</div>
+                    <div>@username</div>
+                  </div>
+                  <div className='RequestResponse'>
+                    <button id='AcceptInvite' title='Accept'><IoMdCheckmark size={"30px"} /></button>
+                    <button id='DeclineInvite' title='Decline'><IoMdClose size={"30px"} /></button>
                   </div>
                 </div>
               ))}
-            </div>
           </div>
 
         </div>
