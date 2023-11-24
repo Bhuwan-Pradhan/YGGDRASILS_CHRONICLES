@@ -1,7 +1,7 @@
 import ReactModal from "react-modal";
-import SignupForm from "../core/Auth/SignupForm";
-import LoginForm from "../core/Auth/LoginForm";
-import "../../css/components/LoginFirst.css";
+import SignupForm from "./SignupForm";
+import LoginForm from "./LoginForm";
+import "../../../css/components/LoginFirst.css";
 
 const LoginFirst = (props) => {
   const myStyle = {

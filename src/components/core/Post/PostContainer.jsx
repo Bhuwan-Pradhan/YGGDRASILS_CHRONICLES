@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../../../css/components/PostContainer.css";
-import Comment from "../../popUp/Comment";
+import Comment from "./Comment";
 import { likePost } from "../../../services/post";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -8,7 +8,7 @@ import { FiHeart } from "react-icons/fi";
 import { FcLike } from "react-icons/fc";
 import { FaRegComment } from "react-icons/fa";
 import { BiRepost } from "react-icons/bi";
-import LoginFirst from "../../popUp/LoginFirst";
+import LoginFirst from "../../core/Auth/LoginFirst";
 import { deletePost } from "../../../services/post";
 
 const PostContainer = (props) => {

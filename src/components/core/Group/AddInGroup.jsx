@@ -1,12 +1,12 @@
 import { toast } from "react-hot-toast";
 import React, { useState } from 'react';
 import axios from 'axios';
-import { groupEndpoints } from "../../utils/api";
+import { groupEndpoints } from "../../../utils/api";
 import ReactModal from "react-modal";
-import { addMember, addModerator } from '../../services/group';
+import { addMember, addModerator } from '../../../services/group';
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from 'react-router-dom';
-import SelectUser from '../common/SelectUser';
+import SelectUser from '../../common/SelectUser';
 
 
 

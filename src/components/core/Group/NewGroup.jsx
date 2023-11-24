@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import ReactModal from "react-modal";
 
 
-import { newGroup } from "../../services/group";
+import { newGroup } from "../../../services/group";
 
 const NewGroup = (props) => {
 

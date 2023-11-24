@@ -8,7 +8,7 @@ import { getAllGroup } from "../services/group";
 import GroupContainer from "../components/core/Group/GroupListContainer";
 import SideBar from "../components/common/SideBar";
 import NavBar from "../components/common/NavBar";
-import NewGroup from "../components/popUp/NewGroup";
+import NewGroup from "../components/core/Group/NewGroup";
 import { IoMdAdd } from "react-icons/io";
 
 

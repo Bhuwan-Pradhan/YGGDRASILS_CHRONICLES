@@ -3,12 +3,12 @@ import { FiUpload } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { newPost } from "../../services/post";
-import "../../css/components/NewPost.css";
+import { newPost } from "../../../services/post";
+import "../../../css/components/NewPost.css";
 
 import ReactModal from "react-modal";
-import SelectUser from "../common/SelectUser";
-import PreviewPost from "../core/Post/PreviewPost";
+import SelectUser from "../../common/SelectUser";
+import PreviewPost from "./PreviewPost";
 
 const NewPost = (props) => {
   const [media, setMedia] = useState({ url: null, type: null });
