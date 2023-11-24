@@ -28,7 +28,7 @@ const Comment = (props) => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     // props.modalV(false);
-    dispatch(commentPost(token, post, body, navigate));
+    dispatch(commentPost(token, post, body));
   };
 
   const getAllData = async () => {
