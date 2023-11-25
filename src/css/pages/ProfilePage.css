@@ -1,34 +1,52 @@
-.profile .user{
-    display: flex;
-    flex-direction: column;
-    padding: 20px
+.profile .user {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
 
 .UserProfile {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    padding-bottom: 100px;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  padding-bottom: 100px;
 }
 
 .ProfileImage {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.UserProfile img{
-    width: 250px;
-    height: 250px; 
-    border-radius: 50%;
-    position: relative;
-    padding: 5px;
+.ProfileFollow {
+  background: none;
+  color: aqua;
+  font-size: larger;
+  margin-top: 50px;
+  cursor: pointer;
+  border-color: aqua;
+  border-radius: 10px;
+}
+
+.UserProfile img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  position: relative;
+  padding: 5px;
 }
 
 .UserDetailsProfile {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ProfileFollowerFollowing {
+  background: none;
+  border-color: beige;
+  color: cyan;
+  margin-bottom: 10px;
+  cursor: pointer;
 }

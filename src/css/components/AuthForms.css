@@ -1,151 +1,150 @@
 /* AuthForms.css */
 
 .AuthPopupButton {
-    background-color: #3498db;
-    color: #fff;
-    padding: 15px 30px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .AuthPopupButton:hover {
-    background-color: #2980b9;
-    box-shadow: 0 0 20px rgba(151, 181, 201, 0.8);
-  }
-  
-  .AuthPopupContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .AuthPopupOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 10%;
-    height: 10%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .AuthPopup {
-    background-color: #1f1f1f;
-    color: white;
-    padding: 20px;
-    padding-top: 0px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-    max-height: 600px;
-    max-width: 400px;
-    width: 100%;
-    position: relative;
-    /* overflow-y: scroll; */
-  }
+  background-color: #3498db;
+  color: #fff;
+  padding: 15px 30px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
 
-  .AuthHeader {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    /* height: 15px; */
-    margin-top: 0px;
-  }
-  
-  .AuthCloseButton {
-    background-color: transparent;
-    border: none;
-    font-size: 20px;
-    color: #ffffff;
-    cursor: pointer;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
-  
-  .AuthCloseButton:hover {
-    color: #ffdede;
-  }
+.AuthPopupButton:hover {
+  background-color: #2980b9;
+  box-shadow: 0 0 20px rgba(151, 181, 201, 0.8);
+}
 
-  /* .PasswordDiv input {
+.AuthPopupContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.AuthPopupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10%;
+  height: 10%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AuthPopup {
+  background-color: #1f1f1f;
+  color: white;
+  padding: 20px;
+  padding-top: 0px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  max-height: 600px;
+  max-width: 400px;
+  width: 100%;
+  position: relative;
+  /* overflow-y: scroll; */
+}
+
+.AuthHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  /* height: 15px; */
+  margin-top: 0px;
+}
+
+.AuthCloseButton {
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  color: #ffffff;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.AuthCloseButton:hover {
+  color: #ffdede;
+}
+
+/* .PasswordDiv input {
     margin-bottom: 15px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
   } */
-  
-  .AuthInput {
-    margin-bottom: 2px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
 
-  .SignupContainer {
-    display: flex;
-    flex-direction: column;
-    margin-top: 0;
-  }
-  
-  .SignupContainer label {
-    display: flex;
-    flex-direction: column;
-    margin: 0px;
-    /* display: flex; */
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .SignupContainer span {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
+.AuthInput {
+  margin-bottom: 2px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
 
-  .LoginContainer {
-    display: flex;
-    flex-direction: column;
-    margin-top: 0px;
-  }
-  
+.SignupContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+}
+
+.SignupContainer label {
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+}
+
+.SignupContainer span {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.LoginContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0px;
+}
+
 .LoginContainer label {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .LoginContainer span {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }  
-  
-  .NameSpan input {
-    width: calc(60% - 5px);
-    margin-right: 5px;
-  }
-  
-  .SubmitButton {
-    background-color: #27ae60;
-    color: #fff;
-    padding: 10px 20px;
-    margin-top: 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .SubmitButton:hover {
-    background-color: #219d54;
-  }
-  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.NameSpan input {
+  width: calc(60% - 5px);
+  margin-right: 5px;
+}
+
+.SubmitButton {
+  background-color: #27ae60;
+  color: #fff;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.SubmitButton:hover {
+  background-color: #219d54;
+}

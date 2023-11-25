@@ -1,62 +1,60 @@
 .GroupContainer {
-    background-color: gray;
-    color: white;
-    border-width: 2px;
-    border-style: solid;
-    border-color: #000;
-    border-radius: 20px;
-    margin-top: 0%;
-    margin: 20px;
-    padding: 20px;
-    width: 60%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    /* flex-direction: column; */
-    animation-name: Post;
-    animation-duration: 1s;
+  background-color: gray;
+  color: white;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #000;
+  border-radius: 20px;
+  margin-top: 0%;
+  margin: 20px;
+  padding: 20px;
+  width: 60%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  animation-name: Post;
+  animation-duration: 1s;
 }
 
 .GroupInfo {
-    width: 80%;
+  width: 80%;
 }
 
 .GroupInfo button {
-    border: none;
-    background: none;
-    cursor: pointer;
-    color: white;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: white;
 }
 
 .GroupInfo button:hover {
-    color: aqua;
+  color: aqua;
 }
 
 .JoinGroup {
-    /* height: 100%; */
-    border-right: 2px dotted black;
-    padding-right: 10px;
+  border-right: 2px dotted black;
+  padding-right: 10px;
 }
 
 .JoinGroup button {
-    border: none;
-    background: none;
-    cursor: pointer;
-    color: white;
-    font-size: large;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: white;
+  font-size: large;
 }
 
 .JoinGroup button:hover {
-    color: aqua;
+  color: aqua;
 }
 
 .ViewGroup button {
-    border: none;
-    background: none;
-    cursor: pointer;
-    color: white;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: white;
 }
 
 .ViewGroup button:hover {
-    color: aqua;
+  color: aqua;
 }

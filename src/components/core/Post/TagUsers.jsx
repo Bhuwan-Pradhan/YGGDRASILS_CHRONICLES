@@ -34,7 +34,7 @@ const TagUsers = (props) => {
      content: {
       color: 'black',
       backgroundColor: 'white',
-      width: "20%",
+      width: "30%",
       height: "70%",
       margin: "auto",
       borderRadius: "10px",
@@ -60,7 +60,7 @@ const TagUsers = (props) => {
       >
         <div className="Comment">
           <div className="CommentBoxHeader">
-            <div>Tag Users</div>
+            <div>Tagged Users</div>
             <button className="CloseButton" onClick={() => props.modalV(false)}>
               &times;
             </button>

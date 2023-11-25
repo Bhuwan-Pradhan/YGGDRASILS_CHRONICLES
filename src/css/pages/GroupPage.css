@@ -1,57 +1,54 @@
 .GroupDetails {
-    position: fixed;
-    top: 70px;
-    background-color: black;
-    color: beige;
-    /* z-index: 10; */
-    width:100%;
-    /* height: 40px; */
-    display: flex;
-    /* justify-content: space-around; */
+  position: fixed;
+  top: 70px;
+  background-color: black;
+  color: beige;
+  width: 100%;
+  display: flex;
 }
 
 .GroupName {
-    width: 40%;
-    display: flex;
-    justify-content: space-around;
-    font-size: large;
-    font-weight: bold;
+  width: 40%;
+  display: flex;
+  justify-content: space-around;
+  font-size: large;
+  font-weight: bold;
 }
 
-.GroupName button{
-    border: none;
-    background: none;
-    color: bisque;
+.GroupName button {
+  border: none;
+  background: none;
+  color: bisque;
 }
 
-.GroupName button:hover{
-    color: cyan;
-    cursor: pointer;
+.GroupName button:hover {
+  color: cyan;
+  cursor: pointer;
 }
 
-.GroupControls{
-    width: 60%;
-    display: flex;
+.GroupControls {
+  width: 60%;
+  display: flex;
 }
 
 .GroupControls button {
-    margin-left: 20px;
-    border-color: antiquewhite;
-    background: none;
-    color: bisque;
+  margin-left: 20px;
+  border-color: antiquewhite;
+  background: none;
+  color: bisque;
 }
 
 .GroupInsideDiv {
-    margin-top: 90px;
-    display: flex;
-    align-items: center;
-    overflow-y: scroll;
-    flex-direction: column;
-    background-image: url(/src/assets/images/stars.jpg);
-    background-size: cover;
-    background-position: center;
-    background-color: #04013a;
-    background-blend-mode: hard-light;
-    font-family: "Montserrat", sans-serif;
-    height: 100vh;
+  margin-top: 90px;
+  display: flex;
+  align-items: center;
+  overflow-y: scroll;
+  flex-direction: column;
+  background-image: url(/src/assets/images/stars.jpg);
+  background-size: cover;
+  background-position: center;
+  background-color: #04013a;
+  background-blend-mode: hard-light;
+  font-family: "Montserrat", sans-serif;
+  height: 100vh;
 }

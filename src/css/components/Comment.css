@@ -42,27 +42,24 @@
 }
 
 .UserInfo span {
-    font-weight: bolder;
+  font-weight: bolder;
 }
 
 form {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
-  
 }
 
 label {
   display: block;
   margin-bottom: 10px;
   font-size: 1em;
-  /* color: #ddd; */
 }
 
 .inputContainer {
-    display: flex;
-    
-  }
+  display: flex;
+}
 
 .inputContainer input {
   width: 100%;
@@ -72,7 +69,6 @@ label {
   color: #000000;
   border-radius: 5px;
   margin-right: 10px;
-  
 }
 
 .PostComment {
@@ -106,6 +102,4 @@ label {
   width: 95%;
   background-color: white;
   padding: 10px;
-  /* box-shadow: 0px -5px 15px rgba(0, 0, 0, 0.1); */
-  
 }
