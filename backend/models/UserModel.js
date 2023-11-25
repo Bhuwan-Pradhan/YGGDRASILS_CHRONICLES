@@ -72,6 +72,12 @@ const userSchema = new mongoose.Schema(
 				ref: "group",
 			},
 		],
+		invitations: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "group",
+			},
+		],
 		image: {
 			type: String,
 			required: true,

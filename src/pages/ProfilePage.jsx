@@ -4,12 +4,16 @@ import "../css/pages/ProfilePage.css";
 import { useLocation } from "react-router-dom";
 import { follow, unfollow } from "../services/authApi";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
 
+import UserList from "../components/common/UserList";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+import { endpoints } from '../utils/api';
 
 
 const ProfilePage = () => {
-  // const user = JSON.parse(localStorage.getItem("user"));
+  const { GET_USER_DETAILS_API } = endpoints;
   const location = useLocation();
   const dispatch = useDispatch();
   const { userProfile } = location.state;
@@ -22,8 +26,13 @@ const ProfilePage = () => {
   console.log(followCheck)
   const { token } = useSelector((state) => state.auth);
   const [isFollow, setIsFollow] = useState(followCheck);
+  const [isUsersOpen, setIsUsersOpen] = useState(false);
   const [follower, setFollower] = useState(followerCount);
-  
+  const [usersData, setUsersData] = useState(null);
+  const [data, setData] = useState(null);
+  const [title, setTitle] = useState();
+
+  const [field, setField] = useState();
 
   const handleFollow = () => {
    
@@ -40,9 +49,34 @@ const ProfilePage = () => {
   };
 
 
+  const getUsers = async () => {
+    try {
+      const response = await axios.post(GET_USER_DETAILS_API,{userId: userProfile._id});
+     
+      setUsersData(response.data.data);
+      
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  console.log(usersData)
+
+  useEffect(() => {
+    getUsers();
+    
+  }, [usersData]);
+
+  const modalUsers = (val) => {
+    setIsUsersOpen(val);
+  };
+
+  useEffect(()=>{
+    setIsUsersOpen(false);
+  }, [userProfile])
 
   return (
     <div className="HomePageDiv">
+      <UserList isOpen={isUsersOpen} modalV={modalUsers} id={userProfile._id} data={data} title={title}/>
       <SideBar />
       <div className="RightWala">
         <NavBar />
@@ -60,8 +94,10 @@ const ProfilePage = () => {
                 {userProfile.firstName} {userProfile.lastName}
               </h1>
               <h2>{userProfile.email}</h2>
-              <p>Following : {followingCount}</p>
-              <p>Followers : {followerCount}</p>
+              <button onClick={()=>{setIsUsersOpen(true); setData(usersData?.followers); setTitle("Followers")}}><p>Followers : {followerCount}</p></button>
+              <button onClick={()=>{setIsUsersOpen(true); setData(usersData?.following); setTitle("Followings")}}><p>Following : {followingCount}</p></button>
+              
+              
             </div>
           </div>
         </div>

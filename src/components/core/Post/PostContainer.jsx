@@ -12,6 +12,7 @@ import LoginFirst from "../../core/Auth/LoginFirst";
 import { deletePost } from "../../../services/post";
 import { IoMdPerson } from "react-icons/io";
 import UpdatePost from "./UpdatePost";
+import TagUsers from "./TagUsers";
 
 
 
@@ -20,6 +21,7 @@ const PostContainer = (props) => {
   const [isCommentOpen, setIsCommentOpen] = useState(false);
   const [isLoginFirstOpen, setIsLoginFirstOpen] = useState(false);
   const [isUpdateOpen, setIsUpdateOpen] = useState(false);
+  const [isTagOpen, setIsTagOpen] = useState(false);
   const isUserPosts = props.isUser;
   const isGuest = props.isGuest;
   if (props.likes === 0) {
@@ -66,12 +68,17 @@ const PostContainer = (props) => {
   const modalUpdate = (val) => {
     setIsUpdateOpen(val);
   };
+  const modalTag = (val) => {
+    setIsTagOpen(val);
+  };
 
   return (
     <div className="PostContainer">
       <Comment postId={props.id} isOpen={isCommentOpen} modalV={modalComment} />
       <LoginFirst isOpen={isLoginFirstOpen} modalV={modalLoginFirst} />
+      
       <UpdatePost isOpen={isUpdateOpen} modalV={modalUpdate} body={props.body} id={props.id} title={props.title} media={props.media}/>
+      <TagUsers isOpen={isTagOpen} modalV={modalTag} id={props.id} />
       {props.repost && (
     <div className="RepostDetails">
       Reposted by <Link to="/profile" state={{ userProfile: props.repost }}>
@@ -100,7 +107,7 @@ const PostContainer = (props) => {
               Your browser does not support the video tag.
             </video>
           )}
-          <button id="TaggedUsersList" title="Tagged Users"><IoMdPerson size={"20px"}/></button>
+          <button id="TaggedUsersList" title="Tagged Users" onClick={()=> setIsTagOpen(true)}><IoMdPerson size={"20px"}/></button>
         </div>
       </div>
       <div className="UserInteractionsData">

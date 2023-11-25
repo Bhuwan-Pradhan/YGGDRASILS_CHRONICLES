@@ -302,5 +302,22 @@ exports.repost = async (req, res) => {
 	}
 }
 
+exports.getTagUsers = async (req, res) => {
+    try {
+        const postId = req.body.postId;
+     
 
+        const postData = await Post.findById(postId)
+		.populate('tagUser')  
+		.exec();
+
+        res.json({ success: true, data: postData, });
+    }
+    catch (err) {
+        return res.status(400).json({
+            error: "Error While getting Posts",
+            message: err.message
+        })
+    }
+}
 

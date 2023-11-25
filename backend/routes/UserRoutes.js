@@ -7,7 +7,8 @@ const {
     login,
     searchMember,
     follow,
-    unfollow
+    unfollow,
+    getUserById
 } = require("../controllers/Auth");
 
 const {auth} = require("../middlewares/auth");
@@ -21,6 +22,7 @@ router.post("/login", login);
 router.get("/searchMember", searchMember);
 router.post("/follow",auth, follow);
 router.post("/unfollow", auth, unfollow);
+router.post("/getUserDetails", getUserById);
 
 
 

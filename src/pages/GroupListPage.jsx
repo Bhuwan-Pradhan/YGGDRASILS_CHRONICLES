@@ -43,7 +43,7 @@ const GroupPage = (props) => {
   return (
     <div className="HomePageDiv">
       <NewGroup isOpen={isNewGrOpen} modalV={modalNewGr} />
-      <UserList isOpen={isUsersOpen} modalV={modalUsers} />
+      <UserList isOpen={isUsersOpen} modalV={modalUsers} id="655377c772aa6dd02ea5ea95"/>
       <div className="floating-button-container">
       <button
         className="floating-button"

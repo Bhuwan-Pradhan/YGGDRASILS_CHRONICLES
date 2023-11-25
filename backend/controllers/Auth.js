@@ -235,3 +235,30 @@ exports.unfollow = async (req, res) => {
 }
 
 
+
+exports.getUserById = async (req, res) => {
+	const  userId  = req.body.userId;
+	
+ 
+	try {
+		
+		const user = await User.findById(userId)
+		.populate('followers') 
+		.populate('following') 
+		.populate('invitations') 
+		.exec();
+
+		  // Return group details with populated arrays
+		  return res.status(200).json({
+			success: true,
+			data: user,
+		  });
+	  } catch (error) {
+		console.error(error.message);
+		return res.status(500).json({ error: 'Internal Server Error' });
+	  }
+	
+}
+
+
+

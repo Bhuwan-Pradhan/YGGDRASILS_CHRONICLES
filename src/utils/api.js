@@ -8,6 +8,7 @@ export const endpoints = {
   SEARCH_MEMBER_API: BASE_URL + "/auth/searchMember",
   FOLLOW_MEMBER_API: BASE_URL + "/auth/follow",
   UNFOLLOW_MEMBER_API: BASE_URL + "/auth/unfollow",
+  GET_USER_DETAILS_API: BASE_URL + "/auth/getUserDetails",
 
 }
 
@@ -23,6 +24,7 @@ export const postEndpoints = {
   DELETE_POST_API: BASE_URL + "/post/delete",
   REPOST_POST_API: BASE_URL + "/post/repost",
   UPDATE_POST_API: BASE_URL + "/post/update",
+  GET_TAG_USER_DETAILS_API: BASE_URL + "/post/tagUsers",
 
 }
 
