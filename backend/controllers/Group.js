@@ -196,13 +196,13 @@ exports.inviteMember = async (req, res) => {
 	try {
 		const { groupId, members } = req.body;
 		
-		const group = await Group.findById(groupId);
+		console.log(groupId)
 		const userIds = JSON.parse(members).map(userId => userId);
 		
 
 		const updatedUser = await User.updateMany(
 			{ _id: { $in: userIds } },
-			{ $addToSet: { invitations: group._id } },
+			{ $addToSet: { invitations: groupId} },
 			{ new: true })
 			.populate("invitations") //Populates the comment array with the comments document
 			.exec();

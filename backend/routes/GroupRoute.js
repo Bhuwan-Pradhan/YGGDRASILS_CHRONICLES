@@ -13,9 +13,9 @@ const { auth, isAdmin, isModerator } = require("../middlewares/auth")
 router.post("/createGroup", auth, createGroup);
 router.get("/getAllGroup", getAllGroup);
 router.post("/addModerator", auth, isAdmin, addModerator);
-router.post("/addMember", auth, isModerator, addMember);
+router.post("/addMember", auth,  addMember);
 router.post("/allPost", getGroupPost);
-router.post("/invite",auth, isModerator, inviteMember);
+router.post("/invite",auth,  inviteMember);
 router.post("/request",auth, requestToJoinGroup);
 router.post("/acceptInvite", acceptInviteRequest);
 router.post("/declineInvite", declineInviteRequest);

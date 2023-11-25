@@ -76,7 +76,7 @@ exports.isAdmin = async (req, res, next) => {
   };
 
 exports.isModerator = async (req, res, next) => {
-    const groupId  = req.body.id;
+    const groupId  = req.body;
    
   
     try {
