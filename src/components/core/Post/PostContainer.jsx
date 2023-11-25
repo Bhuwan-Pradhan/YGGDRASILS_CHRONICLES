@@ -111,8 +111,8 @@ const PostContainer = (props) => {
         </div>
       </div>
       <div className="UserInteractionsData">
-        <span>12 Comments</span>
-        <span>6 Reposts</span>
+        <span> Comments</span>
+        <span> Reposts</span>
         <span>{likes} Likes</span>
       </div>
       <div className="UserInteractions">

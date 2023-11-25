@@ -19,8 +19,8 @@ router.post("/invite",auth,  inviteMember);
 router.post("/request",auth, requestToJoinGroup);
 router.post("/acceptInvite", acceptInviteRequest);
 router.post("/declineInvite", declineInviteRequest);
-router.post("/acceptJoin", auth, isModerator, acceptJoinRequest);
-router.post("/declineJoin", auth, isModerator, declineJoinRequest);
+router.post("/acceptJoin", auth, acceptJoinRequest);
+router.post("/declineJoin", auth,  declineJoinRequest);
 router.post("/getGroup", getGroupById);
 
 

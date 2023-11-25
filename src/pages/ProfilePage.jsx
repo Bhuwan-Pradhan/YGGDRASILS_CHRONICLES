@@ -34,7 +34,7 @@ const ProfilePage = () => {
   const [title, setTitle] = useState();
 
   const [field, setField] = useState();
-
+  
   const handleFollow = () => {
    
     setIsFollow(true);
