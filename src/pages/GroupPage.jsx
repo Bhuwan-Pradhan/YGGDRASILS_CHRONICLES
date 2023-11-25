@@ -6,32 +6,40 @@ import { useSelector } from "react-redux";
 // import "../css/pages/HomePage.css";
 import "../css/pages/GroupPage.css";
 import { IoMdAdd } from "react-icons/io";
-
+import JoinRequests from "../components/core/Group/JoinRequests";
 
 import SideBar from "../components/common/SideBar";
 import NavBar from "../components/common/NavBar";
 import { useLocation } from "react-router-dom";
 import { getGroupPost } from "../services/group";
 import NewPost from "../components/core/Post/NewPost";
+import AddInGroup from "../components/core/Group/AddInGroup";
 
-const GroupPage = () => {
+
+const GroupPage = (props) => {
   const location = useLocation();
-  const group = location.state;
+  const {id, followers, moderators} = location.state;
   const [isNewPostOpen, setIsNewPostOpen] = useState(false);
+  const [isJoinReqOpen, setIsJoinReqOpen] = useState(false);
   const [postData, setPostData] = useState();
+   
+ const [ isAddOpen, setIsAddOpen]= useState(false);
+ const [ isForMember, setIsForMember]= useState(false);
   const { user } = useSelector((state) => state.auth);
   const userId = user._id;
 
   const getAllData = async () => {
     try {
-      const getPost = await getGroupPost(group);
+      const getPost = await getGroupPost(id);
 
       setPostData(getPost);
     } catch (error) {
       console.log(error);
     }
   };
-
+  const modalAddIn = (val) => {
+    setIsAddOpen(val);
+  };
   useEffect(() => {
     getAllData();
   }, []);
@@ -40,9 +48,15 @@ const GroupPage = () => {
     setIsNewPostOpen(val);
   };
 
+  const modalJoinReq = (val) => {
+    setIsJoinReqOpen(val);
+  };
+
   return (
     <div className="HomePageDiv">
-      <NewPost id={group.id} isOpen={isNewPostOpen} modalV={modalNewPost} />
+      <NewPost id={id} isOpen={isNewPostOpen} modalV={modalNewPost} />
+      <AddInGroup id ={id} modalV={modalAddIn} isOpen={isAddOpen} isMemberTitle={isForMember}  members={followers} moderators={moderators}/>
+    <JoinRequests id={id}  isOpen={isJoinReqOpen} modalV={modalJoinReq} />
       <div className="floating-button-container">
       <button
         className="floating-button"
@@ -62,9 +76,9 @@ const GroupPage = () => {
           <button>100 Members</button>
           </div>
           <div className="GroupControls">
-          <button>Add Members</button>
-          <button>Add Moderators</button>
-          <button>Approve Requests</button>
+          <button onClick={()=> {setIsAddOpen(true);  setIsForMember(true);}}>Add Member</button>
+          <button onClick={()=>{setIsAddOpen(true); setIsForMember(false);}}>Add Moderator</button>
+          <button onClick={()=> setIsJoinReqOpen(true)}>Approve Requests</button>
           </div>
         </div>
         <div className="GroupInsideDiv">

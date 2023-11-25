@@ -18,8 +18,9 @@ const AddInGroup = (props) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const groupId = props.id;
-    const isMember = props.isMember;
+    const isMemberTitle = props.isMemberTitle;
     const alreadyJoinedMembers = props.members;
+  
     const alreadyJoinedModerators = props.moderators;
        
 
@@ -97,7 +98,7 @@ const AddInGroup = (props) => {
             },
           };
 
-          if(isMember){
+          if(isMemberTitle){
             return (
               <div >
                   

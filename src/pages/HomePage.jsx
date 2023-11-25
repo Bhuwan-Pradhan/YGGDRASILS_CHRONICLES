@@ -3,7 +3,7 @@ import PostContainer from "../components/core/Post/PostContainer";
 
 import { getAllPost } from "../services/post";
 import "../css/pages/HomePage.css";
-
+import { IoMdAdd } from "react-icons/io";
 
 import NewPost from "../components/core/Post/NewPost";
 
@@ -18,6 +18,7 @@ const HomePage = () => {
   const [postData, setPostData] = useState();
   const user = JSON.parse(localStorage.getItem("user"));
   const userId = user._id;
+  const [isNewPostOpen, setIsNewPostOpen] = useState(false);
 
   const getAllData = async () => {
     try {
@@ -32,12 +33,24 @@ const HomePage = () => {
   useEffect(() => {
     getAllData();
   }, [postData]);
-  console.log(postData);
+  const modalNewPost = (val) => {
+    setIsNewPostOpen(val);
+  };
 
   return (
     <div className="HomePageDiv">
+        <NewPost  isOpen={isNewPostOpen} modalV={modalNewPost} />
 <SideBar />
-
+<div className="floating-button-container">
+      <button
+        className="floating-button"
+        title="Crete new post"
+        onClick={() => setIsNewPostOpen(true)}
+      >
+        <IoMdAdd size={"40px"}/>
+      </button>
+      <p>New Post</p>
+      </div>
       <div className="RightWala">
         <NavBar />
         <div className="MainContentDiv">

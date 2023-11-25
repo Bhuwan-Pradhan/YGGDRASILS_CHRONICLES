@@ -76,8 +76,8 @@ exports.isAdmin = async (req, res, next) => {
   };
 
 exports.isModerator = async (req, res, next) => {
-    const { groupId } = req.body;
-    
+    const groupId  = req.body.id;
+   
   
     try {
       const group = await Group.findById(groupId);
@@ -90,6 +90,7 @@ exports.isModerator = async (req, res, next) => {
       
       if (userRole) {
         // User is an admin, proceed to the next middleware or route handler
+        
         next();
       } else {
         // User is not an admin, send a forbidden response

@@ -37,7 +37,11 @@ export const groupEndpoints = {
   GET_ALL_POST_API: BASE_URL + "/group/allPost",
   INVITE_TO_GROUP_API: BASE_URL + "/group/invite",
   REQUEST_TO_JOIN_API: BASE_URL + "/group/request",
-  ACCEPT_THE_REQUEST_API: BASE_URL + "/group/accept",
+  ACCEPT_THE_INVITE_API: BASE_URL + "/group/acceptInvite",
+  DECLINE_THE_INVITE_API: BASE_URL + "/group/declineInvite",
+  ACCEPT_THE_JOIN_API: BASE_URL + "/group/acceptJoin",
+  DECLINE_THE_JOIN_API: BASE_URL + "/group/declineJoin",
+  GET_GROUP_BY_ID_API: BASE_URL + "/group/getGroup",
   
 
 

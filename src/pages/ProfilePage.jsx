@@ -23,11 +23,12 @@ const ProfilePage = () => {
   const followerCount= userProfile.followers.length;
   const followingCount= userProfile.following.length;
   const followCheck = userProfile.followers.includes(user._id);
-  console.log(followCheck)
+ 
   const { token } = useSelector((state) => state.auth);
   const [isFollow, setIsFollow] = useState(followCheck);
   const [isUsersOpen, setIsUsersOpen] = useState(false);
   const [follower, setFollower] = useState(followerCount);
+  
   const [usersData, setUsersData] = useState(null);
   const [data, setData] = useState(null);
   const [title, setTitle] = useState();
@@ -37,13 +38,13 @@ const ProfilePage = () => {
   const handleFollow = () => {
    
     setIsFollow(true);
-    setFollower(followingCount + 1);
+    setFollower(followerCount + 1);
     dispatch(follow(token, userProfile._id));
   };
   const handleUnFollow = () => {
    
     setIsFollow(false);
-    setFollower(followingCount - 1);
+    setFollower(followerCount - 1);
     
     dispatch(unfollow(token, userProfile._id));
   };
@@ -94,7 +95,7 @@ const ProfilePage = () => {
                 {userProfile.firstName} {userProfile.lastName}
               </h1>
               <h2>{userProfile.email}</h2>
-              <button onClick={()=>{setIsUsersOpen(true); setData(usersData?.followers); setTitle("Followers")}}><p>Followers : {followerCount}</p></button>
+              <button onClick={()=>{setIsUsersOpen(true); setData(usersData?.followers); setTitle("Followers")}}><p>Followers : {follower}</p></button>
               <button onClick={()=>{setIsUsersOpen(true); setData(usersData?.following); setTitle("Followings")}}><p>Following : {followingCount}</p></button>
               
               

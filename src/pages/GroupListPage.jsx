@@ -12,11 +12,15 @@ import NewGroup from "../components/core/Group/NewGroup";
 import { IoMdAdd } from "react-icons/io";
 import { IoMdMailUnread } from "react-icons/io";
 import UserList from "../components/common/UserList";
+import Invitations from "../components/core/Group/Invitations";
+import { useSelector } from "react-redux";
+
 
 const GroupPage = (props) => {
   const [isNewGrOpen, setIsNewGrOpen] = useState(false);
-  const [isUsersOpen, setIsUsersOpen] = useState(false);
+  const [isInvitationOpen, setIsInvitationOpen] = useState(false);
   const [groupData, setGroupData] = useState();
+  const { user } = useSelector((state) => state.auth);
 
   const getAllData = async () => {
     try {
@@ -36,14 +40,14 @@ const GroupPage = (props) => {
     setIsNewGrOpen(val);
   };
 
-  const modalUsers = (val) => {
-    setIsUsersOpen(val);
+  const modalInvitation = (val) => {
+    setIsInvitationOpen(val);
   };
 
   return (
     <div className="HomePageDiv">
       <NewGroup isOpen={isNewGrOpen} modalV={modalNewGr} />
-      <UserList isOpen={isUsersOpen} modalV={modalUsers} id="655377c772aa6dd02ea5ea95"/>
+      <Invitations isOpen={isInvitationOpen} modalV={modalInvitation} id={user._id}/>
       <div className="floating-button-container">
       <button
         className="floating-button"
@@ -58,7 +62,7 @@ const GroupPage = (props) => {
       <button
         className="floating-invitation-button"
         title="Group Invitations"
-        onClick={() => setIsUsersOpen(true)}
+        onClick={() => setIsInvitationOpen(true)}
       >
         <IoMdMailUnread />
       </button>
@@ -75,6 +79,9 @@ const GroupPage = (props) => {
               admin={group.adminOrOwner}
               followers={group.followersOrMembers}
               moderators={group.moderator}
+              isMember={group.followersOrMembers.includes(user._id)}
+              isModerator={group.moderator.includes(user._id)}
+              isOwner={group.adminOrOwner === user._id}
             />
           ))}
         </div>

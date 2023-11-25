@@ -11,7 +11,12 @@ const {
   GET_ALL_POST_API,
   INVITE_TO_GROUP_API,
   REQUEST_TO_JOIN_API,
-  ACCEPT_THE_REQUEST_API,
+  ACCEPT_THE_INVITE_API,
+  DECLINE_THE_INVITE_API,
+  ACCEPT_THE_JOIN_API,
+  DECLINE_THE_JOIN_API,
+  GET_GROUP_BY_ID_API,
+
 
 } = groupEndpoints
 
@@ -141,7 +146,7 @@ export const getGroupPost = async (id) => {
   // const toastId = toast.loading("Loading...")
   let result = []
   try {
-    const response = await apiConnector("POST", GET_ALL_POST_API, id)
+    const response = await apiConnector("POST", GET_ALL_POST_API, {id: id})
     if (!response?.data?.success) {
       throw new Error("Could Not Fetch posts")
     }
@@ -228,6 +233,160 @@ export function requestToJoinGroup(groupId, token) {
 
   }
 }
+
+
+
+export function acceptInvite(groupId, userId) {
+  return async (dispatch) => {
+    // const toastId = toast.loading("Loading...")
+
+    
+    try {
+      const response = await apiConnector("POST", ACCEPT_THE_INVITE_API,
+      {
+        id: groupId,
+        user: userId
+      },
+
+       )
+
+      console.log("ACCEPT INVITE TO GROUP API RESPONSE............", response)
+
+
+
+      toast.success("Accept successfully");
+      //dispatch(setToken(response.data.token))
+
+
+
+
+    } catch (error) {
+      console.log("Accept invite API ERROR............", error)
+      toast.error("Acceptation  Failed")
+    }
+
+
+    // toast.dismiss(toastId)
+
+  }
+}
+
+
+export function declineInvite(groupId, userId) {
+  return async (dispatch) => {
+    // const toastId = toast.loading("Loading...")
+
+    
+    try {
+      const response = await apiConnector("POST", DECLINE_THE_INVITE_API,
+      {
+        id: groupId,
+        user: userId,
+      },
+
+      )
+
+      console.log("DECLINE INVITE TO GROUP API RESPONSE............", response)
+
+
+
+      toast.success("Decline successfully");
+      //dispatch(setToken(response.data.token))
+
+
+
+
+    } catch (error) {
+      console.log("Decline invite API ERROR............", error)
+      toast.error("Decline  Failed")
+    }
+
+
+    // toast.dismiss(toastId)
+
+  }
+}
+
+
+export function acceptJoin(groupId,userId, token) {
+  return async (dispatch) => {
+    // const toastId = toast.loading("Loading...")
+
+    
+    try {
+      const response = await apiConnector("POST", ACCEPT_THE_JOIN_API,
+      {
+        id: groupId,
+        user: userId
+      },
+      {
+        Authorization: `Bearer ${token}`,
+      }
+       )
+
+      console.log("ACCEPT JOIN TO GROUP API RESPONSE............", response)
+
+
+
+      toast.success("Accept successfully");
+      //dispatch(setToken(response.data.token))
+
+
+
+
+    } catch (error) {
+      console.log("Accept Join API ERROR............", error)
+      toast.error("Acceptation  Failed")
+    }
+
+
+    // toast.dismiss(toastId)
+
+  }
+}
+
+
+export function declineJoin(groupId, userId, token) {
+  return async (dispatch) => {
+    // const toastId = toast.loading("Loading...")
+
+    
+    try {
+      const response = await apiConnector("POST", DECLINE_THE_JOIN_API,
+      {
+        id: groupId,
+        user: userId
+      },
+      {
+        Authorization: `Bearer ${token}`,
+      }
+      )
+
+      console.log("DECLINE JOIN TO GROUP API RESPONSE............", response)
+
+
+
+      toast.success("Decline successfully");
+      //dispatch(setToken(response.data.token))
+
+
+
+
+    } catch (error) {
+      console.log("Decline Join API ERROR............", error)
+      toast.error("Decline  Failed")
+    }
+
+
+    // toast.dismiss(toastId)
+
+  }
+}
+
+
+
+
+
 
 
 
