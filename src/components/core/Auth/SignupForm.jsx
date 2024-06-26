@@ -42,9 +42,7 @@ const SignupForm = () => {
     const signupData = {
       ...formData,
     };
-
-    // Setting signup data to state
-    // To be used after otp verification
+    
     dispatch(setSignupData(signupData));
     dispatch(
       signUp(userName, firstName, lastName, email, password, confirmPassword, navigate)

@@ -18,7 +18,7 @@ import AddInGroup from "../components/core/Group/AddInGroup";
 
 const GroupPage = (props) => {
   const location = useLocation();
-  const {id, followers, moderators} = location.state;
+  const {id, followers,name, moderators} = location.state;
   const [isNewPostOpen, setIsNewPostOpen] = useState(false);
   const [isJoinReqOpen, setIsJoinReqOpen] = useState(false);
   const [postData, setPostData] = useState();
@@ -72,8 +72,8 @@ const GroupPage = (props) => {
         <NavBar />
         <div className="GroupDetails">
           <div className="GroupName">
-          Demo Group name
-          <button>100 Members</button>
+          {name}
+          <button>{followers.length} Members</button>
           </div>
           <div className="GroupControls">
           <button onClick={()=> {setIsAddOpen(true);  setIsForMember(true);}}>Add Member</button>

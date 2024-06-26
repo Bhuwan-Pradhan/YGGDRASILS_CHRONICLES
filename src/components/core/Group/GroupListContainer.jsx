@@ -48,7 +48,7 @@ const GroupContainer = (props) => {
      
     </div>
     <div className="ViewGroup">
-      {props.isMember || props.isModerator?(<button title="View Group" onClick={()=> navigate("/selectGroup", {state: {id: props.id , followers: props.followers, moderators: props.moderators}})}><IoIosArrowForward size={"50px"}/></button>):(<div></div>)}
+      {props.isMember || props.isModerator?(<button title="View Group" onClick={()=> navigate("/selectGroup", {state: {id: props.id ,name:props.name, followers: props.followers, moderators: props.moderators}})}><IoIosArrowForward size={"50px"}/></button>):(<div></div>)}
       
     </div>
     </div>

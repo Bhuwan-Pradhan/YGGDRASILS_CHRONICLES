@@ -76,7 +76,7 @@ const TagUsers = (props) => {
                   <div id='ListUserFullName'>{user.firstName} {user.lastName}</div>
         </Link>
                    
-                    <div>@username</div>
+                    <div>@{user.userName}</div>
                   </div>
                
                 </div>

@@ -19,6 +19,7 @@ const ProfilePage = () => {
   const { userProfile } = location.state;
   
   const { user } = useSelector((state) => state.auth);
+  const isUser=userProfile._id===user._id;
    // Read values passed on state
   const followerCount= userProfile.followers.length;
   const followingCount= userProfile.following.length;
@@ -85,8 +86,9 @@ const ProfilePage = () => {
           <div className="UserProfile">
             <div className="ProfileImage">
               <img src={userProfile.image} alt="" />
-              <button>Edit Profile</button>
-              {isFollow?<button onClick={handleUnFollow}>UNFollow</button>: <button onClick={handleFollow}>Follow</button>}
+            
+              {isUser?<div></div>:<div>{isFollow?<button onClick={handleUnFollow}>UNFollow</button>: <button onClick={handleFollow}>Follow</button>}</div>}
+              
              
               
             </div>
